@@ -67,7 +67,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param synth.incrementalSynthesisCache C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/.Xil/Vivado-6172-IP5P-ym/incrSyn
+  set_param synth.incrementalSynthesisCache C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/.Xil/Vivado-9700-IP5P-ym/incrSyn
   set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
