@@ -17,7 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param synth.incrementalSynthesisCache C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/.Xil/Vivado-6172-IP5P-ym/incrSyn
+set_param synth.incrementalSynthesisCache C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/.Xil/Vivado-9700-IP5P-ym/incrSyn
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
@@ -34,6 +34,7 @@ set_property ip_output_repo c:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/So
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib {
   C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.srcs/sources_1/new/Audio_Capture.v
+  C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.srcs/sources_1/new/Oled_Display.v
   C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.srcs/sources_1/new/clock_divider.v
   C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.srcs/sources_1/new/Top_Student.v
 }

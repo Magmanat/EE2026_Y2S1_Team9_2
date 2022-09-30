@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Fri Sep 30 15:48:57 2022
+| Date             : Fri Sep 30 16:56:31 2022
 | Host             : IP5P-ym running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Student_power_routed.rpt -pb Top_Student_power_summary_routed.pb -rpx Top_Student_power_routed.rpx
 | Design           : Top_Student
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.073        |
+| Total On-Chip Power (W)  | 0.082        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.002        |
+| Dynamic (W)              | 0.010        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -52,16 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      193 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       43 |     20800 |            0.21 |
-|   CARRY4       |    <0.001 |       19 |      8150 |            0.23 |
-|   Register     |    <0.001 |      116 |     41600 |            0.28 |
-|   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |    <0.001 |      177 |       --- |             --- |
-| I/O            |    <0.001 |       17 |       106 |           16.04 |
+| Clocks         |     0.002 |        3 |       --- |             --- |
+| Slice Logic    |    <0.001 |      542 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      205 |     20800 |            0.99 |
+|   CARRY4       |    <0.001 |       36 |      8150 |            0.44 |
+|   BUFG         |    <0.001 |        1 |        32 |            3.13 |
+|   Register     |    <0.001 |      264 |     41600 |            0.63 |
+|   Others       |     0.000 |       12 |       --- |             --- |
+| Signals        |    <0.001 |      451 |       --- |             --- |
+| I/O            |     0.007 |       26 |       106 |           24.53 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.073 |          |           |                 |
+| Total          |     0.082 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,9 +72,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.011 |       0.002 |      0.010 |
+| Vccint    |       1.000 |     0.013 |       0.003 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
-| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |
+| Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -140,8 +141,10 @@ Table of Contents
 +-------------+-----------+
 | Name        | Power (W) |
 +-------------+-----------+
-| Top_Student |     0.002 |
+| Top_Student |     0.010 |
 |   A         |    <0.001 |
+|   B         |    <0.001 |
+|   six25mhz  |    <0.001 |
 |   tenhz     |    <0.001 |
 |   twentykhz |    <0.001 |
 +-------------+-----------+

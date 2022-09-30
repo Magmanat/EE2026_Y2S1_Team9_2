@@ -17,10 +17,12 @@
 
 module Top_Student (
     input CLK,
+    input [0:0] sw,
+    input btnC,
     input JB2,   // Connect from this signal to Audio_Capture.v JB MIC PIN 3
     output JB0,   // Connect to this signal from Audio_Capture.v JB MIC PIN 1
     output JB3,   // Connect to this signal from Audio_Capture.v JB MIC PIN 4
-    input [0:0] sw,
+    output [7:0] JC,
     output reg [11:0] led // mic_in
     // Delete this comment and include other inputs and outputs here
     );
@@ -38,5 +40,13 @@ module Top_Student (
     always @ (posedge myclk) begin
         led <= mic_in;
     end
-    
+   
+    wire clk6p25m, wire_frame_begin, wire_sending_pixels, wire_sample_pixel;
+    wire [12:0] pixel_index;
+    reg [15:0] oled_data = 16'h07E0;
+    clock_divider six25mhz (CLK, 32'd7, clk6p25m);
+    Oled_Display B(.clk(clk6p25m), .reset(btnC), .frame_begin(wire_frame_begin), .sending_pixels(wire_sending_pixels),
+      .sample_pixel(wire_sample_pixel), .pixel_index(pixel_index), .pixel_data(oled_data),
+       .cs(JC[0]), .sdin(JC[1]), .sclk(JC[3]), .d_cn(JC[4]), .resn(JC[5]), .vccen(JC[6]),
+      .pmoden(JC[7]), .teststate(0));
 endmodule
