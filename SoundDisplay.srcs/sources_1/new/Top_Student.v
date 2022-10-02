@@ -43,7 +43,18 @@ module Top_Student (
    
     wire clk6p25m, wire_frame_begin, wire_sending_pixels, wire_sample_pixel;
     wire [12:0] pixel_index;
-    reg [15:0] oled_data = 16'h07E0;
+    //16 bit = 5b red, 6b green, 5b blue
+    //[11:6] mic_in for green and [11:7] mic_in for blue
+    wire [5:0] g;
+    assign g = mic_in [11:6];
+    wire [4:0] b;
+    assign b = mic_in [11:7];
+    reg [15:0] oled_data;
+    always @ (posedge CLK) begin
+        oled_data = b | (g << 5);
+//        oled_data = b;
+//        oled_data = g << 5;
+    end
     clock_divider six25mhz (CLK, 32'd7, clk6p25m);
     Oled_Display B(.clk(clk6p25m), .reset(btnC), .frame_begin(wire_frame_begin), .sending_pixels(wire_sending_pixels),
       .sample_pixel(wire_sample_pixel), .pixel_index(pixel_index), .pixel_data(oled_data),
