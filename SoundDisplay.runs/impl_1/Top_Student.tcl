@@ -67,16 +67,17 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param synth.incrementalSynthesisCache {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/.Xil/Vivado-16048-LAPTOP-H9ETBF9K/incrSyn}
   set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.cache/wt [current_project]
-  set_property parent.project_path C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.xpr [current_project]
-  set_property ip_output_repo C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.cache/ip [current_project]
+  set_property webtalk.parent_dir {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.cache/wt} [current_project]
+  set_property parent.project_path {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.xpr} [current_project]
+  set_property ip_output_repo {{C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.cache/ip}} [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  add_files -quiet C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.runs/synth_1/Top_Student.dcp
-  read_xdc C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc
+  add_files -quiet {{C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/synth_1/Top_Student.dcp}}
+  read_xdc {{C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc}}
   link_design -top Top_Student -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]

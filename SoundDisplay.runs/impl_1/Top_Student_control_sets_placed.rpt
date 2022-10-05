@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Mon Oct  3 01:22:49 2022
-| Host         : IP5P-ym running 64-bit major release  (build 9200)
+| Date         : Wed Oct  5 23:47:02 2022
+| Host         : LAPTOP-H9ETBF9K running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
 | Design       : Top_Student
 | Device       : xc7a35t
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    13 |
-| Unused register locations in slices containing registers |    24 |
+| Number of unique control sets                            |    24 |
+| Unused register locations in slices containing registers |    74 |
 +----------------------------------------------------------+-------+
 
 
@@ -34,9 +34,11 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
-|      2 |            1 |
-|     10 |            1 |
-|    16+ |           11 |
+|      2 |            7 |
+|      4 |            1 |
+|      6 |            1 |
+|     12 |            1 |
+|    16+ |           14 |
 +--------+--------------+
 
 
@@ -46,34 +48,45 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              84 |           18 |
+| No           | No                    | No                     |              80 |           21 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             340 |           49 |
-| Yes          | No                    | No                     |               0 |            0 |
+| No           | Yes                   | No                     |             422 |           60 |
+| Yes          | No                    | No                     |              26 |            3 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             104 |           14 |
+| Yes          | Yes                   | No                     |             158 |           26 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+---------------------+--------------------+------------------------------+------------------+----------------+
-|     Clock Signal    |    Enable Signal   |       Set/Reset Signal       | Slice Load Count | Bel Load Count |
-+---------------------+--------------------+------------------------------+------------------+----------------+
-| ~clk6p25m_BUFG      |                    |                              |                1 |              2 |
-|  CLK_IBUF_BUFG      |                    |                              |                4 |             10 |
-| ~A/JB3_OBUF         |                    |                              |                4 |             24 |
-|  twentykhz/JB0_OBUF |                    |                              |                4 |             24 |
-|  myclk              |                    |                              |                5 |             24 |
-|  CLK_IBUF_BUFG      |                    | twentykhz/JB0_OBUF           |                3 |             24 |
-| ~clk6p25m_BUFG      |                    | btnC_IBUF                    |                6 |             34 |
-| ~clk6p25m_BUFG      | B/delay[0]_i_1_n_0 | btnC_IBUF                    |                5 |             40 |
-|  CLK_IBUF_BUFG      |                    | six25mhz/COUNT[0]_i_1__0_n_0 |                8 |             64 |
-|  CLK_IBUF_BUFG      |                    | tenhz/COUNT[0]_i_1__1_n_0    |                8 |             64 |
-|  CLK_IBUF_BUFG      |                    | twentykhz/clear              |                8 |             64 |
-| ~clk6p25m_BUFG      | B/state            | btnC_IBUF                    |                9 |             64 |
-| ~clk6p25m_BUFG      |                    | B/spi_word[39]_i_1_n_0       |               16 |             90 |
-+---------------------+--------------------+------------------------------+------------------+----------------+
++-------------------------------------------+------------------------------------+-------------------------------------------+------------------+----------------+
+|                Clock Signal               |            Enable Signal           |              Set/Reset Signal             | Slice Load Count | Bel Load Count |
++-------------------------------------------+------------------------------------+-------------------------------------------+------------------+----------------+
+|  JB0_OBUF_BUFG                            | vl/led[0]_i_2_n_0                  | vl/led[0]_i_1_n_0                         |                1 |              2 |
+|  JB0_OBUF_BUFG                            | vl/led[2]_i_2_n_0                  | vl/led[2]_i_1_n_0                         |                1 |              2 |
+|  JB0_OBUF_BUFG                            | vl/led[4]_i_2_n_0                  | vl/led[4]_i_1_n_0                         |                1 |              2 |
+|  JB0_OBUF_BUFG                            | vl/led[1]_i_2_n_0                  | vl/led[1]_i_1_n_0                         |                1 |              2 |
+|  JB0_OBUF_BUFG                            | vl/led[3]_i_2_n_0                  | vl/led[3]_i_1_n_0                         |                1 |              2 |
+| ~clk6p25m_BUFG                            |                                    |                                           |                1 |              2 |
+|  CLK_IBUF_BUFG                            | oledtaskA/OTA_debounce/d1/led3_out |                                           |                1 |              2 |
+|  oledtaskA/OTA_debounce/eighthz/slow_clk  |                                    |                                           |                1 |              4 |
+|  oledtaskA/OTA_debounce/d1/debounced_BTNU |                                    |                                           |                1 |              6 |
+|  CLK_IBUF_BUFG                            |                                    |                                           |                6 |             12 |
+|  CLK_IBUF_BUFG                            |                                    | oledtaskA/OTA_debounce/d2/counter_reg[28] |                3 |             20 |
+|  JB0_OBUF_BUFG                            | vl/max[11]_i_1_n_0                 |                                           |                2 |             24 |
+|  CLK_IBUF_BUFG                            |                                    | JB0_OBUF_BUFG                             |                3 |             24 |
+| ~A/JB3_OBUF                               |                                    |                                           |                4 |             24 |
+|  JB0_OBUF_BUFG                            |                                    |                                           |                8 |             32 |
+| ~clk6p25m_BUFG                            |                                    | btnC_IBUF                                 |                3 |             34 |
+| ~clk6p25m_BUFG                            | B/delay[0]_i_1_n_0                 | btnC_IBUF                                 |                5 |             40 |
+|  CLK_IBUF_BUFG                            | oledtaskA/counter0                 | oledtaskA/OTA_debounce/d2/SR[0]           |                8 |             44 |
+|  JB0_OBUF_BUFG                            |                                    | vl/count2000[31]_i_1_n_0                  |                8 |             62 |
+| ~clk6p25m_BUFG                            | B/FSM_onehot_state[31]_i_1_n_0     | btnC_IBUF                                 |                8 |             64 |
+|  CLK_IBUF_BUFG                            |                                    | six25mhz/clear                            |                8 |             64 |
+|  CLK_IBUF_BUFG                            |                                    | twentykhz/clear                           |                8 |             64 |
+|  CLK_IBUF_BUFG                            |                                    | oledtaskA/OTA_debounce/eighthz/clear      |                8 |             64 |
+| ~clk6p25m_BUFG                            |                                    | B/spi_word[39]_i_1_n_0                    |               19 |             90 |
++-------------------------------------------+------------------------------------+-------------------------------------------+------------------+----------------+
 
 

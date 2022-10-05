@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/yanmi/OneDrive/Documents/Y2S1/EE2026/Lab/SoundDisplay/SoundDisplay.runs/impl_1'
+HD_PWD='C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
