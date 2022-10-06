@@ -25,13 +25,13 @@ module switch_debouncer(
     input BTN,
     output debounced_btn
 );
-wire clock8hz;
+wire clock4hz;
 
 wire Q1, Q2, Q2bar;
 
-clock_divider eighthz(CLK,32'd6249999 ,clock8hz);
-D_FF d1(clock8hz, BTN, Q1);
-D_FF d2(clock8hz, Q1, Q2);
+clock_divider fourthz(CLK,32'd12499999 ,clock4hz);
+D_FF d1(clock4hz, BTN, Q1);
+D_FF d2(clock4hz, Q1, Q2);
 
 assign Q2bar = ~Q2;
 assign debounced_btn = Q1 & Q2bar;

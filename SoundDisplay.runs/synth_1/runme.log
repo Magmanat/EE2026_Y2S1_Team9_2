@@ -14,19 +14,22 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 19516 
-WARNING: [Synth 8-992] volume0_5 is already implicitly declared earlier [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:71]
+INFO: Helper process launched with PID 14760 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 369.008 ; gain = 111.793
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 356.691 ; gain = 99.527
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:18]
-INFO: [Synth 8-6157] synthesizing module 'clock_divider' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/clock_divider.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'clock_divider' (1#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/clock_divider.v:23]
-INFO: [Synth 8-6157] synthesizing module 'Audio_Capture' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Audio_Capture.v:25]
-INFO: [Synth 8-6155] done synthesizing module 'Audio_Capture' (2#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Audio_Capture.v:25]
-INFO: [Synth 8-6157] synthesizing module 'draw_module' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/draw_module.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'draw_module' (3#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/draw_module.v:23]
-INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:36]
+INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:18]
+INFO: [Synth 8-6157] synthesizing module 'switch_debouncer' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:23]
+INFO: [Synth 8-6157] synthesizing module 'clock_divider' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/clock_divider.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'clock_divider' (1#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/clock_divider.v:23]
+INFO: [Synth 8-6157] synthesizing module 'D_FF' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'D_FF' (2#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:23]
+WARNING: [Synth 8-350] instance 'd1' of module 'D_FF' requires 4 connections, but only 3 given [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:33]
+WARNING: [Synth 8-350] instance 'd2' of module 'D_FF' requires 4 connections, but only 3 given [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'switch_debouncer' (3#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:23]
+INFO: [Synth 8-6157] synthesizing module 'Audio_Capture' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Audio_Capture.v:25]
+INFO: [Synth 8-6155] done synthesizing module 'Audio_Capture' (4#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Audio_Capture.v:25]
+INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:36]
 	Parameter Width bound to: 96 - type: integer 
 	Parameter Height bound to: 64 - type: integer 
 	Parameter PixelCount bound to: 6144 - type: integer 
@@ -77,40 +80,27 @@ INFO: [Synth 8-6157] synthesizing module 'Oled_Display' [C:/Users/princ/OneDrive
 	Parameter SendPixel bound to: 5'b10000 
 	Parameter SpiCommandMaxWidth bound to: 40 - type: integer 
 	Parameter SpiCommandBitCountWidth bound to: 6 - type: integer 
-INFO: [Synth 8-226] default block is never used [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:124]
-INFO: [Synth 8-226] default block is never used [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:201]
-WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:349]
-INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (4#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:36]
-WARNING: [Synth 8-689] width (32) of port connection 'teststate' does not match port width (5) of module 'Oled_Display' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:65]
-WARNING: [Synth 8-2900] ignoring illegal expression in output port connection [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:65]
-INFO: [Synth 8-6157] synthesizing module 'OTA' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:23]
-INFO: [Synth 8-6157] synthesizing module 'switch_debouncer' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:23]
-INFO: [Synth 8-6157] synthesizing module 'D_FF' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'D_FF' (5#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:23]
-WARNING: [Synth 8-350] instance 'd1' of module 'D_FF' requires 4 connections, but only 3 given [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:33]
-WARNING: [Synth 8-350] instance 'd2' of module 'D_FF' requires 4 connections, but only 3 given [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:34]
-INFO: [Synth 8-6155] done synthesizing module 'switch_debouncer' (6#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:23]
-CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register counter_reg in module OTA. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:40]
-CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register led_reg in module OTA. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:47]
-WARNING: [Synth 8-5788] Register led_reg in module OTA is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:47]
-INFO: [Synth 8-6155] done synthesizing module 'OTA' (7#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:23]
-INFO: [Synth 8-6157] synthesizing module 'volume_level' [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:23]
-WARNING: [Synth 8-6014] Unused sequential element maxout_reg was removed.  [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:37]
-INFO: [Synth 8-6155] done synthesizing module 'volume_level' (8#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'Top_Student' (9#1) [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:18]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[12]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[11]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[10]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[9]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[8]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[7]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[6]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[5]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[4]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[3]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[2]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[1]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[0]
+INFO: [Synth 8-226] default block is never used [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:124]
+INFO: [Synth 8-226] default block is never used [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:201]
+WARNING: [Synth 8-693] zero replication count - replication ignored [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:349]
+INFO: [Synth 8-6155] done synthesizing module 'Oled_Display' (5#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Oled_Display.v:36]
+WARNING: [Synth 8-689] width (32) of port connection 'teststate' does not match port width (5) of module 'Oled_Display' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:58]
+WARNING: [Synth 8-2900] ignoring illegal expression in output port connection [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:58]
+INFO: [Synth 8-6157] synthesizing module 'main_menu' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/main_menu.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'main_menu' (6#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/main_menu.v:23]
+INFO: [Synth 8-6157] synthesizing module 'OTA' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:23]
+CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register counter_reg in module OTA. [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:38]
+CRITICAL WARNING: [Synth 8-5413] Mix of synchronous and asynchronous control for register led_reg in module OTA. [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:43]
+WARNING: [Synth 8-5788] Register led_reg in module OTA is has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:43]
+INFO: [Synth 8-6155] done synthesizing module 'OTA' (7#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/OTA.v:23]
+INFO: [Synth 8-6157] synthesizing module 'volume_level' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:23]
+WARNING: [Synth 8-6014] Unused sequential element maxout_reg was removed.  [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'volume_level' (8#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:23]
+INFO: [Synth 8-6157] synthesizing module 'waveform' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/waveform.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'waveform' (9#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/waveform.v:23]
+INFO: [Synth 8-6157] synthesizing module 'draw_module' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/draw_module.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'draw_module' (10#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/draw_module.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Top_Student' (11#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:18]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[15]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[14]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[13]
@@ -124,8 +114,20 @@ WARNING: [Synth 8-3331] design draw_module has unconnected port sw[6]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[5]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[4]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[3]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[2]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[1]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[12]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[11]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[10]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[9]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[8]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[7]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[6]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[5]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[4]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[3]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[2]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[1]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[0]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port JC[2]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[15]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[13]
@@ -138,7 +140,7 @@ WARNING: [Synth 8-3331] design Top_Student has unconnected port led[7]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[6]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[5]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 405.973 ; gain = 148.758
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.938 ; gain = 154.773
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -151,59 +153,41 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 405.973 ; gain = 148.758
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.938 ; gain = 154.773
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 405.973 ; gain = 148.758
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.938 ; gain = 154.773
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc]
-WARNING: [Vivado 12-584] No ports matched 'btnL'. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:115]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:115]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'btnL'. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:116]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:116]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'btnR'. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:117]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:117]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'btnR'. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:118]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:118]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'btnD'. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:119]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:119]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'btnD'. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:120]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc:120]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-Finished Parsing XDC File [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_Student_propImpl.xdc].
+Parsing XDC File [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc]
+Finished Parsing XDC File [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/constrs_1/new/Basys3_Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_Student_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Top_Student_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 739.641 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 748.602 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 739.641 ; gain = 482.426
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 739.641 ; gain = 482.426
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 739.641 ; gain = 482.426
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
@@ -212,6 +196,8 @@ INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is 
 INFO: [Synth 8-5545] ROM "count20000" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "max0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "count20000" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "y" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -250,7 +236,7 @@ INFO: [Synth 8-5545] ROM "count20000" won't be mapped to RAM because address siz
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 739.641 ; gain = 482.426
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -263,37 +249,42 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 2     
+	   2 Input     32 Bit       Adders := 1     
 	   2 Input     17 Bit       Adders := 1     
+	   2 Input      7 Bit       Adders := 1     
 	   2 Input      6 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 2     
 +---Registers : 
 	               40 Bit    Registers := 1     
-	               32 Bit    Registers := 2     
+	               32 Bit    Registers := 1     
 	               17 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
 	               12 Bit    Registers := 3     
-	                6 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 2     
 	                5 Bit    Registers := 1     
 	                3 Bit    Registers := 2     
-	                1 Bit    Registers := 9     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 30    
 +---Muxes : 
 	   2 Input     40 Bit        Muxes := 3     
 	  32 Input     32 Bit        Muxes := 1     
 	   2 Input     32 Bit        Muxes := 3     
-	   3 Input     32 Bit        Muxes := 1     
 	  32 Input     20 Bit        Muxes := 1     
 	   2 Input     17 Bit        Muxes := 1     
-	   8 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 9     
+	   5 Input     11 Bit        Muxes := 1     
 	  32 Input      6 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 5     
 	  32 Input      5 Bit        Muxes := 2     
 	   5 Input      5 Bit        Muxes := 1     
 	   7 Input      5 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 1     
 	   6 Input      3 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 5     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 6     
 	   6 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -306,17 +297,15 @@ Module clock_divider
 Detailed RTL Component Info : 
 +---Registers : 
 	                1 Bit    Registers := 1     
+Module D_FF 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
 Module Audio_Capture 
 Detailed RTL Component Info : 
 +---Registers : 
 	               12 Bit    Registers := 2     
 	                1 Bit    Registers := 1     
-Module draw_module 
-Detailed RTL Component Info : 
-+---Registers : 
-	               16 Bit    Registers := 1     
-+---Muxes : 
-	   8 Input     16 Bit        Muxes := 1     
 Module Oled_Display 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -337,23 +326,25 @@ Detailed RTL Component Info :
 	   2 Input      5 Bit        Muxes := 2     
 	  32 Input      5 Bit        Muxes := 2     
 	   2 Input      1 Bit        Muxes := 2     
-Module D_FF 
+Module main_menu 
 Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 2     
 +---Registers : 
-	                1 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 1     
 Module OTA 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 1     
 +---Registers : 
-	               32 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
 	                1 Bit    Registers := 1     
 +---Muxes : 
-	   3 Input     32 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 1     
 Module volume_level 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -371,6 +362,23 @@ Detailed RTL Component Info :
 	   6 Input      3 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 2     
 	   6 Input      1 Bit        Muxes := 1     
+Module waveform 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      7 Bit       Adders := 1     
++---Registers : 
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module draw_module 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 9     
+	   5 Input     11 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -387,24 +395,12 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
+WARNING: [Synth 8-6014] Unused sequential element d1/Qbar_reg was removed.  [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:32]
+WARNING: [Synth 8-6014] Unused sequential element d2/Qbar_reg was removed.  [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:32]
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element OTA_debounce/d1/Qbar_reg was removed.  [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:32]
-WARNING: [Synth 8-6014] Unused sequential element OTA_debounce/d2/Qbar_reg was removed.  [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/D_FF.v:32]
 INFO: [Synth 8-5545] ROM "count20000" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[12]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[11]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[10]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[9]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[8]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[7]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[6]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[5]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[4]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[3]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[2]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[1]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[0]
+INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[15]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[14]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[13]
@@ -418,8 +414,26 @@ WARNING: [Synth 8-3331] design draw_module has unconnected port sw[6]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[5]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[4]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[3]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[2]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[1]
+WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[5]
+WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[4]
+WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[3]
+WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[2]
+WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[1]
+WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[0]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[12]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[11]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[10]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[9]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[8]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[7]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[6]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[5]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[4]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[3]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[2]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[1]
+WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[0]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port JC[2]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[15]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[13]
@@ -431,23 +445,24 @@ WARNING: [Synth 8-3331] design Top_Student has unconnected port led[8]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[7]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[6]
 WARNING: [Synth 8-3331] design Top_Student has unconnected port led[5]
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[0]' (FD) to 'dm1/oled_data_reg[1]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[1]' (FD) to 'dm1/oled_data_reg[2]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[2]' (FD) to 'dm1/oled_data_reg[3]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[3]' (FD) to 'dm1/oled_data_reg[4]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\dm1/oled_data_reg[4] )
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[5]' (FD) to 'dm1/oled_data_reg[6]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[6]' (FD) to 'dm1/oled_data_reg[7]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[7]' (FD) to 'dm1/oled_data_reg[8]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[8]' (FD) to 'dm1/oled_data_reg[9]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[9]' (FD) to 'dm1/oled_data_reg[10]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[11]' (FD) to 'dm1/oled_data_reg[12]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[12]' (FD) to 'dm1/oled_data_reg[13]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[13]' (FD) to 'dm1/oled_data_reg[14]'
-INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[14]' (FD) to 'dm1/oled_data_reg[15]'
-WARNING: [Synth 8-3332] Sequential element (dm1/oled_data_reg[4]) is unused and will be removed from module Top_Student.
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[0]' (FDR) to 'dm1/oled_data_reg[1]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[1]' (FDR) to 'dm1/oled_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[2]' (FDR) to 'dm1/oled_data_reg[3]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[3]' (FDR) to 'dm1/oled_data_reg[4]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[5]' (FDR) to 'dm1/oled_data_reg[6]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[6]' (FDR) to 'dm1/oled_data_reg[7]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[7]' (FDR) to 'dm1/oled_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[8]' (FDR) to 'dm1/oled_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[9]' (FDR) to 'dm1/oled_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[11]' (FDS) to 'dm1/oled_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[12]' (FDS) to 'dm1/oled_data_reg[13]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[13]' (FDS) to 'dm1/oled_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[14]' (FDS) to 'dm1/oled_data_reg[15]'
+WARNING: [Synth 8-3332] Sequential element (db5/fourthz/slow_clk_reg) is unused and will be removed from module Top_Student.
+WARNING: [Synth 8-3332] Sequential element (db5/d1/Q_reg) is unused and will be removed from module Top_Student.
+WARNING: [Synth 8-3332] Sequential element (db5/d2/Q_reg) is unused and will be removed from module Top_Student.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 739.641 ; gain = 482.426
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 748.602 ; gain = 491.438
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -459,13 +474,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 741.664 ; gain = 484.449
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 748.602 ; gain = 491.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 763.301 ; gain = 506.086
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 816.066 ; gain = 558.902
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -477,7 +492,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -501,7 +516,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -514,7 +529,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -526,25 +541,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -561,62 +576,74 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     3|
-|2     |CARRY4 |    78|
-|3     |LUT1   |    58|
-|4     |LUT2   |   140|
-|5     |LUT3   |    61|
+|2     |CARRY4 |   102|
+|3     |LUT1   |    60|
+|4     |LUT2   |   141|
+|5     |LUT3   |    49|
 |6     |LUT4   |    91|
-|7     |LUT5   |    83|
-|8     |LUT6   |   133|
+|7     |LUT5   |    98|
+|8     |LUT6   |   187|
 |9     |MUXF7  |     1|
-|10    |FDRE   |   301|
-|11    |FDRE_1 |    31|
+|10    |FDE_1  |    32|
+|11    |FDRE   |   425|
 |12    |FDSE   |    10|
-|13    |FDSE_1 |     1|
-|14    |IBUF   |     5|
-|15    |OBUF   |    15|
-|16    |OBUFT  |    11|
+|13    |IBUF   |    22|
+|14    |OBUF   |    15|
+|15    |OBUFT  |    11|
 +------+-------+------+
 
 Report Instance Areas: 
-+------+-----------------+-----------------+------+
-|      |Instance         |Module           |Cells |
-+------+-----------------+-----------------+------+
-|1     |top              |                 |  1022|
-|2     |  A              |Audio_Capture    |    72|
-|3     |  B              |Oled_Display     |   424|
-|4     |  dm1            |draw_module      |    80|
-|5     |  oledtaskA      |OTA              |   161|
-|6     |    OTA_debounce |switch_debouncer |    57|
-|7     |      d1         |D_FF             |     3|
-|8     |      d2         |D_FF_1           |     3|
-|9     |      eighthz    |clock_divider_2  |    51|
-|10    |  six25mhz       |clock_divider    |    77|
-|11    |  twentykhz      |clock_divider_0  |    76|
-|12    |  vl             |volume_level     |    96|
-+------+-----------------+-----------------+------+
++------+------------+-------------------+------+
+|      |Instance    |Module             |Cells |
++------+------------+-------------------+------+
+|1     |top         |                   |  1247|
+|2     |  A         |Audio_Capture      |    83|
+|3     |  B         |Oled_Display       |   416|
+|4     |  db1       |switch_debouncer   |    55|
+|5     |    d1      |D_FF_12            |     2|
+|6     |    d2      |D_FF_13            |     3|
+|7     |    fourthz |clock_divider_14   |    50|
+|8     |  db2       |switch_debouncer_0 |    53|
+|9     |    d1      |D_FF_9             |     1|
+|10    |    d2      |D_FF_10            |     2|
+|11    |    fourthz |clock_divider_11   |    50|
+|12    |  db3       |switch_debouncer_1 |    54|
+|13    |    d1      |D_FF_6             |     2|
+|14    |    d2      |D_FF_7             |     2|
+|15    |    fourthz |clock_divider_8    |    50|
+|16    |  db4       |switch_debouncer_2 |    52|
+|17    |    d1      |D_FF               |     1|
+|18    |    d2      |D_FF_4             |     1|
+|19    |    fourthz |clock_divider_5    |    50|
+|20    |  dm1       |draw_module        |   106|
+|21    |  mm        |main_menu          |    13|
+|22    |  oledtaskA |OTA                |    92|
+|23    |  six25mhz  |clock_divider      |    78|
+|24    |  twentykhz |clock_divider_3    |    76|
+|25    |  vl        |volume_level       |    96|
+|26    |  wvfm      |waveform           |    21|
++------+------------+-------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:45 . Memory (MB): peak = 779.281 ; gain = 522.066
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 42 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:32 . Memory (MB): peak = 779.281 ; gain = 188.398
-Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:46 . Memory (MB): peak = 779.281 ; gain = 522.066
+Synthesis finished with 0 errors, 0 critical warnings and 49 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 823.473 ; gain = 229.645
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 116 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 157 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 32 instances were transformed.
-  FDRE_1 => FDRE (inverted pins: C): 31 instances
-  FDSE_1 => FDSE (inverted pins: C): 1 instances
+  FDE_1 => FDRE (inverted pins: C): 32 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-57 Infos, 95 Warnings, 8 Critical Warnings and 0 Errors encountered.
+63 Infos, 94 Warnings, 2 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:00:49 . Memory (MB): peak = 779.281 ; gain = 535.137
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 823.473 ; gain = 579.148
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint 'C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/synth_1/Top_Student.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/synth_1/Top_Student.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_Student_utilization_synth.rpt -pb Top_Student_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 779.281 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Oct  6 14:15:09 2022...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 823.473 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Fri Oct  7 04:46:19 2022...

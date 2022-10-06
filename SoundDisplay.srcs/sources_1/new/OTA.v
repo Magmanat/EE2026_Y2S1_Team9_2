@@ -22,31 +22,26 @@
 
 module OTA(
     input CLK,
-    input enable,
-    input BTNU,
+    input [15:0] sw,
+    input [1:0] selected,
+    input btnU,
     input [12:0] pixel_index,
     output reg led,
     output reg[2:0] bordercount = 0
 );
 
 reg [31:0] counter = 32'd0;
-wire debounced_BTNU;
-switch_debouncer OTA_debounce(CLK, BTNU, debounced_BTNU);
 
-
-always @ (posedge CLK, posedge debounced_BTNU) begin
+always @ (posedge CLK, posedge btnU) begin
     // check if button pressed (its a pulse even if held because of debounce)
-    if (debounced_BTNU == 1 && enable) begin
+    if (btnU == 1'b1 && sw == 16'b0000000000000001 && selected == 1) begin
         counter <= 32'd300000000;
     end
 
     else begin
     // set led and minus counter
-        if (counter == 32'd0 || !enable) begin
-            counter <= 32'd0;
-            led <= 0;
-        end
-        else if (counter > 32'd0 && enable) begin
+        led <= 0;
+        if (counter > 32'd0 && sw == 16'b0000000000000001 && selected == 1) begin
             counter <= counter - 1'b1;
             led <= 1;
         end
@@ -54,8 +49,8 @@ always @ (posedge CLK, posedge debounced_BTNU) begin
 end
 
 
-always @ (posedge debounced_BTNU) begin
-    if (enable) begin
+always @ (posedge btnU) begin
+    if (selected == 1 && sw == 16'b0000000000000001) begin
         if (bordercount == 3'd4) begin
             bordercount <= 3'd0;
             // set all to 0

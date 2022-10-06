@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Thu Oct  6 14:16:53 2022
+| Date         : Fri Oct  7 04:47:08 2022
 | Host         : LAPTOP-H9ETBF9K running 64-bit major release  (build 9200)
 | Command      : report_drc -file Top_Student_drc_routed.rpt -pb Top_Student_drc_routed.pb -rpx Top_Student_drc_routed.rpx
 | Design       : Top_Student
@@ -50,12 +50,12 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net oledtaskA/OTA_debounce/d1/debounced_BTNU is a gated clock net sourced by a combinational pin oledtaskA/OTA_debounce/d1/bordercount[2]_i_2/O, cell oledtaskA/OTA_debounce/d1/bordercount[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net db1/d1/debounced_btnU is a gated clock net sourced by a combinational pin db1/d1/bordercount[2]_i_2/O, cell db1/d1/bordercount[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PLHOLDVIO-2#1 Warning
 Non-Optimal connections which could lead to hold violations  
-A LUT oledtaskA/OTA_debounce/d1/bordercount[2]_i_2 is driving clock pin of 3 cells. This could lead to large hold time violations. First few involved cells are:
+A LUT db1/d1/bordercount[2]_i_2 is driving clock pin of 3 cells. This could lead to large hold time violations. First few involved cells are:
     oledtaskA/bordercount_reg[0] {FDRE}
     oledtaskA/bordercount_reg[1] {FDRE}
     oledtaskA/bordercount_reg[2] {FDRE}
