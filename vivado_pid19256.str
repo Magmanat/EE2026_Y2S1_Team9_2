@@ -1,0 +1,335 @@
+/*
+
+Xilinx Vivado v2018.2 (64-bit) [Major: 2018, Minor: 2]
+SW Build: 2258646 on Thu Jun 14 20:03:12 MDT 2018
+IP Build: 2256618 on Thu Jun 14 22:10:49 MDT 2018
+
+Process ID: 19256
+License: Customer
+
+Current time: 	Thu Oct 06 12:04:38 SGT 2022
+Time zone: 	Singapore Time (Asia/Singapore)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 16
+
+Screen size: 1920x1080
+Screen resolution (DPI): 106
+Available screens: 1
+Available disk space: 104 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	C:/Xilinx/Vivado/2018.2/tps/win64/jre
+Java executable location: 	C:/Xilinx/Vivado/2018.2/tps/win64/jre/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 2 GB
+
+
+User name: 	princ
+User home directory: C:/Users/princ
+User working directory: C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2
+User country: 	SG
+User language: 	en
+User locale: 	en_SG
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2018.2
+RDI_DATADIR: C:/Xilinx/Vivado/2018.2/data
+RDI_BINDIR: C:/Xilinx/Vivado/2018.2/bin
+
+Vivado preferences file location: C:/Users/princ/AppData/Roaming/Xilinx/Vivado/2018.2/vivado.xml
+Vivado preferences directory: C:/Users/princ/AppData/Roaming/Xilinx/Vivado/2018.2/
+Vivado layouts directory: C:/Users/princ/AppData/Roaming/Xilinx/Vivado/2018.2/layouts
+PlanAhead jar file location: 	C:/Xilinx/Vivado/2018.2/lib/classes/planAhead.jar
+Vivado log file location: 	C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/vivado.log
+Vivado journal file location: 	C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/vivado.jou
+Engine tmp dir: 	C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/.Xil/Vivado-19256-LAPTOP-H9ETBF9K
+
+Xilinx Environment Variables
+----------------------------
+XILINX: C:/Xilinx/Vivado/2018.2/ids_lite/ISE
+XILINX_DSP: C:/Xilinx/Vivado/2018.2/ids_lite/ISE
+XILINX_PLANAHEAD: C:/Xilinx/Vivado/2018.2
+XILINX_SDK: C:/Xilinx/SDK/2018.2
+XILINX_VIVADO: C:/Xilinx/Vivado/2018.2
+XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2018.2
+
+
+GUI allocated memory:	149 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 523 MB
+
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 64 MB (+64586kb) [00:00:11]
+// [Engine Memory]: 497 MB (+369969kb) [00:00:11]
+// bx (ck):  Open Project : addNotify
+// Opening Vivado Project: C:\Users\princ\OneDrive - National University of Singapore\School stuff\year2sem1\EE2026\project\EE2026_Y2S1_Team9_2\SoundDisplay.xpr. Version: Vivado v2018.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.xpr} 
+// Tcl Message: INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. Current project path is 'C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2' 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.xpr} 
+// Tcl Message: INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. Current project path is 'C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2' 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// HMemoryUtils.trashcanNow. Engine heap size: 525 MB. GUI used memory: 38 MB. Current time: 10/6/22 12:04:40 PM SGT
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.2/data/ip'. 
+// [Engine Memory]: 525 MB (+2774kb) [00:00:16]
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 595 MB (+46239kb) [00:00:19]
+// Tcl Message: open_project: Time (s): cpu = 00:00:23 ; elapsed = 00:00:12 . Memory (MB): peak = 796.051 ; gain = 81.785 
+// [Engine Memory]: 635 MB (+10957kb) [00:00:25]
+// Project name: SoundDisplay; location: C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2; part: xc7a35tcpg236-1
+dismissDialog("Open Project"); // bx (ck)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+// [GUI Memory]: 67 MB (+215kb) [00:00:29]
+// Tcl Message: update_compile_order -fileset sources_1 
+// PAPropertyPanels.initPanels (Top_Student.v) elapsed time: 0.2s
+// Elapsed time: 58 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Student (Top_Student.v)]", 1, true); // B (D, ck) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Student (Top_Student.v)]", 1, true, false, false, false, false, true); // B (D, ck) - Double Click - Node
+// [GUI Memory]: 74 MB (+3639kb) [00:01:32]
+// Elapsed time: 16 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Student (Top_Student.v), vl : volume_level (volume_level.v)]", 8, false); // B (D, ck)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Student (Top_Student.v), vl : volume_level (volume_level.v)]", 8, false, false, false, false, false, true); // B (D, ck) - Double Click
+// Elapsed time: 18 seconds
+selectCodeEditor("volume_level.v", 153, 226); // ce (w, ck)
+// [GUI Memory]: 78 MB (+112kb) [00:02:29]
+// Elapsed time: 80 seconds
+selectCodeEditor("volume_level.v", 150, 283); // ce (w, ck)
+// [GUI Memory]: 84 MB (+1921kb) [00:03:23]
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Student.v", 1); // k (j, ck)
+selectCodeEditor("Top_Student.v", 177, 468); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 125, 481); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 95, 466); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 139, 470); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 212, 487); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 147, 482); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 147, 482, false, false, false, false, true); // ce (w, ck) - Double Click
+selectCodeEditor("Top_Student.v", 155, 482); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 139, 468); // ce (w, ck)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "volume_level.v", 2); // k (j, ck)
+selectCodeEditor("volume_level.v", 339, 313); // ce (w, ck)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Student.v", 1); // k (j, ck)
+selectCodeEditor("Top_Student.v", 257, 459); // ce (w, ck)
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectCodeEditor("Top_Student.v", 131, 463); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 131, 463, false, false, false, false, true); // ce (w, ck) - Double Click
+typeControlKey((HResource) null, "Top_Student.v", 'c'); // ce (w, ck)
+// TclEventType: DG_GRAPH_GENERATED
+selectCodeEditor("Top_Student.v", 138, 466); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 112, 466); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 112, 466, false, false, false, false, true); // ce (w, ck) - Double Click
+typeControlKey((HResource) null, "Top_Student.v", 'c'); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 412, 226); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 412, 226, false, false, false, false, true); // ce (w, ck) - Double Click
+typeControlKey((HResource) null, "Top_Student.v", 'v'); // ce (w, ck)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("Top_Student.v", 262, 502); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 262, 502, false, false, false, false, true); // ce (w, ck) - Double Click
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+typeControlKey((HResource) null, "Top_Student.v", 'v'); // ce (w, ck)
+// HMemoryUtils.trashcanNow. Engine heap size: 650 MB. GUI used memory: 46 MB. Current time: 10/6/22 12:08:46 PM SGT
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "volume_level.v", 2); // k (j, ck)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Student.v", 1); // k (j, ck)
+selectCodeEditor("Top_Student.v", 148, 483); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 148, 483, false, false, false, false, true); // ce (w, ck) - Double Click
+typeControlKey((HResource) null, "Top_Student.v", 'c'); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 383, 504); // ce (w, ck)
+typeControlKey((HResource) null, "Top_Student.v", 'v'); // ce (w, ck)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, ck)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// bx (ck):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+// [Engine Memory]: 699 MB (+33841kb) [00:04:40]
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_GENERATED
+// HMemoryUtils.trashcanNow. Engine heap size: 699 MB. GUI used memory: 45 MB. Current time: 10/6/22 12:09:06 PM SGT
+dismissDialog("Resetting Runs"); // bx (ck)
+// TclEventType: RUN_LAUNCH
+// bx (ck):  Generate Bitstream : addNotify
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 16 
+// Tcl Message: [Thu Oct  6 12:09:06 2022] Launched synth_1... Run output will be captured here: C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/synth_1/runme.log [Thu Oct  6 12:09:06 2022] Launched impl_1... Run output will be captured here: C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bx (ck)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "volume_level.v", 2); // k (j, ck)
+// [GUI Memory]: 89 MB (+885kb) [00:05:14]
+// TclEventType: RUN_COMPLETED
+// WARNING: HTimer (ActiveMsgMonitor Process Messages Timer) is taking 380ms to process. Increasing delay to 2000 ms.
+// Elapsed time: 60 seconds
+selectCodeEditor("volume_level.v", 427, 473); // ce (w, ck)
+// TclEventType: RUN_STEP_COMPLETED
+// [GUI Memory]: 94 MB (+727kb) [00:06:15]
+// Elapsed time: 77 seconds
+selectCodeEditor("volume_level.v", 413, 108); // ce (w, ck)
+selectCodeEditor("volume_level.v", 318, 359); // ce (w, ck)
+// TclEventType: RUN_COMPLETED
+// WARNING: HTimer (ExpRunMonitor Open Timer) is taking 5035811ms to process. Increasing delay to 6000 ms.
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 5035992 ms. Increasing delay to 3000 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 5036066 ms. Increasing delay to 3000 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 699 MB. GUI used memory: 43 MB. Current time: 10/6/22 1:47:22 PM SGT
+// Elapsed time: 5907 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 21, true); // u (O, ck) - Node
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl Command: 'rdi::info_commands get_hw_probes'
+// Tcl Command: 'load_features labtools'
+// TclEventType: LOAD_FEATURE
+// bx (ck):  Open Hardware Manager : addNotify
+// TclEventType: HW_SESSION_OPEN
+// Tcl Message: open_hw 
+dismissDialog("Open Hardware Manager"); // bx (ck)
+selectButton(PAResourceOtoP.ProgramDebugTab_OPEN_TARGET, "Open target"); // h (cM, ck)
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET, "Auto Connect"); // ad (aj, ck)
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_TARGET
+// bx (ck):  Auto Connect : addNotify
+// Tcl Message: connect_hw_server 
+// Tcl Message: INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121 
+// Tcl Message: INFO: [Labtools 27-2222] Launching hw_server... 
+// TclEventType: HW_SERVER_UPDATE
+// Tcl Message: INFO: [Labtools 27-2221] Launch Output:  ****** Xilinx hw_server v2018.2   **** Build date : Jun 14 2018-20:42:52     ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.   
+// TclEventType: HW_TARGET_CHANGE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_ADD
+// TclEventType: HW_TARGET_UPDATE
+// [Engine Memory]: 1,314 MB (+607461kb) [01:45:52]
+// Tcl Message: open_hw_target 
+// Tcl Message: INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183AA0D1DA 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,316 MB. GUI used memory: 48 MB. Current time: 10/6/22 1:50:17 PM SGT
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/impl_1/Top_Student.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: current_hw_device [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+dismissDialog("Auto Connect"); // bx (ck)
+// Elapsed time: 31 seconds
+selectCodeEditor("Top_Student.v", 180, 503); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 149, 508); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 184, 506); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 445, 502); // ce (w, ck)
+selectCodeEditor("Top_Student.v", 445, 502, false, false, false, false, true); // ce (w, ck) - Double Click
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "volume_level.v", 1); // k (j, ck)
+selectCodeEditor("volume_level.v", 184, 229); // ce (w, ck)
+selectCodeEditor("volume_level.v", 125, 246); // ce (w, ck)
+typeControlKey((HResource) null, "volume_level.v", 'v'); // ce (w, ck)
+selectCodeEditor("volume_level.v", 77, 264); // ce (w, ck)
+selectCodeEditor("volume_level.v", 32, 228); // ce (w, ck)
+selectCodeEditor("volume_level.v", 147, 250); // ce (w, ck)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Student.v", 0); // k (j, ck)
+selectCodeEditor("Top_Student.v", 275, 323); // ce (w, ck)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "volume_level.v", 1); // k (j, ck)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectCodeEditor("volume_level.v", 171, 158); // ce (w, ck)
+// TclEventType: FILE_SET_CHANGE
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Top_Student.v", 0); // k (j, ck)
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: DG_GRAPH_GENERATED
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+selectButton(PAResourceOtoP.ProgramDebugTab_PROGRAM_DEVICE, "Program device"); // h (cM, ck)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+// bB (ck): Program Device: addNotify
+// TclEventType: DG_GRAPH_GENERATED
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bB)
+// HOptionPane Warning: 'A background task is running. Please wait until it completes and try again. (Background Task)'
+selectButton("OptionPane.button", "OK"); // JButton (A, H)
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (bB)
+// bx (ck):  Program Device : addNotify
+dismissDialog("Program Device"); // bB (ck)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/impl_1/Top_Student.bit} [get_hw_devices xc7a35t_0] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7a35t_0] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it. 
+// 'I' command handler elapsed time: 7 seconds
+dismissDialog("Program Device"); // bx (ck)
+// Elapsed time: 107 seconds
+selectCodeEditor("Top_Student.v", 188, 414); // ce (w, ck)
+selectButton(PAResourceTtoZ.TaskBanner_CLOSE, (String) null); // k (ay, ck)
+closeTask("Program and Debug", "Hardware Manager", "DesignTask.PROGRAM_DEBUG");
+// TclEventType: HW_OBJECT_DELETE
+// TclEventType: HW_SERVER_CLOSE
+// TclEventType: HW_SYSMON_DELETE
+// TclEventType: HW_TARGET_CLOSE
+// TclEventType: HW_TARGET_UPDATE
+// TclEventType: DEBUG_PROBE_DELETE
+// TclEventType: HW_SESSION_CLOSE
+// Tcl Message: close_hw 
+// bx (ck):  CLose Hardware Manager : addNotify
+dismissDialog("CLose Hardware Manager"); // bx (ck)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1, true); // B (D, ck) - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files]", 1); // B (D, ck)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, volume_level.v]", 2, false); // B (D, ck)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Syntax Error Files, volume_level.v]", 2, false, false, false, false, false, true); // B (D, ck) - Double Click
+selectCodeEditor("volume_level.v", 263, 369); // ce (w, ck)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Student (Top_Student.v), dm1 : draw_module (draw_module.v)]", 4, false); // B (D, ck)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top_Student (Top_Student.v), dm1 : draw_module (draw_module.v)]", 4, false, false, false, false, false, true); // B (D, ck) - Double Click
+// Elapsed time: 14 seconds
+selectCodeEditor("draw_module.v", 243, 141); // ce (w, ck)
+selectCodeEditor("draw_module.v", 133, 474); // ce (w, ck)
+// Elapsed time: 119 seconds
+selectCodeEditor("draw_module.v", 594, 229); // ce (w, ck)
+selectCodeEditor("draw_module.v", 418, 270); // ce (w, ck)
+// Elapsed time: 70 seconds
+selectCodeEditor("draw_module.v", 55, 264); // ce (w, ck)
+// Elapsed time: 45 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "volume_level.v", 2); // k (j, ck)
+// Elapsed time: 80 seconds
+selectCodeEditor("volume_level.v", 346, 452); // ce (w, ck)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_ANALYSIS_MSG_RESET
+closeMainWindow("SoundDisplay - [C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/SoundDisplay.xpr] - Vivado 2018.2"); // ck
+// aj (ck): Save Project: addNotify
+// TclEventType: DG_GRAPH_GENERATED

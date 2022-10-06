@@ -60,15 +60,11 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param synth.incrementalSynthesisCache {C:/Users/princ/OneDrive - National University of Singapore/School stuff/year2sem1/EE2026/project/EE2026_Y2S1_Team9_2/.Xil/Vivado-16048-LAPTOP-H9ETBF9K/incrSyn}
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0

@@ -54,7 +54,7 @@ module Top_Student (
     //drawer
     wire [15:0] my_oled_data;
     wire [2:0] bordercount;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, volume, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, volume0_5, my_oled_data);
     assign oled_data = my_oled_data;    
     
     //First team task
@@ -68,7 +68,7 @@ module Top_Student (
     OTA oledtaskA(CLK,sw[0],btnU,pixel_index,led[14],bordercount);
     
     //team volume indicator
-    wire [2:0]volume;
-    volume_level vl(clk20k, mic_in, volume, led[4:0]);
+    wire [2:0]volume0_5;
+    volume_level vl(clk20k, mic_in, volume0_5, led[4:0]);
 
 endmodule
