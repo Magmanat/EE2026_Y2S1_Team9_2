@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Mon Oct  3 01:22:49 2022
+| Date         : Tue Oct  4 15:08:04 2022
 | Host         : IP5P-ym running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
 | Design       : Top_Student
@@ -24,7 +24,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |    13 |
-| Unused register locations in slices containing registers |    24 |
+| Unused register locations in slices containing registers |    20 |
 +----------------------------------------------------------+-------+
 
 
@@ -35,8 +35,7 @@ Table of Contents
 | Fanout | Control Sets |
 +--------+--------------+
 |      2 |            1 |
-|     10 |            1 |
-|    16+ |           11 |
+|    16+ |           12 |
 +--------+--------------+
 
 
@@ -46,12 +45,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              84 |           18 |
+| No           | No                    | No                     |              96 |           22 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             340 |           49 |
+| No           | Yes                   | No                     |             340 |           45 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             104 |           14 |
+| Yes          | Yes                   | No                     |             104 |           13 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -62,18 +61,18 @@ Table of Contents
 |     Clock Signal    |    Enable Signal   |       Set/Reset Signal       | Slice Load Count | Bel Load Count |
 +---------------------+--------------------+------------------------------+------------------+----------------+
 | ~clk6p25m_BUFG      |                    |                              |                1 |              2 |
-|  CLK_IBUF_BUFG      |                    |                              |                4 |             10 |
+|  CLK_IBUF_BUFG      |                    |                              |                8 |             22 |
 | ~A/JB3_OBUF         |                    |                              |                4 |             24 |
-|  twentykhz/JB0_OBUF |                    |                              |                4 |             24 |
-|  myclk              |                    |                              |                5 |             24 |
+|  twentykhz/JB0_OBUF |                    |                              |                6 |             24 |
+|  myclk              |                    |                              |                3 |             24 |
 |  CLK_IBUF_BUFG      |                    | twentykhz/JB0_OBUF           |                3 |             24 |
 | ~clk6p25m_BUFG      |                    | btnC_IBUF                    |                6 |             34 |
 | ~clk6p25m_BUFG      | B/delay[0]_i_1_n_0 | btnC_IBUF                    |                5 |             40 |
 |  CLK_IBUF_BUFG      |                    | six25mhz/COUNT[0]_i_1__0_n_0 |                8 |             64 |
 |  CLK_IBUF_BUFG      |                    | tenhz/COUNT[0]_i_1__1_n_0    |                8 |             64 |
 |  CLK_IBUF_BUFG      |                    | twentykhz/clear              |                8 |             64 |
-| ~clk6p25m_BUFG      | B/state            | btnC_IBUF                    |                9 |             64 |
-| ~clk6p25m_BUFG      |                    | B/spi_word[39]_i_1_n_0       |               16 |             90 |
+| ~clk6p25m_BUFG      | B/state            | btnC_IBUF                    |                8 |             64 |
+| ~clk6p25m_BUFG      |                    | B/spi_word[39]_i_1_n_0       |               12 |             90 |
 +---------------------+--------------------+------------------------------+------------------+----------------+
 
 

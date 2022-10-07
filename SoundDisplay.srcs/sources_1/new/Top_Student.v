@@ -51,9 +51,8 @@ module Top_Student (
     assign b = mic_in [11:7];
     reg [15:0] oled_data;
     always @ (posedge CLK) begin
-        oled_data = b | (g << 5);
-//        oled_data = b;
-//        oled_data = g << 5;
+//        oled_data = b | (g << 5);
+        oled_data = {{g},{b}};
     end
     clock_divider six25mhz (CLK, 32'd7, clk6p25m);
     Oled_Display B(.clk(clk6p25m), .reset(btnC), .frame_begin(wire_frame_begin), .sending_pixels(wire_sending_pixels),
