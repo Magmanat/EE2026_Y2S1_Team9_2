@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Fri Oct  7 13:56:04 2022
-| Host         : LAPTOP-H9ETBF9K running 64-bit major release  (build 9200)
+| Date         : Fri Oct  7 19:24:03 2022
+| Host         : IP5P-ym running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file Top_Student_control_sets_placed.rpt
 | Design       : Top_Student
 | Device       : xc7a35t
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |    31 |
-| Unused register locations in slices containing registers |    80 |
+| Number of unique control sets                            |    37 |
+| Unused register locations in slices containing registers |    92 |
 +----------------------------------------------------------+-------+
 
 
@@ -35,10 +35,11 @@ Table of Contents
 | Fanout | Control Sets |
 +--------+--------------+
 |      2 |            7 |
-|      4 |            4 |
-|      6 |            1 |
-|      8 |            1 |
-|    16+ |           18 |
+|      4 |            5 |
+|      6 |            2 |
+|      8 |            2 |
+|     14 |            1 |
+|    16+ |           20 |
 +--------+--------------+
 
 
@@ -48,12 +49,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             110 |           27 |
+| No           | No                    | No                     |             124 |           31 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             594 |           79 |
-| Yes          | No                    | No                     |            1070 |          149 |
+| No           | Yes                   | No                     |             666 |           87 |
+| Yes          | No                    | No                     |            1084 |          152 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              74 |           13 |
+| Yes          | Yes                   | No                     |             138 |           21 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -63,37 +64,43 @@ Table of Contents
 +------------------------+-------------------------+-----------------------------+------------------+----------------+
 |      Clock Signal      |      Enable Signal      |       Set/Reset Signal      | Slice Load Count | Bel Load Count |
 +------------------------+-------------------------+-----------------------------+------------------+----------------+
-|  CLK_IBUF_BUFG         | db1/d2/p_0_in           |                             |                1 |              2 |
-| ~clk6p25m_BUFG         |                         |                             |                1 |              2 |
+|  JB0_OBUF_BUFG         | vl/led[0]_i_2_n_0       | vl/led[0]_i_1_n_0           |                1 |              2 |
 |  JB0_OBUF_BUFG         | vl/led[3]_i_2_n_0       | vl/led[3]_i_1_n_0           |                1 |              2 |
 |  JB0_OBUF_BUFG         | vl/led[2]_i_2_n_0       | vl/led[2]_i_1_n_0           |                1 |              2 |
-|  JB0_OBUF_BUFG         | vl/led[1]_i_2_n_0       | vl/led[1]_i_1_n_0           |                1 |              2 |
 |  JB0_OBUF_BUFG         | vl/led[4]_i_2_n_0       | vl/led[4]_i_1_n_0           |                1 |              2 |
-|  JB0_OBUF_BUFG         | vl/led[0]_i_2_n_0       | vl/led[0]_i_1_n_0           |                1 |              2 |
+|  JB0_OBUF_BUFG         | vl/led[1]_i_2_n_0       | vl/led[1]_i_1_n_0           |                1 |              2 |
+| ~clk6p25m_BUFG         |                         |                             |                1 |              2 |
+|  CLK_IBUF_BUFG         | db1/d2/p_0_in           |                             |                1 |              2 |
 |  db1/fourthz/slow_clk  |                         |                             |                1 |              4 |
 |  db2/fourthz/slow_clk  |                         |                             |                1 |              4 |
 |  db3/fourthz/slow_clk  |                         |                             |                1 |              4 |
 |  db4/fourthz/slow_clk  |                         |                             |                1 |              4 |
+|  db5/fourthz/slow_clk  |                         |                             |                1 |              4 |
 |  db1/d1/debounced_btnU |                         |                             |                1 |              6 |
-|  mm/button             |                         |                             |                2 |              8 |
-|  CLK_IBUF_BUFG         |                         |                             |               10 |             22 |
+|  db5/d1/debounced_btnD |                         |                             |                1 |              6 |
+|  mm/button             |                         |                             |                1 |              8 |
+|  CLK_IBUF_BUFG         |                         | B/oled_data_reg[10]         |                1 |              8 |
+|  JB0_OBUF_BUFG         | vl/E[0]                 |                             |                3 |             14 |
 | ~A/JB3_OBUF            |                         |                             |                4 |             24 |
+|  JB0_OBUF_BUFG         | vl/max[11]_i_1_n_0      |                             |                4 |             24 |
 |  CLK_IBUF_BUFG         |                         | JB0_OBUF_BUFG               |                3 |             24 |
-|  JB0_OBUF_BUFG         | vl/max[11]_i_1_n_0      |                             |                5 |             24 |
-|  JB0_OBUF_BUFG         |                         |                             |                5 |             32 |
+|  CLK_IBUF_BUFG         |                         |                             |               12 |             26 |
+|  JB0_OBUF_BUFG         |                         |                             |                6 |             32 |
 | ~clk6p25m_BUFG         |                         | B/frame_counter[16]_i_1_n_0 |                5 |             34 |
 | ~clk6p25m_BUFG         | B/delay[0]_i_1_n_0      |                             |                5 |             40 |
 |  JB0_OBUF_BUFG         |                         | vl/count2000[31]_i_1_n_0    |                8 |             62 |
 |  CLK_IBUF_BUFG         |                         | six25mhz/clear              |                8 |             64 |
 |  CLK_IBUF_BUFG         |                         | twentykhz/clear             |                8 |             64 |
-|  CLK_IBUF_BUFG         |                         | db1/fourthz/clear           |                8 |             64 |
-|  CLK_IBUF_BUFG         |                         | db2/fourthz/clear           |                8 |             64 |
-|  CLK_IBUF_BUFG         |                         | db3/fourthz/clear           |                8 |             64 |
-|  CLK_IBUF_BUFG         |                         | db4/fourthz/clear           |                8 |             64 |
 |  CLK_IBUF_BUFG         | oledtaskA/counter01_out | db1/d2/counter0             |                8 |             64 |
-| ~clk6p25m_BUFG         | B/state                 |                             |                8 |             64 |
-| ~clk6p25m_BUFG         |                         | B/spi_word[39]_i_1_n_0      |               15 |             90 |
-|  JB0_OBUF_BUFG         | mm/E[0]                 |                             |              130 |            940 |
+|  CLK_IBUF_BUFG         | oledtaskB/counter02_out | db5/d2/counter0             |                8 |             64 |
+|  CLK_IBUF_BUFG         |                         | db5/fourthz/clear           |                8 |             64 |
+| ~clk6p25m_BUFG         | B/state                 |                             |               10 |             64 |
+|  CLK_IBUF_BUFG         |                         | db4/fourthz/clear           |                8 |             64 |
+|  CLK_IBUF_BUFG         |                         | db3/fourthz/clear           |                8 |             64 |
+|  CLK_IBUF_BUFG         |                         | db2/fourthz/clear           |                8 |             64 |
+|  CLK_IBUF_BUFG         |                         | db1/fourthz/clear           |                8 |             64 |
+| ~clk6p25m_BUFG         |                         | B/spi_word[39]_i_1_n_0      |               14 |             90 |
+|  JB0_OBUF_BUFG         | mm/E[0]                 |                             |              129 |            940 |
 +------------------------+-------------------------+-----------------------------+------------------+----------------+
 
 
