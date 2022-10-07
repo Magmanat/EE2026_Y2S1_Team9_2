@@ -28,8 +28,7 @@ module draw_module(
     input [2:0] volume,
     input [1:0] cursor,
     input [1:0] selected,
-    input [5:0] waveform_y,
-    input [6:0] waveform_x,
+    input [(95 * 6) - 1:0] waveform,
     output reg [15:0] oled_data
         );
         
@@ -50,8 +49,8 @@ module draw_module(
     wire [15:0] teal = 16'b0000011111111111;  
           
     integer i;
-    reg [5:0] waveformArr [95:0];
-    reg [5:0] xorArr = 0;
+    reg [6:0] xPresentAt = 96;
+    reg [5:0] yPresentAt = 96;
     always @ (posedge CLK) begin 
         //drawing anything you want
         //it is black unless changed
@@ -78,8 +77,10 @@ module draw_module(
 
         // FOR WAVEFORM
         else if (selected == 0) begin
-            if (x == waveform_x && y == waveform_y) begin
-                oled_data <= white;
+            for (i = 0; i < 95; i = i + 1) begin
+                if (y == waveform[(i*6) +: 5] && x == i) begin
+                    oled_data <= white;
+                end
             end
         end
 

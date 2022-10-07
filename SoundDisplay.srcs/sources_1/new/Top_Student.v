@@ -73,13 +73,14 @@ module Top_Student (
     volume_level vl(clk20k, mic_in, volume0_5, led[4:0]);
 
     //raw waveform
-    wire [5:0] waveform_y;
-    wire [6:0] waveform_x;
-    waveform wvfm(clk20k,selected,mic_in,waveform_y,waveform_x);
+    wire [(95 * 6) - 1:0] waveform; 
+    // wire [5:0] waveform_y;
+    // wire [6:0] waveform_x;
+    waveform wvfm(clk20k,selected,mic_in,waveform);
     
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, volume0_5, cursor, selected, waveform_y, waveform_x, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, volume0_5, cursor, selected, waveform, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule

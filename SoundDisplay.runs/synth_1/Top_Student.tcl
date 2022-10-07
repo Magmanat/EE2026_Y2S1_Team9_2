@@ -17,7 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param synth.incrementalSynthesisCache {C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/.Xil/Vivado-24160-LAPTOP-H9ETBF9K/incrSyn}
+set_param synth.incrementalSynthesisCache {C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/.Xil/Vivado-14084-LAPTOP-H9ETBF9K/incrSyn}
 set_param xicom.use_bs_reader 1
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000

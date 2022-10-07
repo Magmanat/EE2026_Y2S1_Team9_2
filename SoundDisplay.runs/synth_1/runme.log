@@ -14,9 +14,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 14760 
+INFO: Helper process launched with PID 23884 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 356.691 ; gain = 99.527
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 356.516 ; gain = 99.133
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'Top_Student' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/Top_Student.v:18]
 INFO: [Synth 8-6157] synthesizing module 'switch_debouncer' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/switch_debouncer.v:23]
@@ -97,6 +97,7 @@ INFO: [Synth 8-6157] synthesizing module 'volume_level' [C:/Users/princ/Desktop/
 WARNING: [Synth 8-6014] Unused sequential element maxout_reg was removed.  [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:37]
 INFO: [Synth 8-6155] done synthesizing module 'volume_level' (8#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/volume_level.v:23]
 INFO: [Synth 8-6157] synthesizing module 'waveform' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/waveform.v:23]
+WARNING: [Synth 8-6014] Unused sequential element waveformmath_reg was removed.  [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/waveform.v:50]
 INFO: [Synth 8-6155] done synthesizing module 'waveform' (9#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/waveform.v:23]
 INFO: [Synth 8-6157] synthesizing module 'draw_module' [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/draw_module.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'draw_module' (10#1) [C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.srcs/sources_1/new/draw_module.v:23]
@@ -115,32 +116,95 @@ WARNING: [Synth 8-3331] design draw_module has unconnected port sw[5]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[4]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[3]
 WARNING: [Synth 8-3331] design draw_module has unconnected port sw[1]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[12]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[11]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[10]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[9]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[8]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[7]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[6]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[5]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[4]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[3]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[2]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[1]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[0]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port JC[2]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[15]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[13]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[12]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[11]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[10]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[9]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[8]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[7]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[6]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[5]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[569]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[563]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[557]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[551]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[545]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[539]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[533]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[527]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[521]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[515]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[509]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[503]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[497]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[491]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[485]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[479]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[473]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[467]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[461]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[455]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[449]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[443]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[437]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[431]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[425]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[419]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[413]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[407]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[401]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[395]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[389]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[383]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[377]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[371]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[365]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[359]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[353]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[347]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[341]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[335]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[329]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[323]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[317]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[311]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[305]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[299]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[293]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[287]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[281]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[275]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[269]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[263]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[257]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[251]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[245]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[239]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[233]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[227]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[221]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[215]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[209]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[203]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[197]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[191]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[185]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[179]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[173]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[167]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[161]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[155]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[149]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[143]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[137]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[131]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[125]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[119]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[113]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[107]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[101]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[95]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[89]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[83]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[77]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[71]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[65]
+WARNING: [Synth 8-3331] design draw_module has unconnected port waveform[59]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.938 ; gain = 154.773
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 413.926 ; gain = 156.543
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -153,10 +217,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.938 ; gain = 154.773
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 413.926 ; gain = 156.543
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.938 ; gain = 154.773
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 413.926 ; gain = 156.543
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -172,22 +236,22 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 748.602 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 754.699 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 754.812 ; gain = 497.430
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 754.812 ; gain = 497.430
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 754.812 ; gain = 497.430
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Oled_Display'
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
@@ -196,8 +260,7 @@ INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is 
 INFO: [Synth 8-5545] ROM "count20000" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "max0" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "count20000" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5544] ROM "y" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "waveform" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -236,7 +299,7 @@ INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because addres
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'Oled_Display'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 748.602 ; gain = 491.438
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 754.812 ; gain = 497.430
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -251,18 +314,17 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
 	   2 Input     17 Bit       Adders := 1     
-	   2 Input      7 Bit       Adders := 1     
 	   2 Input      6 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      2 Bit       Adders := 2     
 +---Registers : 
+	              570 Bit    Registers := 1     
 	               40 Bit    Registers := 1     
 	               32 Bit    Registers := 1     
 	               17 Bit    Registers := 1     
 	               16 Bit    Registers := 1     
 	               12 Bit    Registers := 3     
-	                7 Bit    Registers := 1     
-	                6 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
 	                5 Bit    Registers := 1     
 	                3 Bit    Registers := 2     
 	                2 Bit    Registers := 2     
@@ -273,11 +335,11 @@ Detailed RTL Component Info :
 	   2 Input     32 Bit        Muxes := 3     
 	  32 Input     20 Bit        Muxes := 1     
 	   2 Input     17 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 9     
+	   2 Input     16 Bit        Muxes := 103   
 	   5 Input     11 Bit        Muxes := 1     
 	  32 Input      6 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 5     
+	   2 Input      5 Bit        Muxes := 4     
 	  32 Input      5 Bit        Muxes := 2     
 	   5 Input      5 Bit        Muxes := 1     
 	   7 Input      5 Bit        Muxes := 1     
@@ -364,11 +426,8 @@ Detailed RTL Component Info :
 	   6 Input      1 Bit        Muxes := 1     
 Module waveform 
 Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input      7 Bit       Adders := 1     
 +---Registers : 
-	                7 Bit    Registers := 1     
-	                6 Bit    Registers := 1     
+	              570 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input      1 Bit        Muxes := 1     
 Module draw_module 
@@ -376,9 +435,9 @@ Detailed RTL Component Info :
 +---Registers : 
 	               16 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 9     
+	   2 Input     16 Bit        Muxes := 103   
 	   5 Input     11 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -400,51 +459,6 @@ WARNING: [Synth 8-6014] Unused sequential element d2/Qbar_reg was removed.  [C:/
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "fsm_next_state0" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "count20000" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5544] ROM "oled_data" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[15]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[14]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[13]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[12]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[11]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[10]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[9]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[8]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[7]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[6]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[5]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[4]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[3]
-WARNING: [Synth 8-3331] design draw_module has unconnected port sw[1]
-WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[5]
-WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[4]
-WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[3]
-WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[2]
-WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[1]
-WARNING: [Synth 8-3331] design waveform has unconnected port mic_in[0]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[12]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[11]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[10]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[9]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[8]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[7]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[6]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[5]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[4]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[3]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[2]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[1]
-WARNING: [Synth 8-3331] design OTA has unconnected port pixel_index[0]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port JC[2]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[15]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[13]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[12]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[11]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[10]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[9]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[8]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[7]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[6]
-WARNING: [Synth 8-3331] design Top_Student has unconnected port led[5]
 INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[0]' (FDR) to 'dm1/oled_data_reg[1]'
 INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[1]' (FDR) to 'dm1/oled_data_reg[2]'
 INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[2]' (FDR) to 'dm1/oled_data_reg[3]'
@@ -458,11 +472,112 @@ INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[11]' (FDS) to 'dm1/oled
 INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[12]' (FDS) to 'dm1/oled_data_reg[13]'
 INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[13]' (FDS) to 'dm1/oled_data_reg[14]'
 INFO: [Synth 8-3886] merging instance 'dm1/oled_data_reg[14]' (FDS) to 'dm1/oled_data_reg[15]'
-WARNING: [Synth 8-3332] Sequential element (db5/fourthz/slow_clk_reg) is unused and will be removed from module Top_Student.
-WARNING: [Synth 8-3332] Sequential element (db5/d1/Q_reg) is unused and will be removed from module Top_Student.
-WARNING: [Synth 8-3332] Sequential element (db5/d2/Q_reg) is unused and will be removed from module Top_Student.
+INFO: [Synth 8-3886] merging instance 'wvfm/waveform_reg[5]' (FDE) to 'wvfm/waveform_reg[0]'
+INFO: [Synth 8-3886] merging instance 'wvfm/waveform_reg[0]' (FDE) to 'wvfm/waveform_reg[4]'
+INFO: [Synth 8-3886] merging instance 'wvfm/waveform_reg[1]' (FDE) to 'wvfm/waveform_reg[4]'
+INFO: [Synth 8-3886] merging instance 'wvfm/waveform_reg[2]' (FDE) to 'wvfm/waveform_reg[4]'
+INFO: [Synth 8-3886] merging instance 'wvfm/waveform_reg[3]' (FDE) to 'wvfm/waveform_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (wvfm/\waveform_reg[4] )
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[569]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[563]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[557]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[551]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[545]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[539]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[533]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[527]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[521]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[515]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[509]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[503]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[497]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[491]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[485]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[479]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[473]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[467]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[461]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[455]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[449]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[443]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[437]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[431]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[425]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[419]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[413]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[407]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[401]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[395]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[389]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[383]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[377]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[371]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[365]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[359]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[353]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[347]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[341]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[335]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[329]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[323]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[317]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[311]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[305]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[299]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[293]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[287]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[281]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[275]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[269]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[263]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[257]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[251]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[245]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[239]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[233]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[227]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[221]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[215]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[209]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[203]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[197]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[191]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[185]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[179]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[173]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[167]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[161]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[155]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[149]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[143]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[137]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[131]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[125]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[119]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[113]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[107]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[101]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[95]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[89]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[83]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[77]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[71]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[65]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[59]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[53]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[47]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[41]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[35]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[29]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[23]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[17]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[11]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (waveform_reg[4]) is unused and will be removed from module waveform.
+WARNING: [Synth 8-3332] Sequential element (fourthz/slow_clk_reg) is unused and will be removed from module switch_debouncer.
+WARNING: [Synth 8-3332] Sequential element (d1/Q_reg) is unused and will be removed from module switch_debouncer.
+WARNING: [Synth 8-3332] Sequential element (d2/Q_reg) is unused and will be removed from module switch_debouncer.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 748.602 ; gain = 491.438
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:00:45 . Memory (MB): peak = 754.812 ; gain = 497.430
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -474,13 +589,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 748.602 ; gain = 491.438
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:54 ; elapsed = 00:00:58 . Memory (MB): peak = 754.812 ; gain = 497.430
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 816.066 ; gain = 558.902
+Finished Timing Optimization : Time (s): cpu = 00:00:55 ; elapsed = 00:00:59 . Memory (MB): peak = 769.891 ; gain = 512.508
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -492,7 +607,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished Technology Mapping : Time (s): cpu = 00:00:56 ; elapsed = 00:01:00 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -516,7 +631,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished IO Insertion : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -529,7 +644,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -541,25 +656,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -576,62 +691,61 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     3|
-|2     |CARRY4 |   102|
-|3     |LUT1   |    60|
-|4     |LUT2   |   141|
-|5     |LUT3   |    49|
-|6     |LUT4   |    91|
-|7     |LUT5   |    98|
-|8     |LUT6   |   187|
-|9     |MUXF7  |     1|
-|10    |FDE_1  |    32|
-|11    |FDRE   |   425|
-|12    |FDSE   |    10|
-|13    |IBUF   |    22|
-|14    |OBUF   |    15|
-|15    |OBUFT  |    11|
+|2     |CARRY4 |   113|
+|3     |LUT1   |    51|
+|4     |LUT2   |   170|
+|5     |LUT3   |    85|
+|6     |LUT4   |   143|
+|7     |LUT5   |   183|
+|8     |LUT6   |   484|
+|9     |FDE_1  |    32|
+|10    |FDRE   |   882|
+|11    |FDSE   |    10|
+|12    |IBUF   |    22|
+|13    |OBUF   |    15|
+|14    |OBUFT  |    11|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+------------+-------------------+------+
 |      |Instance    |Module             |Cells |
 +------+------------+-------------------+------+
-|1     |top         |                   |  1247|
-|2     |  A         |Audio_Capture      |    83|
-|3     |  B         |Oled_Display       |   416|
+|1     |top         |                   |  2204|
+|2     |  A         |Audio_Capture      |   124|
+|3     |  B         |Oled_Display       |   815|
 |4     |  db1       |switch_debouncer   |    55|
 |5     |    d1      |D_FF_12            |     2|
 |6     |    d2      |D_FF_13            |     3|
 |7     |    fourthz |clock_divider_14   |    50|
-|8     |  db2       |switch_debouncer_0 |    53|
+|8     |  db2       |switch_debouncer_0 |    52|
 |9     |    d1      |D_FF_9             |     1|
-|10    |    d2      |D_FF_10            |     2|
+|10    |    d2      |D_FF_10            |     1|
 |11    |    fourthz |clock_divider_11   |    50|
-|12    |  db3       |switch_debouncer_1 |    54|
+|12    |  db3       |switch_debouncer_1 |    53|
 |13    |    d1      |D_FF_6             |     2|
-|14    |    d2      |D_FF_7             |     2|
+|14    |    d2      |D_FF_7             |     1|
 |15    |    fourthz |clock_divider_8    |    50|
 |16    |  db4       |switch_debouncer_2 |    52|
 |17    |    d1      |D_FF               |     1|
 |18    |    d2      |D_FF_4             |     1|
 |19    |    fourthz |clock_divider_5    |    50|
-|20    |  dm1       |draw_module        |   106|
-|21    |  mm        |main_menu          |    13|
-|22    |  oledtaskA |OTA                |    92|
+|20    |  dm1       |draw_module        |    69|
+|21    |  mm        |main_menu          |    20|
+|22    |  oledtaskA |OTA                |    95|
 |23    |  six25mhz  |clock_divider      |    78|
 |24    |  twentykhz |clock_divider_3    |    76|
-|25    |  vl        |volume_level       |    96|
-|26    |  wvfm      |waveform           |    21|
+|25    |  vl        |volume_level       |    94|
+|26    |  wvfm      |waveform           |   566|
 +------+------------+-------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 49 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 823.473 ; gain = 229.645
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 823.473 ; gain = 566.309
+Synthesis finished with 0 errors, 0 critical warnings and 233 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:42 ; elapsed = 00:00:50 . Memory (MB): peak = 813.074 ; gain = 214.805
+Synthesis Optimization Complete : Time (s): cpu = 00:00:58 ; elapsed = 00:01:02 . Memory (MB): peak = 813.074 ; gain = 555.691
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 157 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Netlist 29-17] Analyzing 167 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
@@ -639,11 +753,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   FDE_1 => FDRE (inverted pins: C): 32 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-63 Infos, 94 Warnings, 2 Critical Warnings and 0 Errors encountered.
+68 Infos, 208 Warnings, 2 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 823.473 ; gain = 579.148
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:06 . Memory (MB): peak = 813.074 ; gain = 568.742
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/SoundDisplay.runs/synth_1/Top_Student.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file Top_Student_utilization_synth.rpt -pb Top_Student_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 823.473 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Fri Oct  7 04:46:19 2022...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.067 . Memory (MB): peak = 813.074 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Fri Oct  7 13:55:00 2022...

@@ -67,7 +67,7 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param synth.incrementalSynthesisCache {C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/.Xil/Vivado-24160-LAPTOP-H9ETBF9K/incrSyn}
+  set_param synth.incrementalSynthesisCache {C:/Users/princ/Desktop/ee2026 project/EE2026_Y2S1_Team9_2/.Xil/Vivado-14084-LAPTOP-H9ETBF9K/incrSyn}
   set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35tcpg236-1
   set_property design_mode GateLvl [current_fileset]
