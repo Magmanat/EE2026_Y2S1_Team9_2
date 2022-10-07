@@ -29,7 +29,7 @@ module draw_module(
     input [2:0] volume,
     input [1:0] cursor,
     input [1:0] selected,
-    input [(95 * 6) - 1:0] waveform,
+    input [(96 * 6) - 1:0] waveform,
     output reg [15:0] oled_data
         );
         
@@ -80,9 +80,27 @@ module draw_module(
 
         // FOR WAVEFORM
         else if (selected == 0) begin
-            for (i = 0; i < 95; i = i + 1) begin
-                if (y == waveform[(i*6) +: 6] && x == i) begin
+            for (i = 1; i < 96; i = i + 1) begin
+                if (y == 32) begin
                     oled_data <= white;
+                end
+                if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
+                    oled_data <= green;
+                end
+                if (y < 25 && y >= waveform[(i*6) +: 6] && x == i) begin
+                    oled_data <= orange;
+                end
+                if (y < 18 && y >= waveform[(i*6) +: 6] && x == i) begin
+                    oled_data <= red;
+                end
+                if (y > 32 && y <= waveform[(i*6) +: 6] && x == i) begin
+                    oled_data <= lightgreen;
+                end
+                if (y > 39 && y <= waveform[(i*6) +: 6] && x == i) begin
+                    oled_data <= orange;
+                end
+                if (y > 46 && y <= waveform[(i*6) +: 6] && x == i) begin
+                    oled_data <= red;
                 end
             end
         end

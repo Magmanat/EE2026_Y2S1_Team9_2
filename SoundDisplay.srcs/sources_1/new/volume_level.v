@@ -24,8 +24,10 @@ module volume_level(
 input clk20k,
 input [11:0] mic_in,
 output reg [2:0] volume = 0,
+output [3:0] volume16,
 output reg [4:0] led
     );
+    assign volume16 = maxout;
     reg [3:0] maxout = 0;
     reg [31:0] count2000 = 0;
     reg [11:0] max = 0;
