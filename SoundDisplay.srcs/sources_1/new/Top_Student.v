@@ -23,7 +23,9 @@ module Top_Student (
     output JB0,   // Connect to this signal from Audio_Capture.v JB MIC PIN 1
     output JB3,   // Connect to this signal from Audio_Capture.v JB MIC PIN 4
     output [7:0] JC,
-    output [15:0] led // mic_in
+    output [15:0] led, // mic_in
+    output [3:0] an,
+    output [6:0] seg
     );
 
     //button capturing
@@ -67,10 +69,16 @@ module Top_Student (
     //OLED TASK A
     wire [2:0] bordercount;
     OTA oledtaskA(CLK,sw,selected,debounced_btnU,pixel_index,led[14],bordercount);
+
+    //OLED TASK B
+    wire [2:0] boxcount;
+    OTB oledtaskB(CLK, sw, selected, debounced_btnD, pixel_index, led[12], boxcount);
     
     //team volume indicator
     wire [2:0]volume0_5;
     volume_level vl(clk20k, mic_in, volume0_5, led[4:0]);
+    //7seg volume indicator
+    volume_7seg vl7seg(clk20k, volume0_5, an, seg);
 
     //raw waveform
     wire [(95 * 6) - 1:0] waveform; 
@@ -80,7 +88,7 @@ module Top_Student (
     
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, volume0_5, cursor, selected, waveform, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule

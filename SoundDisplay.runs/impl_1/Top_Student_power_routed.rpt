@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Fri Oct  7 13:56:49 2022
-| Host             : LAPTOP-H9ETBF9K running 64-bit major release  (build 9200)
+| Date             : Fri Oct  7 19:24:20 2022
+| Host             : IP5P-ym running 64-bit major release  (build 9200)
 | Command          : report_power -file Top_Student_power_routed.rpt -pb Top_Student_power_summary_routed.pb -rpx Top_Student_power_routed.rpx
 | Design           : Top_Student
 | Device           : xc7a35tcpg236-1
@@ -52,15 +52,15 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.006 |     2199 |       --- |             --- |
-|   LUT as Logic |     0.006 |      973 |     20800 |            4.68 |
-|   Register     |    <0.001 |      924 |     41600 |            2.22 |
-|   CARRY4       |    <0.001 |      113 |      8150 |            1.39 |
+| Clocks         |     0.003 |        3 |       --- |             --- |
+| Slice Logic    |     0.006 |     2313 |       --- |             --- |
+|   LUT as Logic |     0.005 |      970 |     20800 |            4.66 |
+|   CARRY4       |    <0.001 |      129 |      8150 |            1.58 |
+|   Register     |    <0.001 |     1006 |     41600 |            2.42 |
 |   BUFG         |    <0.001 |        2 |        32 |            6.25 |
-|   Others       |     0.000 |       45 |       --- |             --- |
-| Signals        |     0.007 |     1868 |       --- |             --- |
-| I/O            |     0.010 |       48 |       106 |           45.28 |
+|   Others       |     0.000 |       54 |       --- |             --- |
+| Signals        |     0.006 |     1924 |       --- |             --- |
+| I/O            |     0.009 |       60 |       106 |           56.60 |
 | Static Power   |     0.072 |          |           |                 |
 | Total          |     0.096 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
@@ -143,7 +143,7 @@ Table of Contents
 +-------------+-----------+
 | Top_Student |     0.025 |
 |   A         |     0.001 |
-|   B         |     0.007 |
+|   B         |     0.006 |
 |   db1       |    <0.001 |
 |     d1      |    <0.001 |
 |     d2      |    <0.001 |
@@ -160,13 +160,19 @@ Table of Contents
 |     d1      |    <0.001 |
 |     d2      |    <0.001 |
 |     fourthz |    <0.001 |
+|   db5       |    <0.001 |
+|     d1      |    <0.001 |
+|     d2      |    <0.001 |
+|     fourthz |    <0.001 |
 |   dm1       |    <0.001 |
 |   mm        |    <0.001 |
 |   oledtaskA |    <0.001 |
+|   oledtaskB |    <0.001 |
 |   six25mhz  |    <0.001 |
 |   twentykhz |    <0.001 |
 |   vl        |    <0.001 |
-|   wvfm      |     0.002 |
+|   vl7seg    |     0.000 |
+|   wvfm      |     0.003 |
 +-------------+-----------+
 
 
