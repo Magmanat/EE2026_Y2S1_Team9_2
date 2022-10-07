@@ -1,0 +1,12 @@
+SoundDisplay.sim
+*.log
+*.jou
+*.backup.log
+*.backup.jou
+*.dmp
+*.str
+.Xil
+SoundDisplay.cache
+SoundDisplay.hw
+SoundDisplay.ip_user_files
+SoundDisplay.runs
