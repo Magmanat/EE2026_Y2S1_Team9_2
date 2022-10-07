@@ -27,42 +27,18 @@ module waveform(
     output reg [(95 * 6) - 1:0] waveform
 );
 
-//reg [5:0] num, transnum;
+reg [4:0] num;
 
 always @ (posedge clk20k) begin
     if (selected == 0) begin
-//    //take reading 96 times a second
-//        if (counter == 207) begin
-//            counter <= 0;
-//            //if counter increment, update x and y            
-//            waveform_y <= mic_in / 64;
-//            if (waveform_x == 95) begin
-//                waveform_x <= 0;
-//            end
-//            else begin
-//                waveform_x <= waveform_x + 1;
-//            end
-//        end        
-//        else begin
-//            counter <= counter + 1;
-//        end
-    //take reading 96 times a second   
-    /////////////////////////////////////
-//        num = mic_data[11:6];
-//        transnum = num > `HEIGHT/2 ? num : `HEIGHT - num; // get value above x-axis
-//        if (yreflect < transnum && yreflect > `HEIGHT - transnum) begin
-//            ygre = (transnum <= `HEIGHT/2 + greRange && transnum >= `HEIGHT/2 - greRange);
-    /////////////////////////////////////
-        waveformmath = mic_in / 65;
-        waveform[5:0] = waveformmath[5:0];
-        waveform = waveform << 6;
-        // y <= mic_in / 64;      
-        // if (x == 95) begin
-        //     x <= 0;
-        // end
-        // else begin
-        //     x <= x + 1;
-        // end            
+        if (mic_in[11]) begin
+            num = mic_in[10:0] / 64;
+            waveform[5:0] = 31 + num;
+        end     
+        else begin
+            waveform[5:0] = num;
+        end
+        waveform = waveform << 6;      
     end
 end
 
