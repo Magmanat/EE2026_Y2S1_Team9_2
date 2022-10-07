@@ -84,7 +84,7 @@ module Top_Student (
     wire [(95 * 6) - 1:0] waveform; 
     // wire [5:0] waveform_y;
     // wire [6:0] waveform_x;
-    waveform wvfm(clk20k,selected,mic_in,waveform);
+    waveform wvfm(CLK,selected,mic_in,waveform);
     
     //drawer module
     wire [15:0] my_oled_data;

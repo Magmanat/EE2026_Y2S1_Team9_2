@@ -81,7 +81,7 @@ module draw_module(
         // FOR WAVEFORM
         else if (selected == 0) begin
             for (i = 0; i < 95; i = i + 1) begin
-                if (y == waveform[(i*6) +: 5] && x == i) begin
+                if (y == waveform[(i*6) +: 6] && x == i) begin
                     oled_data <= white;
                 end
             end
