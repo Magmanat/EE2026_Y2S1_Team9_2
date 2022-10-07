@@ -76,14 +76,13 @@ module Top_Student (
     
     //team volume indicator
     wire [2:0]volume0_5;
-    volume_level vl(clk20k, mic_in, volume0_5, led[4:0]);
+    wire [3:0]volume16;
+    volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0]);
     //7seg volume indicator
-    volume_7seg vl7seg(clk20k, volume0_5, an, seg);
+    volume_7seg vl7seg(CLK, an, seg, volume16);
 
     //raw waveform
-    wire [(95 * 6) - 1:0] waveform; 
-    // wire [5:0] waveform_y;
-    // wire [6:0] waveform_x;
+    wire [(96 * 6) - 1:0] waveform; 
     waveform wvfm(CLK,selected,mic_in,waveform);
     
     //drawer module
