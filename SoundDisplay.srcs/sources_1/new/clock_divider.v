@@ -22,9 +22,11 @@
 
 module clock_divider(
     input CLK,
-    input [31:0] div,
+    input [31:0] frequency,
     output reg slow_clk = 0
 );
+wire [31:0] div;
+assign div = ((100000000) / (frequency * 2)) - 1;
 
 reg [31:0] COUNT = 32'd0;
 
