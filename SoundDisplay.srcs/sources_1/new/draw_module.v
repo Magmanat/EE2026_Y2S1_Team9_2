@@ -30,6 +30,7 @@ module draw_module(
     input [1:0] cursor,
     input [1:0] selected,
     input [(96 * 6) - 1:0] waveform,
+    input [(512 * 6) - 1:0] bins,
     output reg [15:0] oled_data
         );
         
@@ -50,10 +51,15 @@ module draw_module(
     wire [15:0] purple = 16'b1111100000011111;
     wire [15:0] blue = 16'b0000000000011111;
     wire [15:0] teal = 16'b0000011111111111;  
-          
+    
+    //required for forloops      
     integer i;
-    reg [6:0] xPresentAt = 96;
-    reg [5:0] yPresentAt = 96;
+    integer j;
+
+    reg [(6 * 20) - 1:0] spectrogram = 0;
+    reg [5:0] current_highest = 0;
+    reg [9:0] starting_bin = 0;
+    
     always @ (posedge CLK) begin 
         //drawing anything you want
         //it is black unless changed
@@ -84,7 +90,7 @@ module draw_module(
                 if (y == 32) begin
                     oled_data <= white;
                 end
-                if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
+                else if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
                     oled_data <= green;
                 end
                 if (y < 25 && y >= waveform[(i*6) +: 6] && x == i) begin
@@ -140,6 +146,7 @@ module draw_module(
                     oled_data <= green;
                     end  
             end
+           
             // FOR OLED TASK B
             else if (sw[1]) begin
                 if((x >= 43 && x <= 53) && (y >= 55 && y <= 60) && sw[1]) begin
@@ -158,6 +165,80 @@ module draw_module(
                     oled_data <= lightlightgreen;
                 end
             end
-        end      
+        end
+        
+        //FOR SPECTROGRAM  
+        else if (selected == 2) begin
+            for (i = 0; i < 20 ; i = i + 1) begin
+                starting_bin = i * 25;
+                current_highest = 0;
+                for (j = 0; j < 25; j = j + 1) begin
+                    if (current_highest < bins[(starting_bin + j) * 6 +: 6]) begin
+                        current_highest = bins[(starting_bin + j) * 6 +: 6];
+                    end
+                end
+                spectrogram[i*6 +:6] = 63 - current_highest;
+            end
+            if (x >= 8 && x <= 10 && y >= spectrogram[0*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 12 && x <= 14 && y >= spectrogram[1*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 16 && x <= 18 && y >= spectrogram[2*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 20 && x <= 22 && y >= spectrogram[3*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 24 && x <= 26 && y >= spectrogram[4*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 28 && x <= 30 && y >= spectrogram[5*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 32 && x <= 34 && y >= spectrogram[6*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 36 && x <= 38 && y >= spectrogram[7*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 40 && x <= 42 && y >= spectrogram[8*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 44 && x <= 46 && y >= spectrogram[9*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 48 && x <= 50 && y >= spectrogram[10*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 52 && x <= 54 && y >= spectrogram[11*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 56 && x <= 58 && y >= spectrogram[12*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 60 && x <= 62 && y >= spectrogram[13*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 64 && x <= 66 && y >= spectrogram[14*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 68 && x <= 70 && y >= spectrogram[15*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 72 && x <= 74 && y >= spectrogram[16*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 76 && x <= 78 && y >= spectrogram[17*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 80 && x <= 82 && y >= spectrogram[18*6 +:6]) begin
+                oled_data <= white;
+            end
+            else if (x >= 84 && x <= 86 && y >= spectrogram[19*6 +:6]) begin
+                oled_data <= white;
+            end
+        end    
     end  
 endmodule

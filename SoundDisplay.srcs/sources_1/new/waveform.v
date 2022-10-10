@@ -29,7 +29,7 @@ module waveform(
 
 reg [5:0] num;
 reg [7:0] counter;
-reg [31:0] custom_clk_speed = 31'd520000;
+reg [31:0] custom_clk_speed = 31'd96;
 wire custom_clk;
 clock_divider  custom_clock(CLK, custom_clk_speed, custom_clk);
 

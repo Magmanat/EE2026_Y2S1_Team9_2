@@ -29,7 +29,7 @@ wire clock4hz;
 
 wire Q1, Q2, Q2bar;
 
-clock_divider fourthz(CLK,32'd12499999 ,clock4hz);
+clock_divider fourthz(CLK,32'd8 ,clock4hz);
 D_FF d1(clock4hz, BTN, Q1);
 D_FF d2(clock4hz, Q1, Q2);
 

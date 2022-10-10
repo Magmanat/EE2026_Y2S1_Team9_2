@@ -43,7 +43,7 @@ module Top_Student (
     //audio capturing
     wire clk20k;//, clk10;
     wire [11:0] mic_in;
-    clock_divider twentykhz (CLK, 32'd2499, clk20k);
+    clock_divider twentykhz (CLK, 32'd20000, clk20k);
     Audio_Capture A(CLK, clk20k, JB2, JB0, JB3, mic_in);
 
     //declare all the variables for the OLED display
@@ -52,9 +52,9 @@ module Top_Student (
     wire [15:0] oled_data;
     
     //First team task
-    reg resetoled = 1'b0;
-    clock_divider six25mhz (CLK, 32'd7, clk6p25m);
-    Oled_Display B(.clk(clk6p25m), .reset(resetoled), .frame_begin(wire_frame_begin), .sending_pixels(wire_sending_pixels),
+    reg reset = 1'b0;
+    clock_divider six25mhz (CLK, 32'd6250000, clk6p25m);
+    Oled_Display B(.clk(clk6p25m), .reset(reset), .frame_begin(wire_frame_begin), .sending_pixels(wire_sending_pixels),
       .sample_pixel(wire_sample_pixel), .pixel_index(pixel_index), .pixel_data(oled_data),
        .cs(JC[0]), .sdin(JC[1]), .sclk(JC[3]), .d_cn(JC[4]), .resn(JC[5]), .vccen(JC[6]),
       .pmoden(JC[7]), .teststate(0));
@@ -80,14 +80,39 @@ module Top_Student (
     volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0]);
     //7seg volume indicator
     volume_7seg vl7seg(CLK, an, seg, volume16);
-
     //raw waveform
     wire [(96 * 6) - 1:0] waveform; 
     waveform wvfm(CLK,selected,mic_in,waveform);
     
+    //ftt stuff
+    wire signed [11:0] sample_imag = 12'b0; //imaginary part is 0
+    wire signed [5:0] output_real, output_imag; //bits for output real and imaginary
+    
+    reg [13:0] abs; //to calculate the absolute magnitude of output real and imaginary
+    reg [(512 * 6) - 1:0] bins; //vector for all the 1024 bins
+    reg [9:0] maxbins = 512;
+    wire sync; //high when fft is ready
+    reg [9:0] bin = 0; //current bin editting
+    wire fft_ce; 
+    assign fft_ce = 1; //always high when fft is transforming
+    always @(posedge clk20k) begin
+        if(fft_ce) begin
+            abs <= (output_real * output_real) + (output_imag * output_imag);
+            if(sync) begin
+                bin <= 0;
+            end else begin
+                bin <= bin + 1;
+            end   
+            if (bin < maxbins) begin
+                bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4) : 63; // scale & limit to 255
+            end
+        end
+    end
+    fftmain fft_0(.i_clk(clk20k), .i_reset(reset), .i_ce(fft_ce), .i_sample({mic_in, sample_imag}), .o_result({output_real, output_imag}), .o_sync(sync));
+    
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, bins, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule
