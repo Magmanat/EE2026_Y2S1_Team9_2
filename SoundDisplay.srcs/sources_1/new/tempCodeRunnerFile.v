@@ -1,0 +1,1 @@
+current_highest_note_index

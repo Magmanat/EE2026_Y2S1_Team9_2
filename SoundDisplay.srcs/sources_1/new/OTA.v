@@ -34,7 +34,11 @@ reg [31:0] counter = 32'd0;
 
 always @ (posedge CLK, posedge btnU) begin
     // check if button pressed (its a pulse even if held because of debounce)
-    if (btnU == 1'b1 && sw == 16'b0000000000000001 && selected == 1 && led == 0) begin
+    // IF SWITCH 0, make counter 0
+    if (sw != 16'b1) begin
+        counter <= 0;
+    end
+    if (btnU == 1'b1 && sw == 16'b1 && selected == 1 && led == 0) begin
         counter <= 32'd300000000;
     end
 

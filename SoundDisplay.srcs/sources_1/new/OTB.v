@@ -12,7 +12,11 @@ module OTB(
 reg [31:0] counter = 32'd0;
 
 always @ (posedge CLK, posedge btnD) begin
+    if (sw != 16'b10) begin
+        counter <= 0;
+    end
     // check if button pressed (its a pulse even if held because of debounce)
+    //IF SWITCH 0, MAKE COUNTER 0
     if (btnD == 1'b1 && sw == 16'b10 && selected == 1 && led == 0) begin
         counter <= 32'd500000000;
     end
