@@ -77,17 +77,16 @@ module Top_Student (
     //team volume indicator
     wire [2:0]volume0_5;
     wire [3:0]volume16;
-    volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0]);
+    volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0], selected);
     //7seg volume indicator
-    volume_7seg vl7seg(CLK, an, seg, volume16);
+    volume_7seg vl7seg(CLK, an, seg, volume16, spectrobinsize, selected);
     //raw waveform
     wire [(96 * 6) - 1:0] waveform; 
     waveform wvfm(CLK,selected,mic_in,waveform);
     
-    //ftt stuff
+    //fft stuff
     wire signed [11:0] sample_imag = 12'b0; //imaginary part is 0
     wire signed [5:0] output_real, output_imag; //bits for output real and imaginary
-    
     reg [13:0] abs; //to calculate the absolute magnitude of output real and imaginary
     reg [(512 * 6) - 1:0] bins; //vector for all the 1024 bins
     reg [9:0] maxbins = 512;
@@ -95,24 +94,49 @@ module Top_Student (
     reg [9:0] bin = 0; //current bin editting
     wire fft_ce; 
     assign fft_ce = 1; //always high when fft is transforming
+
+    //spectrogram stuff after fft
+    reg [(6 * 20) - 1:0] spectrogram = 0;
+    reg [5:0] current_highest_spectrogram = 0;
+    wire [4:0] spectrobinsize;
+    integer j;
+
+    //tuner stuff after fft
+    reg [9:0] current_highest_note_index = 0;
+
     always @(posedge clk20k) begin
         if(fft_ce) begin
             abs <= (output_real * output_real) + (output_imag * output_imag);
             if(sync) begin
                 bin <= 0;
+                j <= 0;
             end else begin
                 bin <= bin + 1;
             end   
-            if (bin < maxbins) begin
-                bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4) : 63; // scale & limit to 255
+            if (bin < maxbins && bin != 0) begin
+                if (bin % spectrobinsize == 0 && bin != 0) begin
+                    if (j < 20) begin
+                        spectrogram[j*6 +: 6] = 63 - current_highest_spectrogram;
+                        current_highest_spectrogram = 0;
+                        j <= j + 1;
+                    end
+                end     
+                if (current_highest_spectrogram < ((abs >> 4) < 63 ? (abs >> 4) : 63)) begin
+                    current_highest_spectrogram = ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                    if (current_highest_spectrogram >= 25) begin
+                        current_highest_note_index <= bin;
+                    end 
+                end   
+                bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4): 63; // scale & limit to 63
             end
         end
     end
     fftmain fft_0(.i_clk(clk20k), .i_reset(reset), .i_ce(fft_ce), .i_sample({mic_in, sample_imag}), .o_result({output_real, output_imag}), .o_sync(sync));
-    
+    spectrumcontrol spc_1(CLK, selected, btnL, btnR, sw, spectrobinsize);
+
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, bins, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, spectrogram, current_highest_note_index, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule

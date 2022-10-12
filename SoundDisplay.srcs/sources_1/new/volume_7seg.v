@@ -4,19 +4,30 @@ module volume_7seg(
     input CLK, 
     output reg [3:0] an, // anode signals of the 7-segment LED display
     output reg [6:0] seg,// cathode patterns of the 7-segment LED display
-    input [15:0] displayed_number // counting number to be displayed
+    input [15:0] volume_16, // counting number to be displayed
+    input [4:0] spectrobinsize,
+    input [1:0] selected
     );
     
     reg [3:0] LED_BCD;
 
     reg [19:0] refresh_counter; // 20-bit for creating 10.5ms refresh period or 380Hz refresh rate
              // the first 2 MSB bits for creating 4 LED-activating signals with 2.6ms digit period
-    
     wire [1:0] LED_activating_counter; 
+    reg [15:0] displayed_number;
 
     always @(posedge CLK)
     begin 
         refresh_counter <= refresh_counter + 1;
+        if (selected == 2'd0) begin
+            displayed_number <= 0;
+        end
+        else if (selected == 2'd1) begin
+            displayed_number <= volume_16;
+        end
+        else if (selected == 2'd2) begin
+            displayed_number <= ((spectrobinsize * 1953) / 100) * 20;
+        end
     end 
     assign LED_activating_counter = refresh_counter[19:18];
     // anode activating signals for 4 LEDs, digit period of 2.6ms
