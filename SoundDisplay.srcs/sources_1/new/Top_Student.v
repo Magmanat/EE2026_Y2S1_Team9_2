@@ -123,6 +123,7 @@ module Top_Student (
             if(sync) begin
                 bin <= 0;
                 j <= 0;
+                current_highest_spectrogram <= 0;
 
                 if (current_highest_note_index == previous_highest_note_index) begin
                     stable_note_count <= stable_note_count < 10000 ? stable_note_count + 1 : stable_note_count;
