@@ -80,6 +80,7 @@ module Top_Student (
     volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0], selected);
     //7seg volume indicator
     volume_7seg vl7seg(CLK, an, seg, volume16, spectrobinsize, selected);
+    // volume_7seg vl7seg(CLK, an, seg, bins[50 * 6+: 6], spectrobinsize, selected);
     //raw waveform
     wire [(96 * 6) - 1:0] waveform; 
     waveform wvfm(CLK,selected,mic_in,waveform);
@@ -88,7 +89,7 @@ module Top_Student (
     wire signed [11:0] sample_imag = 12'b0; //imaginary part is 0
     wire signed [5:0] output_real, output_imag; //bits for output real and imaginary
     reg [13:0] abs; //to calculate the absolute magnitude of output real and imaginary
-    reg [(512 * 6) - 1:0] bins; //vector for all the 1024 bins
+    // reg [(512 * 6) - 1:0] bins; //vector for all the 1024 bins(not necessary)
     reg [9:0] maxbins = 512;
     wire sync; //high when fft is ready
     reg [9:0] bin = 0; //current bin editting
@@ -102,41 +103,72 @@ module Top_Student (
     integer j;
 
     //tuner stuff after fft
+    reg [5:0] current_highest_note = 0;
+    reg [9:0] previous_highest_note_index = 0;
     reg [9:0] current_highest_note_index = 0;
+    reg [15:0] stable_note_count = 0;
+    wire stable_note_held;
+    assign stable_note_held = stable_note_count >= 10000;
 
-    always @(posedge clk20k) begin
+    wire clk5k;
+    reg custom_fft_clk;
+    clock_divider fivekhz (CLK, 32'd5000, clk5k);
+    always @ (posedge CLK) begin
+        custom_fft_clk <= sw[15] ? clk5k : clk20k;
+    end
+
+    always @(posedge custom_fft_clk) begin
         if(fft_ce) begin
             abs <= (output_real * output_real) + (output_imag * output_imag);
             if(sync) begin
                 bin <= 0;
                 j <= 0;
+
+                if (current_highest_note_index == previous_highest_note_index) begin
+                    stable_note_count <= stable_note_count < 10000 ? stable_note_count + 1 : stable_note_count;
+                end else begin
+                    stable_note_count <= 0;
+                    previous_highest_note_index <= current_highest_note_index;
+                end
+                current_highest_note_index <= 0;
+                current_highest_note <= 0;
             end else begin
                 bin <= bin + 1;
             end   
-            if (bin < maxbins && bin != 0) begin
-                if (bin % spectrobinsize == 0 && bin != 0) begin
-                    if (j < 20) begin
-                        spectrogram[j*6 +: 6] = 63 - current_highest_spectrogram;
-                        current_highest_spectrogram = 0;
-                        j <= j + 1;
+            if (bin < maxbins) begin
+                // This is for finding highest of each bin of spectrogram, 0Hz is not included as it always skews results
+                if (!sw[15]) begin
+                    if (bin != 0) begin
+                        if (bin % spectrobinsize == 0) begin
+                            if (j < 20) begin
+                                spectrogram[j*6 +: 6] <= 63 - current_highest_spectrogram;
+                                current_highest_spectrogram = 0;
+                                j <= j + 1;
+                            end
+                        end     
+                        if (current_highest_spectrogram < ((abs >> 4) < 63 ? (abs >> 4) : 63)) begin
+                            current_highest_spectrogram <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                        end   
                     end
-                end     
-                if (current_highest_spectrogram < ((abs >> 4) < 63 ? (abs >> 4) : 63)) begin
-                    current_highest_spectrogram = ((abs >> 4) < 63 ? (abs >> 4) : 63);
-                    if (current_highest_spectrogram >= 25) begin
+                end
+                else begin
+                    // bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4): 63; // scale & limit to 63 (not necessary to store whole thing)
+                    // This is for finding current note being played and how to reset it
+                    if (current_highest_note < ((abs >> 4) < 63 ? (abs >> 4) : 63) && ((abs >> 4) < 63 ? (abs >> 4) : 63) > 15) begin
                         current_highest_note_index <= bin;
-                    end 
-                end   
-                bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4): 63; // scale & limit to 63
+                        current_highest_note <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                    end
+                end
             end
         end
     end
-    fftmain fft_0(.i_clk(clk20k), .i_reset(reset), .i_ce(fft_ce), .i_sample({mic_in, sample_imag}), .o_result({output_real, output_imag}), .o_sync(sync));
+
+    fftmain fft_0(.i_clk(custom_fft_clk), .i_reset(reset), .i_ce(fft_ce), .i_sample({mic_in, sample_imag}), .o_result({output_real, output_imag}), .o_sync(sync));
     spectrumcontrol spc_1(CLK, selected, btnL, btnR, sw, spectrobinsize);
 
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, spectrogram, current_highest_note_index, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, spectrogram, previous_highest_note_index, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule
