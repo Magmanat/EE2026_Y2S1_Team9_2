@@ -559,7 +559,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                     oled_data <= green;
                 end
             end
-            else if (previous_highest_note_index == 28) begin
+            else if (previous_highest_note_index == 28) begin // maybe && 29
                 if (D || FLAT || three) begin
                     begin
                         oled_data <= white;
@@ -570,7 +570,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                 end
             end
             else if (previous_highest_note_index == 29 || previous_highest_note_index == 30 || previous_highest_note_index == 31) begin
-                if (previous_highest_note_index == 29) begin
+                if (previous_highest_note_index == 29) begin // maybe remove 29
                     if (flat) begin
                         oled_data <= red;
                     end
@@ -700,7 +700,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                         oled_data <= red;
                     end
                 end
-                if (A || three) begin
+                if (B || FLAT || three) begin
                     begin
                         oled_data <= white;
                     end

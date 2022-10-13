@@ -152,11 +152,13 @@ module Top_Student (
                     end
                 end
                 else begin
-                    // bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4): 63; // scale & limit to 63 (not necessary to store whole thing)
-                    // This is for finding current note being played and how to reset it
-                    if (current_highest_note < ((abs >> 4) < 63 ? (abs >> 4) : 63) && ((abs >> 4) < 63 ? (abs >> 4) : 63) > 15) begin
-                        current_highest_note_index <= bin;
-                        current_highest_note <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                    if (bin != 0) begin
+                        // bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4): 63; // scale & limit to 63 (not necessary to store whole thing)
+                        // This is for finding current note being played and how to reset it
+                        if (current_highest_note < ((abs >> 4) < 63 ? (abs >> 4) : 63) && ((abs >> 4) < 63 ? (abs >> 4) : 63) > 15) begin
+                            current_highest_note_index <= bin;
+                            current_highest_note <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                        end
                     end
                 end
             end
