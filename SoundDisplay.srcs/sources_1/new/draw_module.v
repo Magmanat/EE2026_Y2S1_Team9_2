@@ -56,8 +56,49 @@ module draw_module(
     //required for forloops      
     integer i;
     
-    wire A,B,C,D,E,F,G,FLAT,SHARP,flat,sharp,two,three,four,five,six,seven,intune;
+    wire A,B,C,D,E,F,G,FLAT,SHARP,flat,sharp,two,three,four,five,six,seven,intune,Tuner_start;
    
+assign Tuner_start = (((y == 2) && ((x >= 9 && x < 25)|| (x >= 29 && x < 41)|| (x >= 53 && x < 61)|| (x >= 73 && x < 81)))|| 
+((y == 3) && ((x >= 9 && x < 25)|| (x >= 29 && x < 42)|| (x >= 52 && x < 61)|| (x >= 72 && x < 82)))|| 
+((y == 4) && ((x >= 9 && x < 25)|| (x >= 29 && x < 43)|| (x >= 51 && x < 61)|| (x >= 71 && x < 83)))|| 
+((y == 5) && ((x >= 9 && x < 25)|| (x >= 29 && x < 44)|| (x >= 50 && x < 61)|| (x >= 70 && x < 84)))|| 
+((y == 6) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 40 && x < 44)|| (x >= 49 && x < 53)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 7) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 40 && x < 44)|| (x >= 49 && x < 53)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 8) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 40 && x < 44)|| (x >= 49 && x < 53)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 9) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 40 && x < 44)|| (x >= 49 && x < 53)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 10) && ((x >= 9 && x < 21)|| (x >= 29 && x < 44)|| (x >= 49 && x < 53)|| (x >= 57 && x < 65)|| (x >= 69 && x < 85)))|| 
+((y == 11) && ((x >= 9 && x < 21)|| (x >= 29 && x < 43)|| (x >= 49 && x < 53)|| (x >= 57 && x < 65)|| (x >= 69 && x < 85)))|| 
+((y == 12) && ((x >= 9 && x < 21)|| (x >= 29 && x < 42)|| (x >= 49 && x < 53)|| (x >= 57 && x < 65)|| (x >= 69 && x < 85)))|| 
+((y == 13) && ((x >= 9 && x < 21)|| (x >= 29 && x < 41)|| (x >= 49 && x < 53)|| (x >= 57 && x < 65)|| (x >= 69 && x < 85)))|| 
+((y == 14) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 49 && x < 53)|| (x >= 61 && x < 65)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 15) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 49 && x < 53)|| (x >= 61 && x < 65)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 16) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 49 && x < 53)|| (x >= 61 && x < 65)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 17) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 49 && x < 53)|| (x >= 61 && x < 65)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 18) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 50 && x < 64)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 19) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 51 && x < 63)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 20) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 52 && x < 62)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 21) && ((x >= 9 && x < 13)|| (x >= 29 && x < 33)|| (x >= 53 && x < 61)|| (x >= 69 && x < 73)|| (x >= 81 && x < 85)))|| 
+((y == 26) && ((x >= 9 && x < 24)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 69)|| (x >= 72 && x < 81)))|| 
+((y == 27) && ((x >= 9 && x < 24)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 69)|| (x >= 72 && x < 82)))|| 
+((y == 28) && ((x >= 9 && x < 24)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 69)|| (x >= 72 && x < 83)))|| 
+((y == 29) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 48)|| (x >= 51 && x < 54)|| (x >= 57 && x < 60)|| (x >= 72 && x < 75)|| (x >= 81 && x < 84)))|| 
+((y == 30) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 49)|| (x >= 51 && x < 54)|| (x >= 57 && x < 60)|| (x >= 72 && x < 75)|| (x >= 81 && x < 84)))|| 
+((y == 31) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 50)|| (x >= 51 && x < 54)|| (x >= 57 && x < 60)|| (x >= 72 && x < 75)|| (x >= 81 && x < 84)))|| 
+((y == 32) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 46 && x < 54)|| (x >= 57 && x < 66)|| (x >= 72 && x < 83)))|| 
+((y == 33) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 47 && x < 54)|| (x >= 57 && x < 66)|| (x >= 72 && x < 82)))|| 
+((y == 34) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 48 && x < 54)|| (x >= 57 && x < 66)|| (x >= 72 && x < 81)))|| 
+((y == 35) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 60)|| (x >= 72 && x < 75)|| (x >= 78 && x < 81)))|| 
+((y == 36) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 60)|| (x >= 72 && x < 75)|| (x >= 78 && x < 82)))|| 
+((y == 37) && ((x >= 15 && x < 18)|| (x >= 27 && x < 30)|| (x >= 36 && x < 39)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 60)|| (x >= 72 && x < 75)|| (x >= 78 && x < 83)))|| 
+((y == 38) && ((x >= 15 && x < 18)|| (x >= 28 && x < 38)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 69)|| (x >= 72 && x < 75)|| (x >= 79 && x < 84)))|| 
+((y == 39) && ((x >= 15 && x < 18)|| (x >= 29 && x < 37)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 69)|| (x >= 72 && x < 75)|| (x >= 80 && x < 84)))|| 
+((y == 40) && ((x >= 15 && x < 18)|| (x >= 30 && x < 36)|| (x >= 42 && x < 45)|| (x >= 51 && x < 54)|| (x >= 57 && x < 69)|| (x >= 72 && x < 75)|| (x >= 81 && x < 84)))|| 
+((y == 47) && ((x >= 2 && x < 5)|| (x >= 7 && x < 8)|| (x >= 13 && x < 15)|| (x >= 17 && x < 18)|| (x >= 21 && x < 22)|| (x >= 26 && x < 28)|| (x >= 32 && x < 33)|| (x >= 35 && x < 36)|| (x >= 38 && x < 40)|| (x >= 42 && x < 47)|| (x >= 48 && x < 52)|| (x >= 55 && x < 60)|| (x >= 62 && x < 64)|| (x >= 69 && x < 72)|| (x >= 73 && x < 78)|| (x >= 80 && x < 82)|| (x >= 84 && x < 87)|| (x >= 89 && x < 94)))|| 
+((y == 48) && ((x >= 2 && x < 3)|| (x >= 5 && x < 6)|| (x >= 7 && x < 8)|| (x >= 12 && x < 13)|| (x >= 15 && x < 16)|| (x >= 17 && x < 18)|| (x >= 21 && x < 22)|| (x >= 25 && x < 26)|| (x >= 28 && x < 29)|| (x >= 32 && x < 34)|| (x >= 35 && x < 36)|| (x >= 37 && x < 38)|| (x >= 40 && x < 41)|| (x >= 44 && x < 45)|| (x >= 48 && x < 49)|| (x >= 57 && x < 58)|| (x >= 61 && x < 62)|| (x >= 64 && x < 65)|| (x >= 68 && x < 69)|| (x >= 75 && x < 76)|| (x >= 79 && x < 80)|| (x >= 82 && x < 83)|| (x >= 84 && x < 85)|| (x >= 87 && x < 88)|| (x >= 91 && x < 92)))|| 
+((y == 49) && ((x >= 2 && x < 5)|| (x >= 7 && x < 8)|| (x >= 12 && x < 16)|| (x >= 18 && x < 21)|| (x >= 25 && x < 29)|| (x >= 32 && x < 33)|| (x >= 34 && x < 36)|| (x >= 37 && x < 38)|| (x >= 40 && x < 41)|| (x >= 44 && x < 45)|| (x >= 48 && x < 51)|| (x >= 57 && x < 58)|| (x >= 61 && x < 62)|| (x >= 64 && x < 65)|| (x >= 69 && x < 71)|| (x >= 75 && x < 76)|| (x >= 79 && x < 83)|| (x >= 84 && x < 87)|| (x >= 91 && x < 92)))|| 
+((y == 50) && ((x >= 2 && x < 3)|| (x >= 7 && x < 8)|| (x >= 12 && x < 13)|| (x >= 15 && x < 16)|| (x >= 19 && x < 20)|| (x >= 25 && x < 26)|| (x >= 28 && x < 29)|| (x >= 32 && x < 33)|| (x >= 35 && x < 36)|| (x >= 37 && x < 38)|| (x >= 40 && x < 41)|| (x >= 44 && x < 45)|| (x >= 48 && x < 49)|| (x >= 57 && x < 58)|| (x >= 61 && x < 62)|| (x >= 64 && x < 65)|| (x >= 71 && x < 72)|| (x >= 75 && x < 76)|| (x >= 79 && x < 80)|| (x >= 82 && x < 83)|| (x >= 84 && x < 85)|| (x >= 86 && x < 87)|| (x >= 91 && x < 92)))|| 
+((y == 51) && ((x >= 2 && x < 3)|| (x >= 7 && x < 11)|| (x >= 12 && x < 13)|| (x >= 15 && x < 16)|| (x >= 19 && x < 20)|| (x >= 25 && x < 26)|| (x >= 28 && x < 29)|| (x >= 32 && x < 33)|| (x >= 35 && x < 36)|| (x >= 38 && x < 40)|| (x >= 44 && x < 45)|| (x >= 48 && x < 52)|| (x >= 57 && x < 58)|| (x >= 62 && x < 64)|| (x >= 68 && x < 71)|| (x >= 75 && x < 76)|| (x >= 79 && x < 80)|| (x >= 82 && x < 83)|| (x >= 84 && x < 85)|| (x >= 87 && x < 88)|| (x >= 91 && x < 92))));
+
    assign A = (((y == 34) && ((x >= 36 && x < 60)))|| 
 ((y == 35) && ((x >= 36 && x < 60)))|| 
 ((y == 36) && ((x >= 36 && x < 60)))|| 
@@ -431,9 +472,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             // draw lowest priority first
             if (previous_highest_note_index == 13) begin
                 if (C || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -441,9 +480,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 14) begin
                 if (D || FLAT || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -451,9 +488,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 15) begin
                 if (D || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -461,9 +496,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 16) begin
                 if (E || FLAT || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -471,9 +504,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 17) begin
                 if (E || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -481,9 +512,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 18) begin
                 if (F || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -491,9 +520,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 19) begin
                 if (F || SHARP || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -501,9 +528,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 20) begin
                 if (G || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -511,9 +536,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 21) begin
                 if (A || FLAT || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -521,9 +544,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 22 || previous_highest_note_index == 23) begin
                 if (A || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -531,9 +552,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 24) begin
                 if (B || FLAT || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -541,9 +560,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 25) begin
                 if (B || two) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -551,9 +568,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 26 || previous_highest_note_index == 27) begin
                 if (C || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -561,9 +576,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 28) begin // maybe && 29
                 if (D || FLAT || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -581,9 +594,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                     end
                 end
                 if (D || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune && previous_highest_note_index == 30) begin
                     oled_data <= green;
@@ -591,9 +602,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 32) begin
                 if (E || FLAT || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -606,9 +615,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                     end
                 end
                 if (E || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune && previous_highest_note_index == 34) begin
                     oled_data <= green;
@@ -626,9 +633,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                     end
                 end
                 if (F || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune && previous_highest_note_index == 36) begin
                     oled_data <= green;
@@ -636,9 +641,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 38) begin
                 if (F || SHARP || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -656,9 +659,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                     end
                 end
                 if (G || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune && previous_highest_note_index == 40) begin
                     oled_data <= green;
@@ -666,9 +667,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 42 || previous_highest_note_index == 43) begin
                 if (A || FLAT || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -686,9 +685,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                     end
                 end
                 if (A || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune && previous_highest_note_index == 45) begin
                     oled_data <= green;
@@ -701,9 +698,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
                     end
                 end
                 if (B || FLAT || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune && previous_highest_note_index == 48) begin
                     oled_data <= green;
@@ -711,9 +706,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 49) begin
                 if (B || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -721,9 +714,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 50 || previous_highest_note_index == 51) begin
                 if (B || three) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -731,9 +722,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 52) begin
                 if (C || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -741,9 +730,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 53 || previous_highest_note_index == 54) begin
                 if (C || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -751,9 +738,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 55) begin
                 if (C || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -761,9 +746,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 56) begin
                 if (D || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -771,9 +754,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 57) begin
                 if (D || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -781,9 +762,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 58) begin
                 if (D || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -791,9 +770,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 59) begin
                 if (D || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -801,9 +778,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 60) begin
                 if (D || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -811,9 +786,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 61 || previous_highest_note_index == 62) begin
                 if (D || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -821,9 +794,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 63) begin
                 if (E || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -831,9 +802,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 64) begin
                 if (E || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -841,9 +810,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 65) begin
                 if (E || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -851,9 +818,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 66) begin
                 if (E || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -861,9 +826,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 67 || previous_highest_note_index == 68) begin
                 if (E || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -871,9 +834,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 69) begin
                 if (E || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -881,9 +842,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 70) begin
                 if (F || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -891,9 +850,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 71 || previous_highest_note_index == 72) begin
                 if (F || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -901,9 +858,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 73) begin
                 if (F || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -911,9 +866,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 74) begin
                 if (F || SHARP|| four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -921,9 +874,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 75 || previous_highest_note_index == 76) begin
                 if (F || SHARP || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -931,9 +882,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 77) begin
                 if (F || SHARP|| four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -941,9 +890,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 78 && previous_highest_note_index <= 79) begin
                 if (G || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -951,9 +898,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 80) begin
                 if (G || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -961,9 +906,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 81 && previous_highest_note_index <= 82) begin
                 if (G || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -971,9 +914,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 83 && previous_highest_note_index <= 84) begin
                 if (A || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -981,9 +922,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 85) begin
                 if (A || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -991,9 +930,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 86 && previous_highest_note_index <= 87) begin
                 if (A || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1001,9 +938,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 88 && previous_highest_note_index <= 89) begin
                 if (A || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1011,9 +946,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 90) begin
                 if (A || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1021,9 +954,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 91 && previous_highest_note_index <= 92) begin
                 if (A || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1031,9 +962,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 93 && previous_highest_note_index <= 94) begin
                 if (B || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1041,9 +970,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 95 || previous_highest_note_index == 96) begin
                 if (B || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1051,9 +978,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 97 && previous_highest_note_index <= 98) begin
                 if (B || FLAT || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1061,9 +986,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 99 && previous_highest_note_index <= 100) begin
                 if (B || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1071,9 +994,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 101) begin
                 if (B || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1081,9 +1002,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 102 && previous_highest_note_index <= 104) begin
                 if (B || four) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1091,9 +1010,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 105 && previous_highest_note_index <= 106) begin
                 if (C || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1101,9 +1018,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 107) begin
                 if (C || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1111,9 +1026,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 108 && previous_highest_note_index <= 110) begin
                 if (C || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1121,9 +1034,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 111 && previous_highest_note_index <= 112) begin
                 if (D || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1131,9 +1042,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 113 || previous_highest_note_index == 114) begin
                 if (D || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1141,9 +1050,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 115 && previous_highest_note_index <= 117) begin
                 if (D || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1151,9 +1058,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 118 && previous_highest_note_index <= 119) begin
                 if (D || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1161,9 +1066,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 120) begin
                 if (D || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1171,9 +1074,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 121 && previous_highest_note_index <= 123) begin
                 if (D || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1181,9 +1082,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 124 && previous_highest_note_index <= 126) begin
                 if (E || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1191,9 +1090,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 127 || previous_highest_note_index == 128) begin
                 if (E || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1201,9 +1098,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 129 && previous_highest_note_index <= 131) begin
                 if (E || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1211,9 +1106,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 132 && previous_highest_note_index <= 134) begin
                 if (E || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1221,9 +1114,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 135) begin
                 if (E || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1231,9 +1122,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 136 && previous_highest_note_index <= 139) begin
                 if (E || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1241,9 +1130,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 140 && previous_highest_note_index <= 142) begin
                 if (F || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1251,9 +1138,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 143) begin
                 if (F || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1261,9 +1146,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 144 && previous_highest_note_index <= 147) begin
                 if (F || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1271,9 +1154,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 148 && previous_highest_note_index <= 150) begin
                 if (F || SHARP || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1281,9 +1162,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 151 || previous_highest_note_index == 152) begin
                 if (F || SHARP || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1291,9 +1170,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 153 && previous_highest_note_index <= 156) begin
                 if (F || SHARP || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1301,9 +1178,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 157 && previous_highest_note_index <= 159) begin
                 if (G || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1311,9 +1186,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 160 || previous_highest_note_index == 161) begin
                 if (G || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1321,9 +1194,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 162 && previous_highest_note_index <= 165) begin
                 if (G || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1331,9 +1202,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 166 && previous_highest_note_index <= 169) begin
                 if (A || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1341,9 +1210,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 170) begin
                 if (A || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1351,9 +1218,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 171 && previous_highest_note_index <= 175) begin
                 if (A || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1361,9 +1226,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 176 && previous_highest_note_index <= 179) begin
                 if (A || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1371,9 +1234,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 180) begin
                 if (A || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1381,9 +1242,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 181 && previous_highest_note_index <= 186) begin
                 if (A || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1391,9 +1250,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 187 && previous_highest_note_index <= 190) begin
                 if (B || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1401,9 +1258,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 191) begin
                 if (B || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1411,9 +1266,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 192 && previous_highest_note_index <= 196) begin
                 if (B || FLAT || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1421,9 +1274,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 197 && previous_highest_note_index <= 201) begin
                 if (B || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1431,9 +1282,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 202) begin
                 if (B || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1441,9 +1290,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 203 && previous_highest_note_index <= 208) begin
                 if (B || five) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1451,9 +1298,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 209 && previous_highest_note_index <= 213) begin
                 if (C || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1461,9 +1306,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 214) begin
                 if (C || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1471,9 +1314,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 215 && previous_highest_note_index <= 221) begin
                 if (C || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1481,9 +1322,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 222 && previous_highest_note_index <= 226) begin
                 if (D || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1491,9 +1330,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 227) begin
                 if (D || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1501,9 +1338,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 228 && previous_highest_note_index <= 233) begin
                 if (D || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1511,9 +1346,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 234 && previous_highest_note_index <= 239) begin
                 if (D || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1521,9 +1354,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 240 || previous_highest_note_index == 241) begin
                 if (D || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1531,9 +1362,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 242 && previous_highest_note_index <= 248) begin
                 if (D || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1541,9 +1370,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 249 && previous_highest_note_index <= 254) begin
                 if (E || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1551,9 +1378,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 255) begin
                 if (E || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1561,9 +1386,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 256 && previous_highest_note_index <= 263) begin
                 if (E || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1571,9 +1394,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 264 && previous_highest_note_index <= 269) begin
                 if (E || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1581,9 +1402,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 270) begin
                 if (E || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1591,9 +1410,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 271 && previous_highest_note_index <= 278) begin
                 if (E || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1601,9 +1418,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 279 && previous_highest_note_index <= 285) begin
                 if (F || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1611,9 +1426,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 286) begin
                 if (F || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1621,9 +1434,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 287 && previous_highest_note_index <= 295) begin
                 if (F || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1631,9 +1442,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 296 && previous_highest_note_index <= 302) begin
                 if (F || SHARP || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1641,9 +1450,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 303) begin
                 if (F || SHARP || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1651,9 +1458,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 304 && previous_highest_note_index <= 312) begin
                 if (F || SHARP || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1661,9 +1466,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 313 && previous_highest_note_index <= 320) begin
                 if (G || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1671,9 +1474,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 321) begin
                 if (G || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1681,9 +1482,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 322 && previous_highest_note_index <= 330) begin
                 if (G || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1691,9 +1490,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 331 && previous_highest_note_index <= 339) begin
                 if (A || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1701,9 +1498,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 340) begin
                 if (A || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1711,9 +1506,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 341 && previous_highest_note_index <= 350) begin
                 if (A || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1721,9 +1514,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 351 && previous_highest_note_index <= 359) begin
                 if (A || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1731,9 +1522,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 360 || previous_highest_note_index == 361) begin
                 if (A || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1741,9 +1530,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 362 && previous_highest_note_index <= 371) begin
                 if (A || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1751,9 +1538,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 372 && previous_highest_note_index <= 381) begin
                 if (B || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1761,9 +1546,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 382) begin
                 if (B || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1771,9 +1554,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 383 && previous_highest_note_index <= 393) begin
                 if (B || FLAT || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1781,9 +1562,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 394 && previous_highest_note_index <= 403) begin
                 if (B || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1791,9 +1570,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 404 || previous_highest_note_index == 405) begin
                 if (B || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1801,9 +1578,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 406 && previous_highest_note_index <= 416) begin
                 if (B || six) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1811,9 +1586,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 417 && previous_highest_note_index <= 427) begin
                 if (C || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1821,9 +1594,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 428 || previous_highest_note_index == 429) begin
                 if (C || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1831,9 +1602,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 430 && previous_highest_note_index <= 442) begin
                 if (C || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1841,9 +1610,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 443 && previous_highest_note_index <= 453) begin
                 if (D || FLAT || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1851,9 +1618,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 454) begin
                 if (D || FLAT || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1861,9 +1626,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 455 && previous_highest_note_index <= 467) begin
                 if (D || FLAT || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1871,9 +1634,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 468 && previous_highest_note_index <= 480) begin
                 if (D || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1881,9 +1642,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 481) begin
                 if (D || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1891,9 +1650,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 482 && previous_highest_note_index <= 497) begin
                 if (D || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1901,9 +1658,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 498 && previous_highest_note_index <= 509) begin
                 if (E || FLAT || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1911,9 +1666,7 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index == 510) begin
                 if (E || FLAT || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1921,12 +1674,15 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
             end
             else if (previous_highest_note_index >= 511) begin
                 if (E || FLAT || seven) begin
-                    begin
-                        oled_data <= white;
-                    end
+                    oled_data <= white;
                 end
                 if (sharp) begin
                     oled_data <= red;
+                end
+            end
+            else begin
+                if (Tuner_start) begin
+                    oled_data <= teal;
                 end
             end
         end
