@@ -27,13 +27,18 @@ module main_menu(
     input btnC,
     input btnR,
     output reg [1:0] cursor = 2'd1,
-    output reg [1:0] selected = 2'd1
+    output reg [1:0] selected = 2'd1,
+    output reg [1:0] slide = 2'd0
 );
 
 reg button;
+reg [31:0] menucount = 32'd0;
+
 
 always @ (posedge CLK) begin
     button <= btnL || btnC || btnR ? 1 : 0;
+    menucount <= (menucount >= 32'd100000000) ? 32'd0 : menucount + 1;
+    slide <= (menucount == 0) ? slide + 1 : slide;
 end
 
 always @ (posedge button) begin

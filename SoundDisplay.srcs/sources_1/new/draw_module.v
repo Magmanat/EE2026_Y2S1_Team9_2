@@ -29,6 +29,7 @@ module draw_module(
     input [2:0] volume,
     input [1:0] cursor,
     input [1:0] selected,
+    input [1:0] slide,
     input [(96 * 6) - 1:0] waveform,
     input [(6 * 20) - 1:0] spectrogram,
     input [9:0] previous_highest_note_index,
@@ -52,7 +53,26 @@ module draw_module(
     wire [15:0] purple = 16'b1111100000011111;
     wire [15:0] blue = 16'b0000000000011111;
     wire [15:0] teal = 16'b0000011111111111;  
-    
+    // icons for menu animation
+    wire wave1, wave2, wave3, wave4, task1, task2, task3, task4, graph1, graph2, graph3, graph4;
+    assign wave1 = (x >= 6 && x <= 25) && (y == 20);
+    assign wave2 = (x == 6) && (y == 20) || (x == 7) && (y == 21) || (x == 8) && (y == 22) ||
+    (x == 9) && (y == 23) || (x >= 10 && x <= 11) && (y == 24) || (x == 12) && (y == 23) || (x == 13) && (y == 22) ||
+    (x == 14) && (y == 21) || (x == 15) && (y == 20) || (x == 16) && (y == 19) || (x == 17) && (y == 18) || (x == 18) && (y == 17) ||
+    (x >= 19 && x <= 21) && (y == 16) || (x == 22) && (y == 17) || (x == 23) && (y == 18) || (x == 24) && (y == 19) || (x == 25) && (y == 20);
+    assign wave3 = (x >= 6 && x <= 25) && (y == 20);
+    assign wave4 = (x == 6) && (y == 20) || (x == 7) && (y == 19) || (x == 8) && (y == 18) ||
+        (x == 9) && (y == 17) || (x >= 10 && x <= 11) && (y == 16) || (x == 12) && (y == 17) || (x == 13) && (y == 18) ||
+        (x == 14) && (y == 19) || (x == 15) && (y == 20) || (x == 16) && (y == 21) || (x == 17) && (y == 22) || (x == 18) && (y == 23) ||
+        (x >= 19 && x <= 21) && (y == 24) || (x == 22) && (y == 23) || (x == 23) && (y == 22) || (x == 24) && (y == 21) || (x == 25) && (y == 20);
+    assign task1 = ((x == 39 || x == 58) && (y >= 14 && y <= 31)) || ((x >= 40 && x <= 57) && (y == 14 || y == 31));
+    assign task2 = ((x == 41 || x == 56) && (y >= 16 && y <= 29)) || ((x >= 42 && x <= 55) && (y == 16 || y == 29));
+    assign task3 = ((x == 43 || x == 54) && (y >= 18 && y <= 27)) || ((x >= 44 && x <= 53) && (y == 18 || y == 27));
+    assign task4 = (x >= 47 && x <= 50) && (y == 21 || y == 22 || y == 24 || y == 25);
+    assign graph1 = (x >= 73 && x <= 75) && (y >= 16 && y <= 29);
+    assign graph2 = (x >= 78 && x <= 80) && (y >= 18 && y <= 29);
+    assign graph3 = (x >= 83 && x <= 85) && (y >= 20 && y <= 29);
+    assign graph4 = (x >= 88 && x <= 90) && (y >= 22 && y <= 29);       
     //required for forloops      
     integer i;
     
@@ -1689,22 +1709,122 @@ assign two = (((y == 54) && ((x >= 62 && x < 66)))||
 
         //FOR CONTROLLING MENU
         else if (sw[2]) begin
-            // draw lowest priority first
-            if ((x >= 10 && x <= 20) && (y >= 27 && y <= 37) || 
-                (x >= 42 && x <= 52) && (y >= 27 && y <= 37) ||
-                (x >= 74 && x <= 84) && (y >= 27 && y <= 37)) begin
+            //boxes template
+            oled_data <= white;
+            if (((x >= 4 && x <= 27) && (y >= 11 && y <= 45)) || 
+                ((x >= 37 && x <= 60) && (y >= 11 && y <= 45)) ||
+                ((x >= 70 && x <= 93) && (y >= 11 && y <= 45))) begin
+                oled_data <= black;
+                end
+            if ((((x == 12 || x == 19) && (y >= 36 && y <= 43)) || ((x >= 13 && x <= 18) && (y == 36 || y == 43))|| 
+                ((x == 45 || x == 52) && (y >= 36 && y <= 43)) || ((x >= 46 && x <= 51) && (y == 36 || y == 43))||
+                ((x == 78 || x == 85) && (y >= 36 && y <= 43)) || ((x >= 79 && x <= 84) && (y == 36 || y == 43)))) begin
                 oled_data <= white;
                 end
-            if (((x >= 13 && x <= 17) && (y >= 30 && y <= 34) && cursor == 2'd0) || 
-                ((x >= 45 && x <= 49) && (y >= 30 && y <= 34) && cursor == 2'd1) ||
-                ((x >= 77 && x <= 81) && (y >= 30 && y <= 34) && cursor == 2'd2)) begin
+            //cursor
+            if (((x >= 14 && x <= 17) && (y >= 38 && y <= 41) && cursor == 2'd0) || 
+                ((x >= 47 && x <= 50) && (y >= 38 && y <= 41) && cursor == 2'd1) ||
+                ((x >= 80 && x <= 83) && (y >= 38 && y <= 41) && cursor== 2'd2)) begin
                 oled_data <= green;
                 end
-            if (((x >= 14 && x <= 16) && (y >= 31 && y <= 33) && selected == 2'd0) || 
-                ((x >= 46 && x <= 48) && (y >= 31 && y <= 33) && selected == 2'd1) ||
-                ((x >= 78 && x <= 80) && (y >= 31 && y <= 33) && selected == 2'd2)) begin
+            //selected
+            if (((x >= 15 && x <= 16) && (y >= 39 && y <= 40) && selected == 2'd0) || 
+                ((x >= 48 && x <= 49) && (y >= 39 && y <= 40) && selected == 2'd1) ||
+                ((x >= 81 && x <= 82) && (y >= 39 && y <= 40) && selected == 2'd2)) begin
                 oled_data <= red;
                 end
+            // static wave
+            if(wave4 && cursor != 2'd0) begin
+                oled_data <= white;
+                end
+            //static task
+            if(task1 && cursor != 2'd1) begin
+                oled_data <= red;
+                end
+            if(task2 && cursor != 2'd1) begin
+                oled_data <= orange;
+                end
+            if(task3 && cursor != 2'd1) begin
+                oled_data <= green;
+                end
+            if(task4 && cursor != 2'd1) begin
+                oled_data <= lightgreen;
+                end
+            //static graph
+            if((graph1 || graph2 || graph3 || graph4) && cursor != 2'd2) begin
+                oled_data <= white;
+                end
+            // wave animation
+            if(cursor == 2'd0) begin
+                if(slide == 0 && wave1) begin
+                    oled_data <= white;
+                    end
+                if(slide == 1 && wave2) begin
+                    oled_data <= white;
+                    end     
+                if(slide == 2 && wave3) begin
+                    oled_data <= white;
+                    end
+                if(slide == 3 && wave4) begin
+                    oled_data <= white;
+                    end
+                end
+            // task animation
+            if(cursor == 2'd1) begin
+                    if(slide == 0) begin
+                        if(task1) begin
+                            oled_data <= red;
+                            end
+                        end
+                    if(slide == 1) begin
+                        if(task1) begin
+                            oled_data <= red;
+                            end
+                        if(task2) begin
+                            oled_data <= orange;
+                            end  
+                        end                      
+                    if(slide == 2) begin
+                        if(task1) begin
+                            oled_data <= red;
+                            end
+                        if(task2) begin
+                            oled_data <= orange;
+                            end
+                        if(task3) begin
+                            oled_data <= green;
+                            end
+                        end
+                    if(slide == 3) begin
+                        if(task1) begin
+                            oled_data <= red;
+                            end
+                        if(task2) begin
+                            oled_data <= orange;
+                            end
+                        if(task3) begin
+                            oled_data <= green;
+                            end
+                        if(task4) begin
+                            oled_data <= lightgreen;
+                            end
+                        end
+                    end 
+            // graph animation
+            if(cursor == 2'd2) begin
+                        if(slide == 0 && graph1) begin
+                            oled_data <= white;
+                            end
+                        if(slide == 1 && (graph1 || graph2)) begin
+                            oled_data <= white;
+                            end     
+                        if(slide == 2 && (graph1 || graph2 || graph3)) begin
+                            oled_data <= white;
+                            end
+                        if(slide == 3 && (graph1 || graph2 || graph3 || graph4)) begin
+                            oled_data <= white;
+                            end
+                        end                                                                                            
         end
 
         // FOR WAVEFORM

@@ -62,7 +62,8 @@ module Top_Student (
     //main menu selection screen for normal individual and normal task
     wire [1:0] cursor;
     wire [1:0] selected;
-    main_menu mm(CLK,sw[2], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected);
+    wire [1:0] slide;
+    main_menu mm(CLK,sw[2], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
 //    assign led[13:12] = cursor;
 //    assign led[11:10] = selected;  
 
@@ -171,7 +172,7 @@ module Top_Student (
 
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, waveform, spectrogram, previous_highest_note_index, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, slide, waveform, spectrogram, previous_highest_note_index, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule
