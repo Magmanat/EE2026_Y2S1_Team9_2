@@ -30,20 +30,15 @@ module Top_Student (
 
     //button capturing
     wire debounced_btnU;
-    wire repeated_btnU;
-    switch_debouncer db1(CLK, btnU, debounced_btnU, repeated_btnU);
+    switch_debouncer db1(CLK, btnU, debounced_btnU);
     wire debounced_btnC;
-    wire repeated_btnC;
-    switch_debouncer db2(CLK, btnC, debounced_btnC, repeated_btnC);
+    switch_debouncer db2(CLK, btnC, debounced_btnC);
     wire debounced_btnL;
-    wire repeated_btnL;
-    switch_debouncer db3(CLK, btnL, debounced_btnL, repeated_btnL);
+    switch_debouncer db3(CLK, btnL, debounced_btnL);
     wire debounced_btnR;
-    wire repeated_btnR;
-    switch_debouncer db4(CLK, btnR, debounced_btnR, repeated_btnR);
+    switch_debouncer db4(CLK, btnR, debounced_btnR);
     wire debounced_btnD;
-    wire repeated_btnD;
-    switch_debouncer db5(CLK, btnD, debounced_btnD, repeated_btnD);
+    switch_debouncer db5(CLK, btnD, debounced_btnD);
 
     //audio capturing
     wire clk20k;//, clk10;
