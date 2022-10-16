@@ -2,14 +2,12 @@
 module buzzer_control(
     input CLK,
     input metronome,
-    input btnD,btnC,btnL,btnR,btnU,
-    output reg [2:0] met_y,
-    output reg [1:0] met_x,
-    output reg met_engaged,
+    input btnD,btnC,btnL,btnR,btnU,repeated_btnD,repeated_btnC,repeated_btnL,repeated_btnR,repeated_btnU,
+    output reg [1:0] met_y,
     output reg [7:0] BPM,
     output reg [3:0] BeatsPerMeasure,
-    output reg [2:0] NoteValue,
-    output reg [1:0] note type,
+    output reg [1:0] NoteType,
+    output reg [2:0] met_pos
 );
 
 
