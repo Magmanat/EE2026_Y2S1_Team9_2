@@ -20,6 +20,10 @@ assign onebarcount = ones * BeatsPerMeasure;
 wire [31:0] ones;
 reg [3:0] onescounter = 0;
 assign ones = 60000000/BPM;
+
+assign met_pos = (counter / (ones / 7)) % 7;
+reg reversed = 0;
+
 wire [31:0] twos;
 assign twos = ones / 2;
 wire [31:0] threes;
@@ -72,6 +76,7 @@ always @ (posedge clk1Mhz) begin
                     playlownote <= 1000;
                 end
                 onescounter <= onescounter + 1;
+                reversed <= ~reversed;
             end
         end else if (NoteType == 1) begin
             if (counter % ones == 0) begin
@@ -81,6 +86,7 @@ always @ (posedge clk1Mhz) begin
                     playmediumnote <= 1000;
                 end
                 onescounter <= onescounter + 1;
+                reversed <= ~reversed;
             end else if (counter % twos == 0) begin
                 playlownote <= 1000;
             end
@@ -92,6 +98,7 @@ always @ (posedge clk1Mhz) begin
                     playmediumnote <= 1000;
                 end
                 onescounter <= onescounter + 1;
+                reversed <= ~reversed;
             end else if (counter % threes == 0) begin
                 playlownote <= 1000;
             end
@@ -103,6 +110,7 @@ always @ (posedge clk1Mhz) begin
                     playmediumnote <= 1000;
                 end
                 onescounter <= onescounter + 1;
+                reversed <= ~reversed;
             end else if (counter % fours == 0) begin
                 playlownote <= 1000;
             end
@@ -110,6 +118,10 @@ always @ (posedge clk1Mhz) begin
         playlownote <= playlownote > 0 ? playlownote - 1 : 0;
         playhighnote <= playhighnote > 0 ? playhighnote - 1 : 0;
         playmediumnote <= playmediumnote > 0 ? playmediumnote - 1 : 0;
+    end else begin
+        reversed <= 0;
+        counter <= 0;
+        onescounter <= 0;
     end
 end
 
