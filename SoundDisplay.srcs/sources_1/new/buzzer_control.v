@@ -37,11 +37,7 @@ reg buttonpressed = 0;
 
 always @ (posedge CLK) begin
     if (metronome) begin
-        if (btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR) begin
-            buttonpressed <= 1;
-        end else begin
-            buttonpressed <= 0;
-        end
+        buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR;
     end
 end
 

@@ -28,6 +28,8 @@ module waveform(
     input btnC,
     input btnL,
     input btnR,
+    input repeated_btnL,
+    input repeated_btnR,
     output reg [(96 * 6) - 1:0] waveform,
     output [4:0] waveform_sampling
 );
@@ -47,14 +49,14 @@ reg pause = 0;
 reg button = 0;
 always @ (posedge CLK) begin
     if (selected == 0 && !sw[2]) begin
-        button <= btnL || btnR;
+        button <= btnL || btnR || repeated_btnL || repeated_btnR;
     end
 end
 
 always @ (posedge button) begin
-    if (btnL) begin
+    if (btnL || repeated_btnL) begin
         custom_clk_speed <= custom_clk_speed == 1000 ? 20000 : custom_clk_speed - 1000;
-    end else if (btnR) begin
+    end else if (btnR || repeated_btnR) begin
         custom_clk_speed <= custom_clk_speed == 20000 ? 1000 : custom_clk_speed + 1000;
     end
 end

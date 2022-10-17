@@ -90,7 +90,7 @@ module Top_Student (
     //raw waveform
     wire [4:0] waveform_sampling;
     wire [(96 * 6) - 1:0] waveform; 
-    waveform wvfm(CLK,selected,sw,mic_in,debounced_btnC,debounced_btnL,debounced_btnR,waveform,waveform_sampling);
+    waveform wvfm(CLK,selected,sw,mic_in,debounced_btnC,debounced_btnL,debounced_btnR,repeated_btnL,repeated_btnR,waveform,waveform_sampling);
     
     /*
     ******************************************************************************************************************************************************************
@@ -128,13 +128,6 @@ module Top_Student (
     clock_divider fivekhz (CLK, 32'd5000, clk5k);
     always @ (posedge CLK) begin
         custom_fft_clk <= sw[15] ? clk5k : clk20k;
-    end
-
-    reg spectropause = 0;
-    always @(posedge debounced_btnC) begin
-        if (selected == 2 && !sw[2]) begin
-            spectropause <= !spectropause;
-        end
     end
 
     always @(posedge custom_fft_clk) begin
@@ -185,9 +178,10 @@ module Top_Student (
             end
         end
     end
+    wire spectropause;
 
     fftmain fft_0(.i_clk(custom_fft_clk), .i_reset(reset), .i_ce(fft_ce), .i_sample({mic_in, sample_imag}), .o_result({output_real, output_imag}), .o_sync(sync));
-    spectrumcontrol spc_1(CLK, selected, btnL, btnR, sw, spectrobinsize);
+    spectrumcontrol spc_1(CLK, selected, debounced_btnC, debounced_btnL, debounced_btnR, repeated_btnL, repeated_btnR, sw, spectropause, spectrobinsize);
 
     /*
     ******************************************************************************************************************************************************************
