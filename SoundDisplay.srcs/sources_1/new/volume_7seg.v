@@ -5,6 +5,7 @@ module volume_7seg(
     output reg [3:0] an, // anode signals of the 7-segment LED display
     output reg [6:0] seg,// cathode patterns of the 7-segment LED display
     input [15:0] volume_16, // counting number to be displayed
+    input [4:0] waveform_sampling,
     input [4:0] spectrobinsize,
     input [1:0] selected
     );
@@ -20,7 +21,7 @@ module volume_7seg(
     begin 
         refresh_counter <= refresh_counter + 1;
         if (selected == 2'd0) begin
-            displayed_number <= 0;
+            displayed_number <= waveform_sampling;
         end
         else if (selected == 2'd1) begin
             displayed_number <= volume_16;

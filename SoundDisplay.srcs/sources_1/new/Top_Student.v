@@ -30,15 +30,20 @@ module Top_Student (
 
     //button capturing
     wire debounced_btnU;
-    switch_debouncer db1(CLK, btnU, debounced_btnU);
+    wire repeated_btnU;
+    switch_debouncer db1(CLK, btnU, debounced_btnU, repeated_btnU);
     wire debounced_btnC;
-    switch_debouncer db2(CLK, btnC, debounced_btnC);
+    wire repeated_btnC;
+    switch_debouncer db2(CLK, btnC, debounced_btnC, repeated_btnC);
     wire debounced_btnL;
-    switch_debouncer db3(CLK, btnL, debounced_btnL);
+    wire repeated_btnL;
+    switch_debouncer db3(CLK, btnL, debounced_btnL, repeated_btnL);
     wire debounced_btnR;
-    switch_debouncer db4(CLK, btnR, debounced_btnR);
+    wire repeated_btnR;
+    switch_debouncer db4(CLK, btnR, debounced_btnR, repeated_btnR);
     wire debounced_btnD;
-    switch_debouncer db5(CLK, btnD, debounced_btnD);
+    wire repeated_btnD;
+    switch_debouncer db5(CLK, btnD, debounced_btnD, repeated_btnD);
 
     //audio capturing
     wire clk20k;//, clk10;
@@ -80,11 +85,12 @@ module Top_Student (
     wire [3:0]volume16;
     volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0], selected);
     //7seg volume indicator
-    volume_7seg vl7seg(CLK, an, seg, volume16, spectrobinsize, selected);
+    volume_7seg vl7seg(CLK, an, seg, volume16, waveform_sampling, spectrobinsize, selected);
     // volume_7seg vl7seg(CLK, an, seg, bins[50 * 6+: 6], spectrobinsize, selected);
     //raw waveform
+    wire [4:0] waveform_sampling;
     wire [(96 * 6) - 1:0] waveform; 
-    waveform wvfm(CLK,selected,mic_in,waveform);
+    waveform wvfm(CLK,selected,sw,mic_in,debounced_btnC,debounced_btnL,debounced_btnR,waveform,waveform_sampling);
     
     /*
     ******************************************************************************************************************************************************************
@@ -124,6 +130,13 @@ module Top_Student (
         custom_fft_clk <= sw[15] ? clk5k : clk20k;
     end
 
+    reg spectropause = 0;
+    always @(posedge debounced_btnC) begin
+        if (selected == 2 && !sw[2]) begin
+            spectropause <= !spectropause;
+        end
+    end
+
     always @(posedge custom_fft_clk) begin
         if(fft_ce) begin
             abs <= (output_real * output_real) + (output_imag * output_imag);
@@ -145,7 +158,7 @@ module Top_Student (
             end   
             if (bin < maxbins) begin
                 // This is for finding highest of each bin of spectrogram, 0Hz is not included as it always skews results
-                if (!sw[15]) begin
+                if (!sw[15] && !spectropause) begin
                     if (bin != 0) begin
                         if (bin % spectrobinsize == 0) begin
                             if (j < 20) begin
