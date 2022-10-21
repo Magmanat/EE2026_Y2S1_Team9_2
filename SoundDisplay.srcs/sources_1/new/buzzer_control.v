@@ -9,7 +9,7 @@ module buzzer_control(
     output reg [1:0] NoteType = 0,
     output [2:0] met_pos,
     output reg reversed = 0,
-    output buzzerswitch
+    output reg buzzerswitch = 0
 );
 
 wire clk1Mhz;
@@ -38,36 +38,37 @@ reg buttonpressed = 0;
 always @ (posedge CLK) begin
     if (metronome) begin
         buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR;
+        if (playhighnote > 0) begin
+            buzzerswitch <= clkHIGHhz;
+        end else if (playmediumnote > 0) begin
+            buzzerswitch <= clkMEDhz;
+        end else if (playlownote > 0) begin
+            buzzerswitch <= clkLOWhz;
+        end else begin
+            buzzerswitch <= 0;
+        end
     end
 end
 
-wire playingnotenow;
-reg [10:0] playhighnote;
-reg [10:0] playmediumnote;
-reg [10:0] playlownote;
-assign playingnotenow = playhighnote || playmediumnote || playlownote;
+reg [31:0] playhighnote = 0;
+reg [31:0] playmediumnote = 0;
+reg [31:0] playlownote = 0;
 
-wire clk1000hz;
-clock_divider oneKhz(CLK, 32'd1000, clk1000hz);
-wire clk500hz;
-clock_divider fivehdHz(CLK, 32'd500, clk500hz);
-wire clk250hz;
-clock_divider twofiftyHz(CLK, 32'd250, clk250hz);
+wire clkHIGHhz;
+clock_divider highHZ(CLK, 32'd4000, clkHIGHhz);
+wire clkMEDhz;
+clock_divider medHZ(CLK, 32'd3000, clkMEDhz);
+wire clkLOWhz;
+clock_divider lowHZ(CLK, 32'd2000, clkLOWhz);
 
-assign buzzerswitch = playhighnote ? clk1000hz : (playmediumnote ? clk500hz : (playlownote ? clk250hz : 0));
-integer buzztime = 10000;
+wire [31:0] buzztime = 30000;
 reg firstbeat = 1;
 
 always @ (posedge clk1Mhz) begin
     if (start && metronome) begin
-        if (counter >= onebarcount) begin
-            counter <= 0;
-            onescounter <= 0;
-            firstbeat <= 1;
-        end else begin
-            counter <= counter + 1;
-            firstbeat <= 0;
-        end
+        playlownote <= playlownote > 0 ? playlownote - 1 : playlownote;
+        playhighnote <= playhighnote > 0 ? playhighnote - 1 : playhighnote;
+        playmediumnote <= playmediumnote > 0 ? playmediumnote - 1 : playmediumnote;
         if (NoteType == 0) begin
             if (counter % ones == 0) begin
                 if (onescounter == 0) begin
@@ -123,14 +124,23 @@ always @ (posedge clk1Mhz) begin
                 playlownote <= buzztime;
             end
         end
-        playlownote <= playlownote > 0 ? playlownote - 1 : 0;
-        playhighnote <= playhighnote > 0 ? playhighnote - 1 : 0;
-        playmediumnote <= playmediumnote > 0 ? playmediumnote - 1 : 0;
+        if (counter >= onebarcount) begin
+            counter <= 0;
+            onescounter <= 0;
+            firstbeat <= 1;
+        end else begin
+            counter <= counter + 1;
+            firstbeat <= 0;
+        end
+
     end else begin
         reversed <= 0;
         counter <= 0;
         onescounter <= 0;
         firstbeat <= 1;
+        playhighnote <= 0;
+        playmediumnote <= 0;
+        playlownote <= 0;
     end
 end
 
