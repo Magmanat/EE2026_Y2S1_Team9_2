@@ -4,10 +4,12 @@ module volume_7seg(
     input CLK, 
     output reg [3:0] an, // anode signals of the 7-segment LED display
     output reg [6:0] seg,// cathode patterns of the 7-segment LED display
-    input [15:0] volume, // avi task
+    input [15:0] volume, // counting number to be displayed
+    input [7:0] BPM,
     input [4:0] waveform_sampling,
     input [4:0] spectrobinsize,
-    input [1:0] selected
+    input [1:0] selected,
+    input metronome
     );
     
     reg [3:0] LED_BCD;
@@ -20,7 +22,10 @@ module volume_7seg(
     always @(posedge CLK)
     begin 
         refresh_counter <= refresh_counter + 1;
-        if (selected == 2'd0) begin
+        if (metronome) begin
+            displayed_number = BPM;
+        end
+        else if (selected == 2'd0) begin
             displayed_number <= waveform_sampling;
         end
         else if (selected == 2'd1) begin

@@ -68,7 +68,7 @@ module Top_Student (
     wire [1:0] cursor;
     wire [1:0] selected;
     wire [1:0] slide;
-    main_menu mm(CLK,sw[2], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
+    main_menu mm(CLK,sw[2] && !sw[15] && !sw[14], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
 //    assign led[13:12] = cursor;
 //    assign led[11:10] = selected;  
 
@@ -85,8 +85,8 @@ module Top_Student (
     wire [3:0]volume16;
     volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0], selected);
     //7seg volume indicator
-    // volume_7seg vl7seg(CLK, an, seg, volume0_5, waveform_sampling, spectrobinsize, selected);
-    volume_7seg vl7seg(CLK, an, seg, stable_note_count, waveform_sampling, spectrobinsize, selected);
+    volume_7seg vl7seg(CLK, an, seg, volume0_5, BPM, waveform_sampling, spectrobinsize, selected, metronome);
+    // volume_7seg vl7seg(CLK, an, seg, bins[50 * 6+: 6], spectrobinsize, selected);
     //raw waveform
     wire [4:0] waveform_sampling;
     wire [(96 * 6) - 1:0] waveform; 
@@ -194,10 +194,27 @@ module Top_Student (
     ******************************************************************************************************************************************************************
     */
 
+    //Buzzer control module
+    wire [1:0] met_y;
+    wire [7:0] BPM;
+    wire [3:0] BeatsPerMeasure;
+    wire [1:0] NoteType;
+    wire [2:0] met_pos;
+    wire reversed;
+    wire buzzerswitch;
+    wire metronome;
+    assign metronome = sw[14] && !sw[15];
+
+    buzzer_control buzz01(CLK, metronome, debounced_btnD, debounced_btnC, debounced_btnL
+    , debounced_btnR, debounced_btnU, repeated_btnL, repeated_btnR, met_y, BPM, BeatsPerMeasure, NoteType
+    , met_pos, reversed, buzzerswitch);
+
 
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected, slide, waveform, spectrogram, previous_highest_note_index, lock, sequence, my_oled_data);
+    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected
+    , metronome, slide, waveform, spectrogram, previous_highest_note_index, 
+    met_y, BeatsPerMeasure, NoteType, met_pos, reversed, lock, sequence, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule
