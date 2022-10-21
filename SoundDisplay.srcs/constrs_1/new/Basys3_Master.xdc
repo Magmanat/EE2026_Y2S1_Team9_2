@@ -123,8 +123,8 @@ set_property PACKAGE_PIN U17 [get_ports btnD]
 
 ##Pmod Header JA
 ##Sch name = JA1
-#set_property PACKAGE_PIN J1 [get_ports {JA[0]}]					
-	#set_property IOSTANDARD LVCMOS33 [get_ports {JA[0]}]
+set_property PACKAGE_PIN J1 [get_ports {JA0}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {JA0}]
 ##Sch name = JA2
 #set_property PACKAGE_PIN L2 [get_ports {JA[1]}]					
 	#set_property IOSTANDARD LVCMOS33 [get_ports {JA[1]}]

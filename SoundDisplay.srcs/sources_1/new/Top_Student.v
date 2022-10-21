@@ -25,7 +25,8 @@ module Top_Student (
     output [7:0] JC,
     output [15:0] led, // mic_in
     output [3:0] an,
-    output [6:0] seg
+    output [6:0] seg,
+    output JA0
     );
 
     //button capturing
@@ -86,7 +87,8 @@ module Top_Student (
     volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0], selected);
     //7seg volume indicator
     volume_7seg vl7seg(CLK, an, seg, volume0_5, BPM, waveform_sampling, spectrobinsize, selected, metronome);
-    // volume_7seg vl7seg(CLK, an, seg, bins[50 * 6+: 6], spectrobinsize, selected);
+    
+    // volume_7seg vl7seg(CLK, an, seg, volume0_5, playhighnote, waveform_sampling, spectrobinsize, selected, metronome);
     //raw waveform
     wire [4:0] waveform_sampling;
     wire [(96 * 6) - 1:0] waveform; 
@@ -203,8 +205,9 @@ module Top_Student (
     wire reversed;
     wire buzzerswitch;
     wire metronome;
-    assign metronome = sw[14] && !sw[15];
+    assign metronome = sw[14] && !sw[15] && !lock;
 
+    assign JA0 = buzzerswitch;
     buzzer_control buzz01(CLK, metronome, debounced_btnD, debounced_btnC, debounced_btnL
     , debounced_btnR, debounced_btnU, repeated_btnL, repeated_btnR, met_y, BPM, BeatsPerMeasure, NoteType
     , met_pos, reversed, buzzerswitch);
