@@ -4,7 +4,7 @@ module volume_7seg(
     input CLK, 
     output reg [3:0] an, // anode signals of the 7-segment LED display
     output reg [6:0] seg,// cathode patterns of the 7-segment LED display
-    input [15:0] volume_16, // counting number to be displayed
+    input [15:0] volume, // avi task
     input [4:0] waveform_sampling,
     input [4:0] spectrobinsize,
     input [1:0] selected
@@ -24,7 +24,7 @@ module volume_7seg(
             displayed_number <= waveform_sampling;
         end
         else if (selected == 2'd1) begin
-            displayed_number <= volume_16;
+            displayed_number <= volume;
         end
         else if (selected == 2'd2) begin
             displayed_number <= ((spectrobinsize * 1953) / 100) * 20;
