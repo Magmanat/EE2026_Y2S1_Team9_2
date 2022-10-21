@@ -85,13 +85,17 @@ module Top_Student (
     wire [3:0]volume16;
     volume_level vl(clk20k, mic_in, volume0_5, volume16, led[4:0], selected);
     //7seg volume indicator
-    volume_7seg vl7seg(CLK, an, seg, volume16, BPM, waveform_sampling, spectrobinsize, selected, metronome);
+    volume_7seg vl7seg(CLK, an, seg, volume0_5, BPM, waveform_sampling, spectrobinsize, selected, metronome);
     // volume_7seg vl7seg(CLK, an, seg, bins[50 * 6+: 6], spectrobinsize, selected);
     //raw waveform
     wire [4:0] waveform_sampling;
     wire [(96 * 6) - 1:0] waveform; 
     waveform wvfm(CLK,selected,sw,mic_in,debounced_btnC,debounced_btnL,debounced_btnR,repeated_btnL,repeated_btnR,waveform,waveform_sampling);
     
+    //lock_screen
+    wire lock;
+    wire [2:0] sequence;
+    lock_screen ls(CLK, debounced_btnC, previous_highest_note_index,stable_note_held, lock, sequence);
     /*
     ******************************************************************************************************************************************************************
     ******************************************************************************************************************************************************************
@@ -121,13 +125,14 @@ module Top_Student (
     reg [9:0] current_highest_note_index = 0;
     reg [15:0] stable_note_count = 0;
     wire stable_note_held;
-    assign stable_note_held = stable_note_count >= 10000;
+    wire [5:0] holdcount = (sw[15] || lock) ? (5000/1024 * 2) : (20000/1024 * 2);
+    assign stable_note_held = stable_note_count >= holdcount;
 
     wire clk5k;
     reg custom_fft_clk;
     clock_divider fivekhz (CLK, 32'd5000, clk5k);
     always @ (posedge CLK) begin
-        custom_fft_clk <= sw[15] ? clk5k : clk20k;
+        custom_fft_clk <= (sw[15] || lock) ? clk5k : clk20k;
     end
 
     always @(posedge custom_fft_clk) begin
@@ -139,7 +144,7 @@ module Top_Student (
                 current_highest_spectrogram <= 0;
 
                 if (current_highest_note_index == previous_highest_note_index) begin
-                    stable_note_count <= stable_note_count < 10000 ? stable_note_count + 1 : stable_note_count;
+                    stable_note_count <= stable_note_count <= holdcount ? stable_note_count + 1 : stable_note_count;
                 end else begin
                     stable_note_count <= 0;
                     previous_highest_note_index <= current_highest_note_index;
@@ -151,7 +156,7 @@ module Top_Student (
             end   
             if (bin < maxbins) begin
                 // This is for finding highest of each bin of spectrogram, 0Hz is not included as it always skews results
-                if (!sw[15] && !spectropause) begin
+                if (!sw[15] && !lock && !spectropause) begin
                     if (bin != 0) begin
                         if (bin % spectrobinsize == 0) begin
                             if (j < 20) begin
@@ -209,7 +214,7 @@ module Top_Student (
     wire [15:0] my_oled_data;
     draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected
     , metronome, slide, waveform, spectrogram, previous_highest_note_index, 
-    met_y, BeatsPerMeasure, NoteType, met_pos, reversed, my_oled_data);
+    met_y, BeatsPerMeasure, NoteType, met_pos, reversed, lock, sequence, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule
