@@ -7,10 +7,10 @@ double check if the new image created is satisfactory
 
 brainstorming ideas yet to be done
 
-1. Password lockscreen using sound of consecutive notes (bonus if wrong note held resets progress) (timeout after a certain time?)
+1. Password lockscreen using sound of consecutive notes ✔️ (bonus if wrong note held resets progress) (timeout after a certain time?) 
 2. Menu got option to change password ? 
 3. can choose notes and then can play a song ?
 4. play a preloaded song?
-5. metronome with screen gui change bpm, time signature
-6. tuner add 7seg for flat/sharp?
+5. metronome with screen gui change bpm, time signature ✔️
+6. tuner add 7seg for flat/sharp? 
 7. record a sound and play back on the buzzer?
