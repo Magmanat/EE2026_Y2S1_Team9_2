@@ -23,18 +23,17 @@
 module main_menu(
     input CLK,
     input enable,
+    input sw10,
     input btnL,
     input btnC,
     input btnR,
-    output reg [1:0] cursor = 2'd1,
-    output reg [1:0] selected = 2'd1,
+    output reg [1:0] cursor = 2'd0,
+    output reg [1:0] selected = 2'd0,
     output reg [1:0] slide = 2'd0
 );
 
 reg button;
 reg [31:0] menucount = 32'd0;
-
-
 always @ (posedge CLK) begin
     button <= (btnL || btnC || btnR) ? 1 : 0;
     menucount <= (menucount >= 32'd100000000) ? 32'd0 : menucount + 1;
@@ -42,17 +41,17 @@ always @ (posedge CLK) begin
 end
 
 always @ (posedge button) begin
-    if (enable == 1'b1) begin
+    if (enable == 1'b1 && !sw10) begin
         if (btnL == 1'b1) begin
             if (cursor == 2'd0) begin
-                cursor <= 2'd2;
+                cursor <= 2'd3;
             end
             else begin
                 cursor <= cursor - 1'b1;
             end
         end
         else if (btnR == 1'b1) begin
-            if (cursor == 2'd2) begin
+            if (cursor == 2'd3) begin
                 cursor <= 2'd0;
             end
             else begin

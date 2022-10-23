@@ -69,7 +69,7 @@ module Top_Student (
     wire [1:0] cursor;
     wire [1:0] selected;
     wire [1:0] slide;
-    main_menu mm(CLK,sw[2] && !sw[15] && !sw[14], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
+    main_menu mm(CLK,sw[2] && !sw[15] && !sw[14], sw[10], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
 //    assign led[13:12] = cursor;
 //    assign led[11:10] = selected;  
 
@@ -93,11 +93,20 @@ module Top_Student (
     wire [4:0] waveform_sampling;
     wire [(96 * 6) - 1:0] waveform; 
     waveform wvfm(CLK,selected,sw,mic_in,debounced_btnC,debounced_btnL,debounced_btnR,repeated_btnL,repeated_btnR,waveform,waveform_sampling);
-    
-    //lock_screen
+
+    //lock_screen and password reset
     wire lock;
+    wire resetpw;
     wire [2:0] sequence;
-    lock_screen ls(CLK, debounced_btnC, previous_highest_note_index,stable_note_held, lock, sequence);
+    wire [7:0] pw1;
+    wire [7:0] pw2;
+    wire [7:0] pw3;
+    wire [7:0] pw4;
+    wire [7:0] pw5;
+    wire [3:0] pwcursor;
+    wire [3:0] pwcounter;
+    lock_screen ls(CLK, debounced_btnC, previous_highest_note_index, stable_note_held, pw1, pw2, pw3, pw4, pw5, resetpw, lock, sequence);
+    password pw(CLK, sw[2], sw[10], debounced_btnL, debounced_btnC, debounced_btnR, led[9:5], resetpw, pwcursor, pwcounter, pw1, pw2, pw3, pw4, pw5);
     /*
     ******************************************************************************************************************************************************************
     ******************************************************************************************************************************************************************
@@ -215,7 +224,7 @@ module Top_Student (
 
     //drawer module
     wire [15:0] my_oled_data;
-    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, selected
+    draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, pwcursor, selected
     , metronome, slide, waveform, spectrogram, previous_highest_note_index, 
     met_y, BeatsPerMeasure, NoteType, met_pos, reversed, lock, sequence, my_oled_data);
     assign oled_data = my_oled_data; 

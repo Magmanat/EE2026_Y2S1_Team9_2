@@ -38,14 +38,14 @@ always @ (posedge CLK, posedge btnU) begin
     if (sw != 16'b1) begin
         counter <= 0;
     end
-    if (btnU == 1'b1 && sw == 16'b1 && selected == 1 && led == 0) begin
+    if (btnU == 1'b1 && sw == 16'b1 && selected == 0 && led == 0) begin
         counter <= 32'd300000000;
     end
 
     else begin
     // set led and minus counter
         led <= 0;
-        if (counter > 32'd0 && sw == 16'b0000000000000001 && selected == 1) begin
+        if (counter > 32'd0 && sw == 16'b0000000000000001 && selected == 0) begin
             counter <= counter - 1'b1;
             led <= 1;
         end
@@ -54,7 +54,7 @@ end
 
 
 always @ (posedge btnU) begin
-    if (selected == 1 && sw == 16'b0000000000000001 && led == 0) begin
+    if (selected == 0 && sw == 16'b0000000000000001 && led == 0) begin
         if (bordercount == 3'd4) begin
             bordercount <= 3'd0;
             // set all to 0
