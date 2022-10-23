@@ -40,7 +40,6 @@ module lock_screen(
         //after resetpw, lock and reset seq
         if(resetpw) begin
             lock <= 1;
-            seq <= 0;
         end
         if(lock == 1) begin
             restart <= (restart >= 32'd100000000) ? 32'd0 : restart + 1;
