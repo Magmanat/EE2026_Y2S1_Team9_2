@@ -69,7 +69,9 @@ module Top_Student (
     wire [1:0] cursor;
     wire [1:0] selected;
     wire [1:0] slide;
-    main_menu mm(CLK,sw[2] && !sw[15] && !sw[14], sw[10], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
+    wire mainmenuon;
+    assign mainmenuon = sw[2] && !sw[15] && !sw[14] && !lock;
+    main_menu mm(CLK, mainmenuon, sw[10], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
 //    assign led[13:12] = cursor;
 //    assign led[11:10] = selected;  
 
@@ -106,7 +108,7 @@ module Top_Student (
     wire [3:0] pwcursor;
     wire [3:0] pwcounter;
     lock_screen ls(CLK, debounced_btnC, previous_highest_note_index, stable_note_held, pw1, pw2, pw3, pw4, pw5, resetpw, lock, sequence);
-    password pw(CLK, sw[2], sw[10], debounced_btnL, debounced_btnC, debounced_btnR, led[9:5], resetpw, pwcursor, pwcounter, pw1, pw2, pw3, pw4, pw5);
+    password pw(CLK, sw[2], sw[10], lock, debounced_btnL, debounced_btnC, debounced_btnR, led[9:5], resetpw, pwcursor, pwcounter, pw1, pw2, pw3, pw4, pw5);
     /*
     ******************************************************************************************************************************************************************
     ******************************************************************************************************************************************************************

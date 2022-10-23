@@ -24,6 +24,7 @@ module password(
     input CLK,
     input menusw,
     input resetsw,
+    input lock,
     input btnL,
     input btnC,
     input btnR,
@@ -58,76 +59,84 @@ module password(
     assign led [9:5] = myled [4:0];
 
     always @ (posedge CLK) begin
-        button <= (btnL || btnC || btnR) ? 1 : 0;
+        button <= (btnL || btnC || btnR || !resetsw) ? 1 : 0;
         // if(resetpw) begin
         //     resetpw <= 0;
         // end
     end
     always @ (posedge button) begin
-        if (menusw) begin
-            if(resetsw) begin
-                if (btnL == 1'b1) begin
-                    if (cursor == 4'd0) begin
-                        cursor <= 4'd4;
+        if (!lock) begin
+            if (menusw) begin
+                if(resetsw) begin
+                    if (btnL == 1'b1) begin
+                        if (cursor == 4'd0) begin
+                            cursor <= 4'd4;
+                        end
+                        else begin
+                            cursor <= cursor - 1'b1;
+                        end
                     end
-                    else begin
-                        cursor <= cursor - 1'b1;
+                    else if (btnR == 1'b1) begin
+                        if (cursor == 4'd4) begin
+                            cursor <= 4'd0;
+                        end
+                        else begin
+                            cursor <= cursor + 1'b1;
+                        end
+                    end
+                    else if(btnC == 1'b1) begin
+                        if(counter == 4'd0) begin
+                            temp1 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
+                            counter <= counter + 4'd1;
+                            myled <= 5'b00001;
+                            resetpw <= 0;
+                        end
+                        else if(counter == 4'd1) begin
+                            temp2 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
+                            counter <= counter + 4'd1;
+                            myled <= 5'b00011;
+                        end
+                        else if(counter == 4'd2) begin
+                            temp3 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
+                            counter <= counter + 4'd1;
+                            myled <= 5'b00111;
+                        end
+                        else if(counter == 4'd3) begin
+                            temp4 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
+                            counter <= counter + 4'd1;
+                            myled <= 5'b01111;
+                        end
+                        else if(counter == 4'd4) begin
+                            temp5 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
+                            counter <= counter + 4'd1;
+                            myled <= 5'b11111;
+                        end
+                        else if(counter == 4'd5) begin
+                            pw1 <= temp1;
+                            pw2 <= temp2;
+                            pw3 <= temp3;
+                            pw4 <= temp4;
+                            pw5 <= temp5;
+                            myled <= 5'b00000;
+                            counter <= 4'd0;
+                            resetpw <= 1;
+                        end
+                        // else if(counter == 4'd6) begin
+                        //     counter <= 4'd0;
+                        //     myled <= 5'b00000;
+                        //     resetpw <= 1;
+                        // end
                     end
                 end
-                else if (btnR == 1'b1) begin
-                    if (cursor == 4'd4) begin
-                        cursor <= 4'd0;
-                    end
-                    else begin
-                        cursor <= cursor + 1'b1;
-                    end
+                else if(!resetsw) begin
+                    resetpw <= 0;
+                    counter <= 4'd0;
+                    myled <= 5'b00000;
                 end
-                else if(btnC == 1'b1) begin
-                    if(counter == 4'd0) begin
-                        temp1 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
-                        counter <= counter + 4'd1;
-                        myled <= 5'b00001;
-                        resetpw <= 0;
-                    end
-                    else if(counter == 4'd1) begin
-                        temp2 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
-                        counter <= counter + 4'd1;
-                        myled <= 5'b00011;
-                    end
-                    else if(counter == 4'd2) begin
-                        temp3 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
-                        counter <= counter + 4'd1;
-                        myled <= 5'b00111;
-                    end
-                    else if(counter == 4'd3) begin
-                        temp4 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
-                        counter <= counter + 4'd1;
-                        myled <= 5'b01111;
-                    end
-                    else if(counter == 4'd4) begin
-                        temp5 <= (cursor == 0) ? C : ((cursor == 1) ? D : ((cursor == 2) ? E : ((cursor == 3) ? F : A)));
-                        counter <= counter + 4'd1;
-                        myled <= 5'b11111;
-                    end
-                    else if(counter == 4'd5) begin
-                        pw1 <= temp1;
-                        pw2 <= temp2;
-                        pw3 <= temp3;
-                        pw4 <= temp4;
-                        pw5 <= temp5;
-                        myled <= 5'b00000;
-                        counter <= 4'd0;
-                        resetpw <= 1;
-                    end
-                    // else if(counter == 4'd6) begin
-                    //     counter <= 4'd0;
-                    //     myled <= 5'b00000;
-                    //     resetpw <= 1;
-                    // end
-                end
-            end
-            else if(!resetsw && counter == 0) begin
+            end if (!resetsw) begin
                 resetpw <= 0;
+                counter <= 0;
+                myled <= 5'b00000;
             end
         end
     end
