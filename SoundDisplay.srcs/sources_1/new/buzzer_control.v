@@ -36,9 +36,8 @@ reg start = 0;
 reg buttonpressed = 0;
 
 always @ (posedge CLK) begin
-    if (metronome) begin
-        buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR;
-        if (playhighnote > 0) begin
+    buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR || !metronome;
+    if (playhighnote > 0) begin
             buzzerswitch <= clkHIGHhz;
         end else if (playmediumnote > 0) begin
             buzzerswitch <= clkMEDhz;
@@ -47,7 +46,6 @@ always @ (posedge CLK) begin
         end else begin
             buzzerswitch <= 0;
         end
-    end
 end
 
 reg [31:0] playhighnote = 0;
@@ -169,6 +167,8 @@ always @ (posedge buttonpressed) begin
         end else if (btnC) begin
             start <= ~start;
         end
+    end else if (!metronome) begin
+        start <= 0;
     end
 end
 

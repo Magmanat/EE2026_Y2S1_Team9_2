@@ -42,12 +42,14 @@ module lock_screen(
             lock <= 1;
         end
         if(lock == 1) begin
-            restart <= (restart >= 32'd100000000) ? 32'd0 : restart + 1;
-            count <= (restart == 0) ? count + 1 : count;
-            //wrong/timeout restart
-            if(count == 5'd20) begin
-                seq <= 6;
-                count <= 0;
+            if (seq >= 1) begin
+                restart <= (restart >= 32'd100000000) ? 32'd0 : restart + 1;
+                count <= (restart == 0) ? count + 1 : count;
+                //wrong/timeout restart
+                if(count == 5'd20) begin
+                    seq <= 6;
+                    count <= 0;
+                end
             end
             //default c5,d5,e5,f5,a5
             case(seq)
