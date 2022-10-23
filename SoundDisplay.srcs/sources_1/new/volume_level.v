@@ -34,7 +34,7 @@ input [1:0] selected
     reg [11:0] max = 0;
     //integer count = 0;
     always @ (posedge clk20k) begin
-        if (selected == 2'd1)begin
+        if (selected == 2'd0)begin
             count2000 <= (count2000 == 1999) ? 0 : count2000 + 1;
             max <= count2000 == 0 ? mic_in : (mic_in > max ? mic_in : max);
             if (count2000 == 0) begin

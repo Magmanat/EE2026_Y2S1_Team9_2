@@ -48,7 +48,7 @@ reg pause = 0;
 
 reg button = 0;
 always @ (posedge CLK) begin
-    if (selected == 0 && !sw[2]) begin
+    if (selected == 1 && !sw[2]) begin
         button <= btnL || btnR || repeated_btnL || repeated_btnR;
     end
 end
@@ -62,13 +62,13 @@ always @ (posedge button) begin
 end
 
 always @ (posedge btnC) begin
-    if (selected == 0 && !sw[2]) begin
+    if (selected == 1 && !sw[2]) begin
         pause <= ~pause;
     end
 end
 
 always @ (posedge custom_clk) begin
-    if (selected == 0) begin
+    if (selected == 1) begin
         num = mic_in[10:0] / 11'd64;
         if (counter == 95) begin
             counter <= 0;

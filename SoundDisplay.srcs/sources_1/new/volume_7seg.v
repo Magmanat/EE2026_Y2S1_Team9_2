@@ -25,10 +25,10 @@ module volume_7seg(
         if (metronome) begin
             displayed_number = BPM;
         end
-        else if (selected == 2'd0) begin
+        else if (selected == 2'd1) begin
             displayed_number <= waveform_sampling;
         end
-        else if (selected == 2'd1) begin
+        else if (selected == 2'd0) begin
             displayed_number <= volume;
         end
         else if (selected == 2'd2) begin
