@@ -32,7 +32,8 @@ module lock_screen(
     input [7:0] pw5,
     input resetpw,
     output reg lock = 1'b1,
-    output reg [2:0] seq = 3'd0
+    output reg [2:0] seq = 3'd0,
+    output reg reset_stablenoteheld = 0
     );
     reg [31:0] restart = 32'b0;
     reg [4:0] count = 5'd0;
@@ -52,24 +53,33 @@ module lock_screen(
                 end
             end
             //default c5,d5,e5,f5,a5
+            reset_stablenoteheld <= 0;
+            if (note >= 52 && stable_note_held && seq < 5 && (note != pw1 && note != pw2 && note != pw3 && note != pw4 && note != pw5)) begin
+                seq <= 0;
+                count <= 0;
+            end
             case(seq)
-            3'd0: if(note == pw1 && stable_note_held) begin
+            3'd0: if(note == pw1 && stable_note_held && !reset_stablenoteheld) begin
                 seq <= seq + 1;
                 count <= 0;
+                reset_stablenoteheld <= 1;
             end
-            3'd1: if(note == pw2 && stable_note_held) begin
+            3'd1: if(note == pw2 && stable_note_held && !reset_stablenoteheld) begin
                 seq <= seq + 1;
                 count <= 0;
+                reset_stablenoteheld <= 1;
             end
-            3'd2: if(note == pw3 && stable_note_held) begin
+            3'd2: if(note == pw3 && stable_note_held && !reset_stablenoteheld) begin
                 seq <= seq + 1;
                 count <= 0;
+                reset_stablenoteheld <= 1;
             end
-            3'd3: if(note == pw4 && stable_note_held) begin
+            3'd3: if(note == pw4 && stable_note_held && !reset_stablenoteheld) begin
                 seq <= seq + 1;
                 count <= 0;
+                reset_stablenoteheld <= 1;
             end
-            3'd4: if(note == pw5 && stable_note_held) begin
+            3'd4: if(note == pw5 && stable_note_held && !reset_stablenoteheld) begin
                 seq <= seq + 1;
                 count <= 0;
             end
@@ -78,7 +88,7 @@ module lock_screen(
                 seq <= 0;
                 count <= 0;
             end
-            3'd6:if(count >= 5'd5) begin
+            3'd6: if(count >= 5'd5) begin
                 seq <= 0;
                 count <= 0;
             end

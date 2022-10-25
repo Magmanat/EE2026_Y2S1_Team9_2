@@ -50,7 +50,13 @@ module Top_Student (
     wire clk20k;//, clk10;
     wire [11:0] mic_in;
     clock_divider twentykhz (CLK, 32'd20000, clk20k);
-    Audio_Capture A(CLK, clk20k, JB2, JB0, JB3, mic_in);
+    wire clk40k;
+    clock_divider fourtykhz (CLK, 32'd40000, clk40k);
+    reg clk20kFORAUDIO = 0;
+    always @ (posedge clk40k) begin
+        clk20kFORAUDIO <= ~clk20kFORAUDIO;
+    end
+    Audio_Capture A(CLK, clk20kFORAUDIO, JB2, JB0, JB3, mic_in);
 
     //declare all the variables for the OLED display
     wire clk6p25m, wire_frame_begin, wire_sending_pixels, wire_sample_pixel;
@@ -107,7 +113,8 @@ module Top_Student (
     wire [7:0] pw5;
     wire [3:0] pwcursor;
     wire [3:0] pwcounter;
-    lock_screen ls(CLK, debounced_btnC, previous_highest_note_index, stable_note_held, pw1, pw2, pw3, pw4, pw5, resetpw, lock, sequence);
+    wire reset_stablenoteheld;
+    lock_screen ls(CLK, debounced_btnC, previous_highest_note_index, stable_note_held, pw1, pw2, pw3, pw4, pw5, resetpw, lock, sequence, reset_stablenoteheld);
     password pw(CLK, sw[2], sw[10], lock, debounced_btnL, debounced_btnC, debounced_btnR, led[9:5], resetpw, pwcursor, pwcounter, pw1, pw2, pw3, pw4, pw5);
     /*
     ******************************************************************************************************************************************************************
@@ -148,48 +155,53 @@ module Top_Student (
         custom_fft_clk <= (sw[15] || lock) ? clk5k : clk20k;
     end
 
-    always @(posedge custom_fft_clk) begin
-        if(fft_ce) begin
-            abs <= (output_real * output_real) + (output_imag * output_imag);
-            if(sync) begin
-                bin <= 0;
-                j <= 0;
-                current_highest_spectrogram <= 0;
+    always @(posedge CLK) begin
+        if (reset_stablenoteheld) begin
+            stable_note_count = 0;
+        end
+        if (custom_fft_clk) begin
+            if(fft_ce) begin
+                abs <= (output_real * output_real) + (output_imag * output_imag);
+                if(sync) begin
+                    bin <= 0;
+                    j <= 0;
+                    current_highest_spectrogram <= 0;
 
-                if (current_highest_note_index == previous_highest_note_index) begin
-                    stable_note_count <= stable_note_count <= holdcount ? stable_note_count + 1 : stable_note_count;
-                end else begin
-                    stable_note_count <= 0;
-                    previous_highest_note_index <= current_highest_note_index;
-                end
-                current_highest_note_index <= 0;
-                current_highest_note <= 0;
-            end else begin
-                bin <= bin + 1;
-            end   
-            if (bin < maxbins) begin
-                // This is for finding highest of each bin of spectrogram, 0Hz is not included as it always skews results
-                if (!sw[15] && !lock && !spectropause) begin
-                    if (bin != 0) begin
-                        if (bin % spectrobinsize == 0) begin
-                            if (j < 20) begin
-                                spectrogram[j*6 +: 6] <= 63 - current_highest_spectrogram;
-                                current_highest_spectrogram = 0;
-                                j <= j + 1;
-                            end
-                        end     
-                        if (current_highest_spectrogram < ((abs >> 4) < 63 ? (abs >> 4) : 63)) begin
-                            current_highest_spectrogram <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
-                        end   
+                    if (current_highest_note_index == previous_highest_note_index) begin
+                        stable_note_count <= stable_note_count <= holdcount ? stable_note_count + 1 : stable_note_count;
+                    end else begin
+                        stable_note_count <= 0;
+                        previous_highest_note_index <= current_highest_note_index;
                     end
-                end
-                else begin
-                    if (bin != 0) begin
-                        // bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4): 63; // scale & limit to 63 (not necessary to store whole thing)
-                        // This is for finding current note being played and how to reset it
-                        if (current_highest_note < ((abs >> 4) < 63 ? (abs >> 4) : 63) && ((abs >> 4) < 63 ? (abs >> 4) : 63) > 15) begin
-                            current_highest_note_index <= bin;
-                            current_highest_note <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                    current_highest_note_index <= 0;
+                    current_highest_note <= 0;
+                end else begin
+                    bin <= bin + 1;
+                end   
+                if (bin < maxbins) begin
+                    // This is for finding highest of each bin of spectrogram, 0Hz is not included as it always skews results
+                    if (!sw[15] && !lock && !spectropause) begin
+                        if (bin != 0) begin
+                            if (bin % spectrobinsize == 0) begin
+                                if (j < 20) begin
+                                    spectrogram[j*6 +: 6] <= 63 - current_highest_spectrogram;
+                                    current_highest_spectrogram = 0;
+                                    j <= j + 1;
+                                end
+                            end     
+                            if (current_highest_spectrogram < ((abs >> 4) < 63 ? (abs >> 4) : 63)) begin
+                                current_highest_spectrogram <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                            end   
+                        end
+                    end
+                    else begin
+                        if (bin != 0) begin
+                            // bins[bin * 6+: 6] <= (abs >> 4) < 63 ? (abs >> 4): 63; // scale & limit to 63 (not necessary to store whole thing)
+                            // This is for finding current note being played and how to reset it
+                            if (current_highest_note < ((abs >> 4) < 63 ? (abs >> 4) : 63) && ((abs >> 4) < 63 ? (abs >> 4) : 63) > 15) begin
+                                current_highest_note_index <= bin;
+                                current_highest_note <= ((abs >> 4) < 63 ? (abs >> 4) : 63);
+                            end
                         end
                     end
                 end
