@@ -35,29 +35,47 @@ reg start = 0;
 
 reg buttonpressed = 0;
 
+reg [31:0] playhighnote = 0;
+reg [31:0] playmediumnote = 0;
+reg [31:0] playlownote = 0;
+
+reg highnote = 0;
+reg mednote = 0;
+reg lownote = 0;
+
+
+always @ (posedge CLK) begin
+    if (clkHIGHhz) begin
+        highnote <= ~highnote;
+    end 
+    if (clkMEDhz) begin
+        mednote <= ~mednote;
+    end
+    if (clkLOWhz) begin
+        lownote <= ~lownote;
+    end
+end
+
+
 always @ (posedge CLK) begin
     buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR || !metronome;
     if (playhighnote > 0) begin
-            buzzerswitch <= clkHIGHhz;
+            buzzerswitch <= highnote;
         end else if (playmediumnote > 0) begin
-            buzzerswitch <= clkMEDhz;
+            buzzerswitch <= mednote;
         end else if (playlownote > 0) begin
-            buzzerswitch <= clkLOWhz;
+            buzzerswitch <= lownote;
         end else begin
             buzzerswitch <= 0;
         end
 end
 
-reg [31:0] playhighnote = 0;
-reg [31:0] playmediumnote = 0;
-reg [31:0] playlownote = 0;
-
 wire clkHIGHhz;
-clock_divider highHZ(CLK, 32'd4000, clkHIGHhz);
+clock_divider highHZ(CLK, 32'd8000, clkHIGHhz);
 wire clkMEDhz;
-clock_divider medHZ(CLK, 32'd3000, clkMEDhz);
+clock_divider medHZ(CLK, 32'd6000, clkMEDhz);
 wire clkLOWhz;
-clock_divider lowHZ(CLK, 32'd2000, clkLOWhz);
+clock_divider lowHZ(CLK, 32'd4000, clkLOWhz);
 
 wire [31:0] buzztime = 30000;
 reg firstbeat = 1;

@@ -50,12 +50,16 @@ module Top_Student (
     wire clk20k;//, clk10;
     wire [11:0] mic_in;
     clock_divider twentykhz (CLK, 32'd20000, clk20k);
-    wire clk40k;
-    clock_divider fourtykhz (CLK, 32'd40000, clk40k);
+
+    // CLOCK FOR AUDIO
     reg clk20kFORAUDIO = 0;
-    always @ (posedge clk40k) begin
-        clk20kFORAUDIO <= ~clk20kFORAUDIO;
+    reg [31:0] clk20kaudiodiv = (100000000 / (20000 * 2)) - 1;
+    reg [31:0] clk20kaudioCOUNT = 0;
+    always @ (posedge CLK) begin
+        clk20kaudioCOUNT <= ((clk20kaudioCOUNT >= clk20kaudiodiv) ? 32'd0 : clk20kaudioCOUNT + 1);
+        clk20kFORAUDIO <= clk20kaudioCOUNT >= clk20kaudiodiv ? ~clk20kFORAUDIO : clk20kFORAUDIO;
     end
+
     Audio_Capture A(CLK, clk20kFORAUDIO, JB2, JB0, JB3, mic_in);
 
     //declare all the variables for the OLED display

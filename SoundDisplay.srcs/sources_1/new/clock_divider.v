@@ -27,13 +27,12 @@ module clock_divider(
 );
 wire [31:0] div;
 wire [31:0] newdiv;
-assign div = ((100000000) / (frequency * 2)) - 1;
-assign newdiv = (div * 2) + 1;
+assign div = (100000000 / frequency ) - 1;
 
 reg [31:0] COUNT = 32'd0;
 
 always @ (posedge CLK) begin
-    COUNT <= ((COUNT >= newdiv) ? 32'd0 : COUNT + 1);
+    COUNT <= ((COUNT >= div) ? 32'd0 : COUNT + 1);
     slow_clk <= COUNT == 0;
     end
 endmodule
