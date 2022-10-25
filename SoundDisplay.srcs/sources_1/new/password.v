@@ -138,6 +138,10 @@ module password(
                 counter <= 0;
                 myled <= 5'b00000;
             end
+        end 
+        if (resetpw) begin
+            resetpw <= 0;
         end
+        
     end
 endmodule
