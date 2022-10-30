@@ -104,7 +104,8 @@ module Top_Student (
     //raw waveform
     wire [4:0] waveform_sampling;
     wire [(96 * 6) - 1:0] waveform; 
-    waveform wvfm(CLK,selected,sw,mic_in,debounced_btnC,debounced_btnL,debounced_btnR,repeated_btnL,repeated_btnR,waveform,waveform_sampling);
+    wire [1:0] waveformmode;
+    waveform wvfm(CLK,selected,sw,mic_in,debounced_btnC,debounced_btnL,debounced_btnR,debounced_btnU,debounced_btnD,repeated_btnL,repeated_btnR,waveform,waveform_sampling,waveformmode);
 
     //lock_screen and password reset
     wire lock;
@@ -244,7 +245,7 @@ module Top_Student (
     wire [15:0] my_oled_data;
     draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, pwcursor, selected
     , metronome, slide, waveform, spectrogram, previous_highest_note_index, 
-    met_y, BeatsPerMeasure, NoteType, met_pos, reversed, lock, sequence, my_oled_data);
+    met_y, BeatsPerMeasure, NoteType, met_pos, reversed, lock, sequence, waveformmode, my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule
