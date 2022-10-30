@@ -2,6 +2,7 @@
 module buzzer_control(
     input CLK,
     input metronome,
+    input startsw, //addition sw13
     input btnD,btnC,btnL,btnR,btnU,repeated_btnL,repeated_btnR,
     output reg [1:0] met_y = 0,
     output reg [7:0] BPM = 60,
@@ -31,8 +32,6 @@ assign threes = ones / 3;
 wire [31:0] fours;
 assign fours = ones / 4;
 
-reg start = 0;
-
 reg buttonpressed = 0;
 
 reg [31:0] playhighnote = 0;
@@ -59,6 +58,7 @@ end
 
 always @ (posedge CLK) begin
     buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR || !metronome;
+    BPM <= BPM7seg;
     if (playhighnote > 0) begin
             buzzerswitch <= highnote;
         end else if (playmediumnote > 0) begin
@@ -79,6 +79,14 @@ clock_divider lowHZ(CLK, 32'd4000, clkLOWhz);
 
 wire [31:0] buzztime = 30000;
 reg firstbeat = 1;
+
+//tapping clock
+reg [31:0] tapcounter = 0;
+wire clk10000hz;
+clock_divider tenthousandhz(CLK, 32'd10000, clk10000hz);
+always @ (posedge clk10000hz) begin
+    tapcounter <= (tapcounter >= 20000) ? 0 : tapcounter + 1; //20000 counts of 10000hz is 2s approx 30 bpm
+end
 
 always @ (posedge clk1Mhz) begin
     if (start && metronome) begin
@@ -160,34 +168,67 @@ always @ (posedge clk1Mhz) begin
     end
 end
 
+wire start;
+assign start = startsw;
+reg [7:0] BPM7seg = 60;
+reg [31:0] firsttap;
+reg [31:0] secondtap;
+reg [31:0] differ;
+reg [31:0] differ1;
+reg [31:0] differ2;
+reg [31:0] differ3;
+reg [31:0] differ4;
+reg [31:0] differavg;
 always @ (posedge buttonpressed) begin
-    if (metronome) begin
-        if (btnD) begin
-            met_y <= met_y == 2 ? 0 : met_y + 1;
-        end else if (btnU) begin
-            met_y <= met_y == 0 ? 2 : met_y - 1;
-        end else if (btnL || repeated_btnL) begin
-            if (met_y == 0) begin
-                BPM <= BPM == 30 ? 252 : BPM - 1;
-            end else if (met_y == 1) begin
-                BeatsPerMeasure <= BeatsPerMeasure == 1 ? 9 : BeatsPerMeasure - 1;
-            end else if (met_y == 2) begin
-                NoteType <= NoteType - 1;
+        if (metronome) begin
+            if (btnD) begin
+                met_y <= met_y == 3 ? 0 : met_y + 1;
+            end 
+            else if (btnU) begin
+                met_y <= met_y == 0 ? 3 : met_y - 1;
             end
-        end else if (btnR || repeated_btnR) begin
-            if (met_y == 0) begin
-                BPM <= BPM == 252 ? 30 : BPM + 1;
-            end else if (met_y == 1) begin
-                BeatsPerMeasure <= BeatsPerMeasure == 9 ? 1 : BeatsPerMeasure + 1;
-            end else if (met_y == 2) begin
-                NoteType <= NoteType + 1;
+            if(met_y == 0) begin
+                if (btnL || repeated_btnL) begin
+                    BPM7seg <= BPM7seg == 30 ? 252 : BPM7seg - 1;
+                end
+                else if (btnR || repeated_btnR) begin
+                    BPM7seg <= BPM7seg == 252 ? 30 : BPM7seg + 1;
+                end
             end
-        end else if (btnC) begin
-            start <= ~start;
+            if(met_y == 1) begin
+                if(btnC) begin
+                    firsttap <= secondtap;
+                    secondtap <= tapcounter;
+                    if(secondtap > firsttap) begin
+                        differ <= (60 * 10000) / (secondtap - firsttap);
+                    end
+                    else if(secondtap <= firsttap) begin     
+                        differ <= (60 * 10000 / ((20000 - firsttap) + secondtap));                
+                    end
+                    differ4 <= differ3;
+                    differ3 <= differ2;
+                    differ2 <= differ1;
+                    differ1 <= differ;
+                    differavg <= (differ1 + differ2 + differ3 + differ4) / 4;
+                    BPM7seg <= (differavg < 30) ? 30 : ((differavg > 252) ? 252 : differavg);
+                end
+            end
+            if(met_y == 2) begin
+                if (btnL || repeated_btnL) begin
+                    BeatsPerMeasure <= BeatsPerMeasure == 1 ? 9 : BeatsPerMeasure - 1;
+                end
+                else if (btnR || repeated_btnR) begin
+                    BeatsPerMeasure <= BeatsPerMeasure == 9 ? 1 : BeatsPerMeasure + 1;
+                end
+            end
+            if(met_y == 3) begin
+                if (btnL || repeated_btnL) begin
+                    NoteType <= NoteType - 1;
+                end
+                else if (btnR || repeated_btnR) begin
+                    NoteType <= NoteType + 1;
+                end
+            end
         end
-    end else if (!metronome) begin
-        start <= 0;
     end
-end
-
 endmodule
