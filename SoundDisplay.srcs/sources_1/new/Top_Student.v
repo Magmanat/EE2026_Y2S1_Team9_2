@@ -249,7 +249,7 @@ module Top_Student (
 
     assign JA0 = buzzerswitch;
     buzzer_control buzz01(CLK, metronome, sw[13],  debounced_btnD, debounced_btnC, debounced_btnL
-    , debounced_btnR, debounced_btnU, repeated_btnL, repeated_btnR, met_y, BPM, BeatsPerMeasure, NoteType
+    , debounced_btnR, debounced_btnU, repeated_btnL, repeated_btnR, volume0_5, met_y, BPM, BeatsPerMeasure, NoteType
     , met_pos, reversed, buzzerswitch);
 
 

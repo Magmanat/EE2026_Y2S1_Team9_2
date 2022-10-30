@@ -45,7 +45,7 @@ always @ (posedge clock8hz) begin
 end
 
 
-clock_divider fourthz(CLK,32'd8 ,clock8hz);
+clock_divider fourthz(CLK,32'd16 ,clock8hz);
 D_FF d1(clock8hz, BTN, Q1);
 D_FF d2(clock8hz, Q1, Q2);
 
