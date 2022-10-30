@@ -31,10 +31,10 @@ module lock_screen(
     input [7:0] pw4,
     input [7:0] pw5,
     input resetpw,
-    output reg lock = 1'b1,
+    output reg lock = 1'b0,
     output reg [2:0] seq = 3'd0,
     output reg reset_stablenoteheld = 0
-    );
+);
     reg [31:0] restart = 32'b0;
     reg [4:0] count = 5'd0;
     always @ (posedge CLK) begin
@@ -44,7 +44,7 @@ module lock_screen(
         end
         if(lock == 1) begin
             if (seq >= 1) begin
-                restart <= (restart >= 32'd100000000) ? 32'd0 : restart + 1;
+                restart <= (restart >= 32'd99999999) ? 32'd0 : restart + 1;
                 count <= (restart == 0) ? count + 1 : count;
                 //wrong/timeout restart
                 if(count == 5'd20) begin

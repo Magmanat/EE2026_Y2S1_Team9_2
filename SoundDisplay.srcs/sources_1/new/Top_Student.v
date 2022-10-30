@@ -121,6 +121,18 @@ module Top_Student (
     wire reset_stablenoteheld;
     lock_screen ls(CLK, debounced_btnC, previous_highest_note_index, stable_note_held, pw1, pw2, pw3, pw4, pw5, resetpw, lock, sequence, reset_stablenoteheld);
     password pw(CLK, sw[2], sw[10], lock, debounced_btnL, debounced_btnC, debounced_btnR, led[9:5], resetpw, pwcursor, pwcounter, pw1, pw2, pw3, pw4, pw5);
+
+    //stop watch
+    wire[3:0] a; //0.01s - 0.09s
+    wire[3:0] b; //0.1s - 0.9s
+    wire[3:0] c; //1s - 9s
+    wire[3:0] d; //10s - 59s
+    wire[3:0] e; //1 min - 9 min
+    wire[3:0] f; //10 min - 59 min
+    wire swcursor;
+    wire swstart;
+    wire swreset;
+    stop_watch watch(CLK, selected, sw[2], debounced_btnC, debounced_btnL, debounced_btnR, volume0_5, a, b, c, d, e, f, swcursor, swstart, swreset);
     /*
     ******************************************************************************************************************************************************************
     ******************************************************************************************************************************************************************
@@ -236,7 +248,7 @@ module Top_Student (
     assign metronome = sw[14] && !sw[15] && !lock;
 
     assign JA0 = buzzerswitch;
-    buzzer_control buzz01(CLK, metronome, debounced_btnD, debounced_btnC, debounced_btnL
+    buzzer_control buzz01(CLK, metronome, sw[13],  debounced_btnD, debounced_btnC, debounced_btnL
     , debounced_btnR, debounced_btnU, repeated_btnL, repeated_btnR, met_y, BPM, BeatsPerMeasure, NoteType
     , met_pos, reversed, buzzerswitch);
 
@@ -245,7 +257,8 @@ module Top_Student (
     wire [15:0] my_oled_data;
     draw_module dm1(CLK, sw, pixel_index, bordercount, boxcount, volume0_5, cursor, pwcursor, selected
     , metronome, slide, waveform, spectrogram, previous_highest_note_index, 
-    met_y, BeatsPerMeasure, NoteType, met_pos, reversed, lock, sequence, waveformmode, my_oled_data);
+    met_y, BeatsPerMeasure, NoteType, met_pos, reversed, lock, sequence, waveformmode, swcursor, swstart, swreset, a, b, c, d, e, f, 
+    my_oled_data);
     assign oled_data = my_oled_data; 
 
 endmodule

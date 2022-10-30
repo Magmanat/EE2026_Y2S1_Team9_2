@@ -34,6 +34,9 @@ module volume_7seg(
         else if (selected == 2'd2) begin
             displayed_number <= ((spectrobinsize * 1953) / 100) * 20;
         end
+        else if (selected == 2'd3) begin
+            displayed_number <= volume;
+        end
     end 
     assign LED_activating_counter = refresh_counter[19:18];
     // anode activating signals for 4 LEDs, digit period of 2.6ms

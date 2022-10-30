@@ -35,8 +35,8 @@ module main_menu(
 reg button;
 reg [31:0] menucount = 32'd0;
 always @ (posedge CLK) begin
-    button <= (btnL || btnC || btnR) ? 1 : 0;
-    menucount <= (menucount >= 32'd100000000) ? 32'd0 : menucount + 1;
+    button <= (btnL || btnC || btnR);
+    menucount <= (menucount >= 32'd99999999) ? 32'd0 : menucount + 1;
     slide <= (menucount == 0) ? slide + 1 : slide;
 end
 
