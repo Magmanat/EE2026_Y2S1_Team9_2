@@ -42,6 +42,15 @@ module draw_module(
     input reversed,
     input lock,
     input [2:0] sequence,
+    input swcursor,
+    input swstart,
+    input swreset,
+    input [3:0] a,
+    input [3:0] b,
+    input [3:0] c,
+    input [3:0] d,
+    input [3:0] e,
+    input [3:0] f,
     output reg [15:0] oled_data
         );
         
@@ -62,8 +71,9 @@ module draw_module(
     wire [15:0] purple = 16'b1111100000011111;
     wire [15:0] blue = 16'b0000000000011111;
     wire [15:0] teal = 16'b0000011111111111;  
+
     // icons for menu animation
-    wire menutemplate, task1, task2, task3, task4, wave1, wave2, wave3, wave4,  graph1, graph2, graph3, graph4, clock1, clock2, clock3, clock4;
+    wire menutemplate, task1, task2, task3, task4, wave1, wave2, wave3, wave4,  graph1, graph2, graph3, graph4, stopwatch1, stopwatch2, stopwatch3, stopwatch4;
     assign menutemplate = (((y == 2) && ((x >= 15 && x < 18)|| (x >= 19 && x < 23)|| (x >= 24 && x < 25)|| (x >= 29 && x < 33)|| (x >= 35 && x < 37)|| (x >= 39 && x < 44)|| (x >= 47 && x < 51)|| (x >= 52 && x < 56)|| (x >= 58 && x < 60)|| (x >= 62 && x < 67)|| (x >= 68 && x < 69)|| (x >= 71 && x < 72)|| (x >= 73 && x < 76)|| (x >= 78 && x < 82)))|| 
     ((y == 3) && ((x >= 14 && x < 15)|| (x >= 19 && x < 20)|| (x >= 24 && x < 25)|| (x >= 29 && x < 30)|| (x >= 34 && x < 35)|| (x >= 37 && x < 38)|| (x >= 41 && x < 42)|| (x >= 47 && x < 48)|| (x >= 52 && x < 53)|| (x >= 57 && x < 58)|| (x >= 60 && x < 61)|| (x >= 64 && x < 65)|| (x >= 68 && x < 69)|| (x >= 71 && x < 72)|| (x >= 73 && x < 74)|| (x >= 76 && x < 77)|| (x >= 78 && x < 79)))|| 
     ((y == 4) && ((x >= 15 && x < 17)|| (x >= 19 && x < 22)|| (x >= 24 && x < 25)|| (x >= 29 && x < 32)|| (x >= 34 && x < 35)|| (x >= 41 && x < 42)|| (x >= 47 && x < 50)|| (x >= 52 && x < 55)|| (x >= 57 && x < 61)|| (x >= 64 && x < 65)|| (x >= 68 && x < 69)|| (x >= 71 && x < 72)|| (x >= 73 && x < 76)|| (x >= 78 && x < 81)))|| 
@@ -130,7 +140,29 @@ module draw_module(
     assign graph1 = (x >= 52 && x <= 54) && (y >= 17 && y <= 34);
     assign graph2 = (x >= 56 && x <= 58) && (y >= 19 && y <= 34);
     assign graph3 = (x >= 60 && x <= 62) && (y >= 21 && y <= 34);
-    assign graph4 = (x >= 64 && x <= 66) && (y >= 23 && y <= 34);      
+    assign graph4 = (x >= 64 && x <= 66) && (y >= 23 && y <= 34);
+    assign stopwatch1 = ((x == 75) && (y >= 22 && y <= 29)) || ((x== 76) && (y == 21 || y == 30)) || 
+    ((x >= 77 && x <= 79) && (y == 20 || y == 31)) || ((x== 80) && (y == 21 || y == 30)) || ((x == 81) && 
+    (y >= 22 && y <= 29)) || ((x >= 83 && x <= 84) && ((y == 21 || y == 22 || y == 29 || y == 30))) ||
+    ((x == 86) && (y >= 22 && y <= 29)) || ((x== 87) && (y == 21 || y == 30)) ||
+    ((x >= 88 && x <= 90) && (y == 20 || y == 31)) || ((x== 91) && (y == 21 || y == 30)) || ((x == 92) && 
+    (y >= 22 && y <= 29));
+    assign stopwatch2 = ((x == 75) && (y >= 22 && y <= 29)) || ((x== 76) && (y == 21 || y == 30)) || 
+    ((x >= 77 && x <= 79) && (y == 20 || y == 31)) || ((x== 80) && (y == 21 || y == 30)) || ((x == 81) && 
+    (y >= 22 && y <= 29)) || ((x >= 83 && x <= 84) && ((y == 21 || y == 22 || y == 29 || y == 30))) ||
+    (x == 86 && y == 22) || (x == 87 && (y == 21 || y == 31)) || (x == 88 && (y == 21 || y == 31)) ||
+    ((x == 89) && (y >= 20 && y <= 31)) || ((x >= 90 && x <= 91) && (y == 31)); 
+    assign stopwatch3 = ((x == 75) && (y >= 22 && y <= 29)) || ((x== 76) && (y == 21 || y == 30)) || 
+    ((x >= 77 && x <= 79) && (y == 20 || y == 31)) || ((x== 80) && (y == 21 || y == 30)) || ((x == 81) && 
+    (y >= 22 && y <= 29)) || ((x >= 83 && x <= 84) && ((y == 21 || y == 22 || y == 29 || y == 30))) ||
+    (x == 86 && y == 22) || (x == 87 && (y == 21 || y == 30 || y == 31)) || (x == 88 && (y == 20 || y == 29 || y == 31)) ||
+    (x == 89 && (y == 20 || y == 28 || y == 31)) || (x == 90 && (y == 21 || y == 27 || y == 31)) || 
+    (x == 91 && ((y >= 22 && y <= 26) || y == 31)); 
+    assign stopwatch4 = ((x == 75) && (y >= 22 && y <= 29)) || ((x== 76) && (y == 21 || y == 30)) || 
+    ((x >= 77 && x <= 79) && (y == 20 || y == 31)) || ((x== 80) && (y == 21 || y == 30)) || ((x == 81) && 
+    (y >= 22 && y <= 29)) || ((x >= 83 && x <= 84) && ((y == 21 || y == 22 || y == 29 || y == 30))) ||
+    (x == 86 && (y == 22 || y == 29)) || (x == 87 && (y == 21 || y == 26 || y == 30)) || ((x >= 88 && x <= 89) && (y == 20 || y == 26 || y == 31)) ||
+    (x == 90 && (y == 21 || y == 25 || y == 27 || y == 30)) || (x == 91 && ((y >= 22 && y <= 24) || (y >= 28 && y <= 29)));;       
     //required for forloops      
     integer i;
     
@@ -537,8 +569,6 @@ module draw_module(
     ((y == 62) && ((x >= 60 && x < 68)))|| 
     ((y == 63) && ((x >= 60 && x < 68))));
 
-    wire hand0,hand1,hand2,hand3,hand4,hand5,hand6,metronome_menu, metronome_7seg,
-    crochet,quaver,triplet,semiquaver, BPB1, BPB2, BPB3, BPB4, BPB5, BPB6, BPB7, BPB8, BPB9;
 //lock screen
 wire lock0, lock1, lock2, lock3, lock4, lock5, lock6;
 assign lock0 = (((y == 3) && ((x >= 16 && x < 18)|| (x >= 20 && x < 21)|| (x >= 23 && x < 24)|| (x >= 25 && x < 28)|| (x >= 30 && x < 33)|| (x >= 35 && x < 37)|| (x >= 41 && x < 44)|| (x >= 47 && x < 49)|| (x >= 52 && x < 55)|| (x >= 57 && x < 60)|| (x >= 61 && x < 62)|| (x >= 65 && x < 66)|| (x >= 68 && x < 70)|| (x >= 72 && x < 75)|| (x >= 77 && x < 80)))|| 
@@ -676,7 +706,122 @@ assign password = (((y == 3) && ((x >= 14 && x < 17)|| (x >= 19 && x < 23)|| (x 
 ((y == 45) && ((x >= 9 && x < 10)|| (x >= 16 && x < 17)|| (x >= 26 && x < 27)|| (x >= 33 && x < 34)|| (x >= 43 && x < 44)|| (x >= 50 && x < 51)|| (x >= 60 && x < 61)|| (x >= 67 && x < 68)|| (x >= 77 && x < 78)|| (x >= 84 && x < 85)))|| 
 ((y == 46) && ((x >= 9 && x < 10)|| (x >= 16 && x < 17)|| (x >= 26 && x < 27)|| (x >= 33 && x < 34)|| (x >= 43 && x < 44)|| (x >= 50 && x < 51)|| (x >= 60 && x < 61)|| (x >= 67 && x < 68)|| (x >= 77 && x < 78)|| (x >= 84 && x < 85)))|| 
 ((y == 47) && ((x >= 9 && x < 17)|| (x >= 26 && x < 34)|| (x >= 43 && x < 51)|| (x >= 60 && x < 68)|| (x >= 77 && x < 85))));
-    
+//stopwatch
+wire stopwatchmenu, start, stop, reset;
+assign stopwatchmenu = ((x >= 35 && x <= 36) && (y == 14 || y == 15 || y == 19 || y == 20)) || ((x >= 61 && x <= 62) && (y == 14 || y == 15 || y == 19 || y == 20));
+assign start = (x == 19 && (y == 46 || y == 49)) || (x == 20 && (y == 45 || y == 47 || y == 49)) || (x == 21 && (y == 45 || y == 47 || y == 49)) ||
+(x == 22 && (y == 45 || y == 48)) ||((x >= 24 && x <= 25) && y == 45) || (x == 26 && (y >= 45 && y <= 49)) || ((x >= 27 && x <= 28) && y == 45) ||
+((x == 30 || x == 33) && (y >= 46 && y <= 49)) || ((x == 31 || x == 32) && (y == 45 || y == 47)) ||
+(x == 35 && (y >= 45 && y <= 49)) || (x == 36 && (y == 45 || y == 47)) || (x == 37 && (y == 45 || y == 47 || y == 48)) ||
+(x == 38 && (y == 46 || y == 49)) || ((x >= 40 && x <= 41) && y == 45) || (x == 42 && (y >= 45 && y <= 49)) || ((x >= 43 && x <= 44) && y == 45);
+assign stop = (x == 22 && (y == 46 || y == 49)) || (x == 23 && (y == 45 || y == 47 || y == 49)) || (x == 24 && (y == 45 || y == 47 || y == 49)) ||
+(x == 25 && (y == 45 || y == 48)) || ((x >= 27 && x <= 28) && y == 45) || (x == 29 && (y >= 45 && y <= 49)) || 
+((x >= 30 && x <= 31) && y == 45) || ((x == 33 || x == 36) && (y >= 46 && y <= 48)) || ((x >= 34 && x <= 35) && (y == 45 || y == 49)) ||
+(x == 38 && ( y >= 45 && y <= 49)) || ((x >= 39 && x <= 40) && (y == 45 || y == 47)) || (x == 41 && y == 46);
+assign reset = (x == 54 && (y >= 45 && y <= 49)) || (x == 55 && (y == 45 || y == 47)) || (x == 56 && (y == 45 || y == 47 || y == 48)) ||
+(x == 57 && (y == 46 || y == 49)) || (x == 59 && (y >= 45 && y <= 49)) || ((x >= 60 && x <= 62) && (y == 45 || y == 47 || y == 49)) || 
+(x == 64 && (y == 46 || y == 49)) || (x == 65 && (y == 45 || y == 47 || y == 49)) || (x == 66 && (y == 45 || y == 47 || y == 49)) ||
+(x == 67 && (y == 45 || y == 48)) || (x == 69 && (y >= 45 && y <= 49)) || ((x >= 70 && x <= 72) && (y == 45 || y == 47 || y == 49)) ||  
+((x >= 74 && x <= 75) && y == 45) || (x == 76 && (y >= 45 && y <= 49)) || ((x >= 77 && x <= 78) && y == 45);
+//stopwatch display
+reg [7:0] p0 = 8'd77;
+reg [7:0] p1 = 8'd67;
+reg [7:0] p2 = 8'd51;
+reg [7:0] p3 = 8'd41;
+reg [7:0] p4 = 8'd25;
+reg [7:0] p5 = 8'd15;
+assign a0 = (x == p0 && (y >= 15 && y <= 20)) || (x == p0 + 1 && (y == 14 || y == 21)) || (x == p0 + 2 && (y == 14 || y == 21)) || (x == p0 + 3 && (y == 14 || y == 21)) || (x == p0 + 4 && (y >= 15 && y <= 20));
+assign a1 = (x == p0 && (y == 15 || y == 21)) || (x == p0 + 1 && (y == 14 || y == 15 || y == 21)) || (x == p0 + 2 && (y >= 14 && y <= 21)) || (x == p0 + 3 && (y == 21));
+assign a2 = (x == p0 && (y == 16 || y == 21)) || (x == p0 + 1 && (y == 15 || y == 20 || y == 21)) || (x == p0 + 2 && (y == 14 || y == 19 || y == 21)) || (x == p0 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p0 + 4 && (y == 15 || y == 16 || y == 17 || y == 21));
+assign a3 = (x == p0 && (y == 16 || y == 19)) || (x == p0 + 1 && (y == 15 || y == 20)) || (x == p0 + 2 && (y == 14 || y == 18 || y == 21)) || (x == p0 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p0 + 4 && (y == 15 || y == 16 || y == 17 || y == 19 || y == 20));
+assign a4 = (x == p0 && (y == 17 || y == 18)) || (x == p0 + 1 && (y == 16 || y == 18)) || (x == p0 + 2 && (y == 14 || y == 18)) || (x == p0 + 3 && (y >= 14 && y <= 21)) || 
+(x == p0 + 4 && (y == 18));
+assign a5 = (x == p0 && (y == 15 || y == 16 || y == 17 || y == 18 || y == 21)) || ((x >= p0 + 1 && x <= p0 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p0 + 4 && (y == 14 || y == 18 || y == 20));
+assign a6 = (x == p0 && (y >= 15 && y <= 21)) || ((x >= p0 + 1 && x <= p0 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p0 + 4 && (y == 14 || y == 19 || y == 20));
+assign a7 = (x == p0 && (y == 14)) || (x == p0 + 1 && (y == 14)) || (x == p0 + 2 && (y == 14 || y == 17 || y == 18 || y == 19 || y == 20 || y == 21)) || (x == p0 + 3 && (y == 14 || y == 16)) || (x == p0 + 4 && (y == 14 || y == 15));
+assign a8 = ((x == p0 || x == p0 + 4) && (y == 15 || y == 16 || y == 18 || y == 19 || y == 20)) || ((x >= p0 + 1 && x <= p0 + 3) && (y == 14 || y == 17 || y == 21));  
+assign a9 = (x == p0 && (y == 14 || y == 15 || y == 16 || y == 17)) || ((x >= p0 + 1 && x <= p0 + 3) && (y == 14 || y == 17 || y == 21)) ||  
+(x == p0 + 4 && (y >= 15 && y <= 20));
+
+assign b0 = (x == p1 && (y >= 15 && y <= 20)) || (x == p1 + 1 && (y == 14 || y == 21)) || (x == p1 + 2 && (y == 14 || y == 21)) || (x == p1 + 3 && (y == 14 || y == 21)) || (x == p1 + 4 && (y >= 15 && y <= 20));
+assign b1 = (x == p1 && (y == 15 || y == 21)) || (x == p1 + 1 && (y == 14 || y == 15 || y == 21)) || (x == p1 + 2 && (y >= 14 && y <= 21)) || (x == p1 + 3 && (y == 21));
+assign b2 = (x == p1 && (y == 16 || y == 21)) || (x == p1 + 1 && (y == 15 || y == 20 || y == 21)) || (x == p1 + 2 && (y == 14 || y == 19 || y == 21)) || (x == p1 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p1 + 4 && (y == 15 || y == 16 || y == 17 || y == 21));
+assign b3 = (x == p1 && (y == 16 || y == 19)) || (x == p1 + 1 && (y == 15 || y == 20)) || (x == p1 + 2 && (y == 14 || y == 18 || y == 21)) || (x == p1 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p1 + 4 && (y == 15 || y == 16 || y == 17 || y == 19 || y == 20));
+assign b4 = (x == p1 && (y == 17 || y == 18)) || (x == p1 + 1 && (y == 16 || y == 18)) || (x == p1 + 2 && (y == 14 || y == 18)) || (x == p1 + 3 && (y >= 14 && y <= 21)) || 
+(x == p1 + 4 && (y == 18));
+assign b5 = (x == p1 && (y == 15 || y == 16 || y == 17 || y == 18 || y == 21)) || ((x >= p1 + 1 && x <= p1 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p1 + 4 && (y == 14 || y == 18 || y == 20));
+assign b6 = (x == p1 && (y >= 15 && y <= 21)) || ((x >= p1 + 1 && x <= p1 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p1 + 4 && (y == 14 || y == 19 || y == 20));
+assign b7 = (x == p1 && (y == 14)) || (x == p1 + 1 && (y == 14)) || (x == p1 + 2 && (y == 14 || y == 17 || y == 18 || y == 19 || y == 20 || y == 21)) || (x == p1 + 3 && (y == 14 || y == 16)) || (x == p1 + 4 && (y == 14 || y == 15));
+assign b8 = ((x == p1 || x == p1 + 4) && (y == 15 || y == 16 || y == 18 || y == 19 || y == 20)) || ((x >= p1 + 1 && x <= p1 + 3) && (y == 14 || y == 17 || y == 21));  
+assign b9 = (x == p1 && (y == 14 || y == 15 || y == 16 || y == 17)) || ((x >= p1 + 1 && x <= p1 + 3) && (y == 14 || y == 17 || y == 21)) ||  
+(x == p1 + 4 && (y >= 15 && y <= 20));
+
+assign c0 = (x == p2 && (y >= 15 && y <= 20)) || (x == p2 + 1 && (y == 14 || y == 21)) || (x == p2 + 2 && (y == 14 || y == 21)) || (x == p2 + 3 && (y == 14 || y == 21)) || (x == p2 + 4 && (y >= 15 && y <= 20));
+assign c1 = (x == p2 && (y == 15 || y == 21)) || (x == p2 + 1 && (y == 14 || y == 15 || y == 21)) || (x == p2 + 2 && (y >= 14 && y <= 21)) || (x == p2 + 3 && (y == 21));
+assign c2 = (x == p2 && (y == 16 || y == 21)) || (x == p2 + 1 && (y == 15 || y == 20 || y == 21)) || (x == p2 + 2 && (y == 14 || y == 19 || y == 21)) || (x == p2 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p2 + 4 && (y == 15 || y == 16 || y == 17 || y == 21));
+assign c3 = (x == p2 && (y == 16 || y == 19)) || (x == p2 + 1 && (y == 15 || y == 20)) || (x == p2 + 2 && (y == 14 || y == 18 || y == 21)) || (x == p2 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p2 + 4 && (y == 15 || y == 16 || y == 17 || y == 19 || y == 20));
+assign c4 = (x == p2 && (y == 17 || y == 18)) || (x == p2 + 1 && (y == 16 || y == 18)) || (x == p2 + 2 && (y == 14 || y == 18)) || (x == p2 + 3 && (y >= 14 && y <= 21)) || 
+(x == p2 + 4 && (y == 18));
+assign c5 = (x == p2 && (y == 15 || y == 16 || y == 17 || y == 18 || y == 21)) || ((x >= p2 + 1 && x <= p2 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p2 + 4 && (y == 14 || y == 18 || y == 20));
+assign c6 = (x == p2 && (y >= 15 && y <= 21)) || ((x >= p2 + 1 && x <= p2 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p2 + 4 && (y == 14 || y == 19 || y == 20));
+assign c7 = (x == p2 && (y == 14)) || (x == p2 + 1 && (y == 14)) || (x == p2 + 2 && (y == 14 || y == 17 || y == 18 || y == 19 || y == 20 || y == 21)) || (x == p2 + 3 && (y == 14 || y == 16)) || (x == p2 + 4 && (y == 14 || y == 15));
+assign c8 = ((x == p2 || x == p2 + 4) && (y == 15 || y == 16 || y == 18 || y == 19 || y == 20)) || ((x >= p2 + 1 && x <= p2 + 3) && (y == 14 || y == 17 || y == 21));  
+assign c9 = (x == p2 && (y == 14 || y == 15 || y == 16 || y == 17)) || ((x >= p2 + 1 && x <= p2 + 3) && (y == 14 || y == 17 || y == 21)) ||  
+(x == p2 + 4 && (y >= 15 && y <= 20));
+
+assign d0 = (x == p3 && (y >= 15 && y <= 20)) || (x == p3 + 1 && (y == 14 || y == 21)) || (x == p3 + 2 && (y == 14 || y == 21)) || (x == p3 + 3 && (y == 14 || y == 21)) || (x == p3 + 4 && (y >= 15 && y <= 20));
+assign d1 = (x == p3 && (y == 15 || y == 21)) || (x == p3 + 1 && (y == 14 || y == 15 || y == 21)) || (x == p3 + 2 && (y >= 14 && y <= 21)) || (x == p3 + 3 && (y == 21));
+assign d2 = (x == p3 && (y == 16 || y == 21)) || (x == p3 + 1 && (y == 15 || y == 20 || y == 21)) || (x == p3 + 2 && (y == 14 || y == 19 || y == 21)) || (x == p3 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p3 + 4 && (y == 15 || y == 16 || y == 17 || y == 21));
+assign d3 = (x == p3 && (y == 16 || y == 19)) || (x == p3 + 1 && (y == 15 || y == 20)) || (x == p3 + 2 && (y == 14 || y == 18 || y == 21)) || (x == p3 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p3 + 4 && (y == 15 || y == 16 || y == 17 || y == 19 || y == 20));
+assign d4 = (x == p3 && (y == 17 || y == 18)) || (x == p3 + 1 && (y == 16 || y == 18)) || (x == p3 + 2 && (y == 14 || y == 18)) || (x == p3 + 3 && (y >= 14 && y <= 21)) || 
+(x == p3 + 4 && (y == 18));
+assign d5 = (x == p3 && (y == 15 || y == 16 || y == 17 || y == 18 || y == 21)) || ((x >= p3 + 1 && x <= p3 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p3 + 4 && (y == 14 || y == 18 || y == 20));
+
+assign e0 = (x == p4 && (y >= 15 && y <= 20)) || (x == p4 + 1 && (y == 14 || y == 21)) || (x == p4 + 2 && (y == 14 || y == 21)) || (x == p4 + 3 && (y == 14 || y == 21)) || (x == p4 + 4 && (y >= 15 && y <= 20));
+assign e1 = (x == p4 && (y == 15 || y == 21)) || (x == p4 + 1 && (y == 14 || y == 15 || y == 21)) || (x == p4 + 2 && (y >= 14 && y <= 21)) || (x == p4 + 3 && (y == 21));
+assign e2 = (x == p4 && (y == 16 || y == 21)) || (x == p4 + 1 && (y == 15 || y == 20 || y == 21)) || (x == p4 + 2 && (y == 14 || y == 19 || y == 21)) || (x == p4 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p4 + 4 && (y == 15 || y == 16 || y == 17 || y == 21));
+assign e3 = (x == p4 && (y == 16 || y == 19)) || (x == p4 + 1 && (y == 15 || y == 20)) || (x == p4 + 2 && (y == 14 || y == 18 || y == 21)) || (x == p4 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p4 + 4 && (y == 15 || y == 16 || y == 17 || y == 19 || y == 20));
+assign e4 = (x == p4 && (y == 17 || y == 18)) || (x == p4 + 1 && (y == 16 || y == 18)) || (x == p4 + 2 && (y == 14 || y == 18)) || (x == p4 + 3 && (y >= 14 && y <= 21)) || 
+(x == p4 + 4 && (y == 18));
+assign e5 = (x == p4 && (y == 15 || y == 16 || y == 17 || y == 18 || y == 21)) || ((x >= p4 + 1 && x <= p4 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p4 + 4 && (y == 14 || y == 18 || y == 20));
+assign e6 = (x == p4 && (y >= 15 && y <= 21)) || ((x >= p4 + 1 && x <= p4 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p4 + 4 && (y == 14 || y == 19 || y == 20));
+assign e7 = (x == p4 && (y == 14)) || (x == p4 + 1 && (y == 14)) || (x == p4 + 2 && (y == 14 || y == 17 || y == 18 || y == 19 || y == 20 || y == 21)) || (x == p4 + 3 && (y == 14 || y == 16)) || (x == p4 + 4 && (y == 14 || y == 15));
+assign e8 = ((x == p4 || x == p4 + 4) && (y == 15 || y == 16 || y == 18 || y == 19 || y == 20)) || ((x >= p4 + 1 && x <= p4 + 3) && (y == 14 || y == 17 || y == 21));  
+assign e9 = (x == p4 && (y == 14 || y == 15 || y == 16 || y == 17)) || ((x >= p4 + 1 && x <= p4 + 3) && (y == 14 || y == 17 || y == 21)) ||  
+(x == p4 + 4 && (y >= 15 && y <= 20));
+
+assign f0 = (x == p5 && (y >= 15 && y <= 20)) || (x == p5 + 1 && (y == 14 || y == 21)) || (x == p5 + 2 && (y == 14 || y == 21)) || (x == p5 + 3 && (y == 14 || y == 21)) || (x == p5 + 4 && (y >= 15 && y <= 20));
+assign f1 = (x == p5 && (y == 15 || y == 21)) || (x == p5 + 1 && (y == 14 || y == 15 || y == 21)) || (x == p5 + 2 && (y >= 14 && y <= 21)) || (x == p5 + 3 && (y == 21));
+assign f2 = (x == p5 && (y == 16 || y == 21)) || (x == p5 + 1 && (y == 15 || y == 20 || y == 21)) || (x == p5 + 2 && (y == 14 || y == 19 || y == 21)) || (x == p5 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p5 + 4 && (y == 15 || y == 16 || y == 17 || y == 21));
+assign f3 = (x == p5 && (y == 16 || y == 19)) || (x == p5 + 1 && (y == 15 || y == 20)) || (x == p5 + 2 && (y == 14 || y == 18 || y == 21)) || (x == p5 + 3 && (y == 14 || y == 18 || y == 21)) || 
+(x == p5 + 4 && (y == 15 || y == 16 || y == 17 || y == 19 || y == 20));
+assign f4 = (x == p5 && (y == 17 || y == 18)) || (x == p5 + 1 && (y == 16 || y == 18)) || (x == p5 + 2 && (y == 14 || y == 18)) || (x == p5 + 3 && (y >= 14 && y <= 21)) || 
+(x == p5 + 4 && (y == 18));
+assign f5 = (x == p5 && (y == 15 || y == 16 || y == 17 || y == 18 || y == 21)) || ((x >= p5 + 1 && x <= p5 + 3) && (y == 14 || y == 18 || y == 21)) ||  
+(x == p5 + 4 && (y == 14 || y == 18 || y == 20));
+    //metronome
+    wire hand0,hand1,hand2,hand3,hand4,hand5,hand6,metronome_menu, metronome_7seg, metronome_tap,
+    crochet,quaver,triplet,semiquaver, BPB1, BPB2, BPB3, BPB4, BPB5, BPB6, BPB7, BPB8, BPB9;
     assign hand0 = (((y == 52) && ((x >= 19 && x < 23)))|| 
     ((y == 53) && ((x >= 22 && x < 25)))|| 
     ((y == 54) && ((x >= 24 && x < 27)))|| 
@@ -858,6 +1003,11 @@ assign metronome_7seg = (((y == 9) && ((x >= 25 && x < 28)|| (x >= 29 && x < 33)
 ((y == 12) && ((x >= 27 && x < 28)|| (x >= 29 && x < 30)|| (x >= 35 && x < 36)|| (x >= 37 && x < 38)|| (x >= 40 && x < 41)|| (x >= 45 && x < 46)|| (x >= 48 && x < 49)|| (x >= 57 && x < 58)|| (x >= 59 && x < 60)|| (x >= 64 && x < 65)|| (x >= 67 && x < 68)))|| 
 ((y == 13) && ((x >= 24 && x < 27)|| (x >= 29 && x < 33)|| (x >= 36 && x < 37)|| (x >= 40 && x < 44)|| (x >= 45 && x < 46)|| (x >= 48 && x < 49)|| (x >= 54 && x < 57)|| (x >= 59 && x < 63)|| (x >= 65 && x < 67))));
 
+assign metronome_tap = (((y == 9) && ((x >= 72 && x < 77)|| (x >= 79 && x < 81)|| (x >= 83 && x < 86)))|| 
+((y == 10) && ((x >= 74 && x < 75)|| (x >= 78 && x < 79)|| (x >= 81 && x < 82)|| (x >= 83 && x < 84)|| (x >= 86 && x < 87)))|| 
+((y == 11) && ((x >= 74 && x < 75)|| (x >= 78 && x < 82)|| (x >= 83 && x < 86)))|| 
+((y == 12) && ((x >= 74 && x < 75)|| (x >= 78 && x < 79)|| (x >= 81 && x < 82)|| (x >= 83 && x < 84)))|| 
+((y == 13) && ((x >= 74 && x < 75)|| (x >= 78 && x < 79)|| (x >= 81 && x < 82)|| (x >= 83 && x < 84))));
     assign crochet = (((y == 22) && ((x >= 76 && x < 78)))|| 
 ((y == 23) && ((x >= 76 && x < 78)))|| 
 ((y == 24) && ((x >= 76 && x < 78)))|| 
@@ -2264,81 +2414,88 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                     oled_data <= white;
                 end
             end
+            if (metronome_tap) begin
+                if(met_y == 1) begin
+                    oled_data <= red;
+                end else begin
+                    oled_data <= white;
+                end
+            end
             if (BeatsPerMeasure == 1 && BPB1) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 2 && BPB2) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 3 && BPB3) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 4 && BPB4) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 5 && BPB5) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 6 && BPB6) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 7 && BPB7) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 8 && BPB8) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (BeatsPerMeasure == 9 && BPB9) begin
-                if (met_y == 1) begin
+                if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end
             if (NoteType == 0 && crochet) begin
-                if (met_y == 2) begin
+                if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (NoteType == 1 && quaver) begin
-                if (met_y == 2) begin
+                if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (NoteType == 2 && triplet) begin
-                if (met_y == 2) begin
+                if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
                 end
             end else if (NoteType == 3 && semiquaver) begin
-                if (met_y == 2) begin
+                if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
                     oled_data <= white;
@@ -2403,47 +2560,51 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             if((graph1 || graph2 || graph3 || graph4) && cursor != 2'd2) begin
                 oled_data <= black;
                 end
+            //static stopwatch
+            if(stopwatch1 && cursor != 2'd3) begin
+                oled_data <= red;
+            end
             // task animation
             if(cursor == 2'd0) begin
-                    if(slide == 0) begin
-                        if(task1) begin
-                            oled_data <= red;
-                            end
+                if(slide == 0) begin
+                    if(task1) begin
+                        oled_data <= red;
                         end
-                    if(slide == 1) begin
-                        if(task1) begin
-                            oled_data <= red;
-                            end
-                        if(task2) begin
-                            oled_data <= orange;
-                            end  
-                        end                      
-                    if(slide == 2) begin
-                        if(task1) begin
-                            oled_data <= red;
-                            end
-                        if(task2) begin
-                            oled_data <= orange;
-                            end
-                        if(task3) begin
-                            oled_data <= green;
-                            end
+                    end
+                if(slide == 1) begin
+                    if(task1) begin
+                        oled_data <= red;
                         end
-                    if(slide == 3) begin
-                        if(task1) begin
-                            oled_data <= red;
-                            end
-                        if(task2) begin
-                            oled_data <= orange;
-                            end
-                        if(task3) begin
-                            oled_data <= green;
-                            end
-                        if(task4) begin
-                            oled_data <= lightgreen;
-                            end
+                    if(task2) begin
+                        oled_data <= orange;
+                        end  
+                    end                      
+                if(slide == 2) begin
+                    if(task1) begin
+                        oled_data <= red;
                         end
-                    end 
+                    if(task2) begin
+                        oled_data <= orange;
+                        end
+                    if(task3) begin
+                        oled_data <= green;
+                        end
+                    end
+                if(slide == 3) begin
+                    if(task1) begin
+                        oled_data <= red;
+                        end
+                    if(task2) begin
+                        oled_data <= orange;
+                        end
+                    if(task3) begin
+                        oled_data <= green;
+                        end
+                    if(task4) begin
+                        oled_data <= lightgreen;
+                        end
+                    end
+                end 
             // wave animation
             if(cursor == 2'd1) begin
                 if(slide == 0 && wave1) begin
@@ -2461,19 +2622,34 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                 end
             // graph animation
             if(cursor == 2'd2) begin
-                        if(slide == 0 && graph1) begin
-                            oled_data <= black;
-                            end
-                        if(slide == 1 && (graph1 || graph2)) begin
-                            oled_data <= black;
-                            end     
-                        if(slide == 2 && (graph1 || graph2 || graph3)) begin
-                            oled_data <= black;
-                            end
-                        if(slide == 3 && (graph1 || graph2 || graph3 || graph4)) begin
-                            oled_data <=black;
-                            end
-                        end                                                                                            
+                if(slide == 0 && graph1) begin
+                    oled_data <= black;
+                    end
+                if(slide == 1 && (graph1 || graph2)) begin
+                    oled_data <= black;
+                    end     
+                if(slide == 2 && (graph1 || graph2 || graph3)) begin
+                    oled_data <= black;
+                    end
+                if(slide == 3 && (graph1 || graph2 || graph3 || graph4)) begin
+                    oled_data <=black;
+                    end
+                end
+            //stopwatch animation
+            if(cursor == 2'd3) begin
+                if(slide == 0 && stopwatch1) begin
+                    oled_data <= red;
+                    end
+                if(slide == 1 && stopwatch2) begin
+                    oled_data <= red;
+                    end     
+                if(slide == 2 && stopwatch3) begin
+                    oled_data <= red;
+                    end
+                if(slide == 3 && stopwatch4) begin
+                    oled_data <= red;
+                    end
+                end
         end
         //OLED TASK
         else if (selected == 0) begin
@@ -2625,6 +2801,187 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
         
         //FOR WATCH
         else if (selected == 3) begin
+            //template
+            if(stopwatchmenu) begin
+                oled_data <= red;
+            end
+            //reset
+            if(reset /*&& swreset*/ && swcursor == 0) begin
+                oled_data <= white;
+            end
+            if(reset /*&& swreset*/ && swcursor == 1) begin
+                oled_data <= red;
+            end
+            //start and stop
+            if(stop && swstart == 1 && swcursor == 1) begin
+                oled_data <= white;
+            end
+            if(start && swstart == 0 && swcursor == 1) begin
+                oled_data <= white;
+            end
+            if(stop && swstart == 1 && swcursor == 0) begin
+                oled_data <= red;
+            end
+            if(start && swstart == 0 && swcursor == 0) begin
+                oled_data <= red;
+            end
+            //display
+            if(a0 && a == 0) begin
+                oled_data <= red;
+            end
+            if(a1 && a == 1) begin
+                oled_data <= red;
+            end
+            if(a2 && a == 2) begin
+                oled_data <= red;
+            end
+            if(a3 && a == 3) begin
+                oled_data <= red;
+            end
+            if(a4 && a == 4) begin
+                oled_data <= red;
+            end
+            if(a5 && a == 5) begin
+                oled_data <= red;
+            end
+            if(a6 && a == 6) begin
+                oled_data <= red;
+            end
+            if(a7 && a == 7) begin
+                oled_data <= red;
+            end
+            if(a8 && a == 8) begin
+                oled_data <= red;
+            end
+            if(a9 && a == 9) begin
+                oled_data <= red;
+            end
+            if(b0 && b == 0) begin
+                oled_data <= red;
+            end
+            if(b1 && b == 1) begin
+                oled_data <= red;
+            end
+            if(b2 && b == 2) begin
+                oled_data <= red;
+            end
+            if(b3 && b == 3) begin
+                oled_data <= red;
+            end
+            if(b4 && b == 4) begin
+                oled_data <= red;
+            end
+            if(b5 && b == 5) begin
+                oled_data <= red;
+            end
+            if(b6 && b == 6) begin
+                oled_data <= red;
+            end
+            if(b7 && b == 7) begin
+                oled_data <= red;
+            end
+            if(b8 && b == 8) begin
+                oled_data <= red;
+            end
+            if(b9 && b == 9) begin
+                oled_data <= red;
+            end
+            if(c0 && c == 0) begin
+                oled_data <= red;
+            end
+            if(c1 && c == 1) begin
+                oled_data <= red;
+            end
+            if(c2 && c == 2) begin
+                oled_data <= red;
+            end
+            if(c3 && c == 3) begin
+                oled_data <= red;
+            end
+            if(c4 && c == 4) begin
+                oled_data <= red;
+            end
+            if(c5 && c == 5) begin
+                oled_data <= red;
+            end
+            if(c6 && c == 6) begin
+                oled_data <= red;
+            end
+            if(c7 && c == 7) begin
+                oled_data <= red;
+            end
+            if(c8 && c == 8) begin
+                oled_data <= red;
+            end
+            if(c9 && c == 9) begin
+                oled_data <= red;
+            end
+            if(d0 && d == 0) begin
+                oled_data <= red;
+            end
+            if(d1 && d == 1) begin
+                oled_data <= red;
+            end
+            if(d2 && d == 2) begin
+                oled_data <= red;
+            end
+            if(d3 && d == 3) begin
+                oled_data <= red;
+            end
+            if(d4 && d == 4) begin
+                oled_data <= red;
+            end
+            if(d5 && d == 5) begin
+                oled_data <= red;
+            end
+            if(e0 && e == 0) begin
+                oled_data <= red;
+            end
+            if(e1 && e == 1) begin
+                oled_data <= red;
+            end
+            if(e2 && e == 2) begin
+                oled_data <= red;
+            end
+            if(e3 && e == 3) begin
+                oled_data <= red;
+            end
+            if(e4 && e == 4) begin
+                oled_data <= red;
+            end
+            if(e5 && e == 5) begin
+                oled_data <= red;
+            end
+            if(e6 && e == 6) begin
+                oled_data <= red;
+            end
+            if(e7 && e == 7) begin
+                oled_data <= red;
+            end
+            if(e8 && e == 8) begin
+                oled_data <= red;
+            end
+            if(e9 && e == 9) begin
+                oled_data <= red;
+            end
+            if(f0 && f == 0) begin
+                oled_data <= red;
+            end
+            if(f1 && f == 1) begin
+                oled_data <= red;
+            end
+            if(f2 && f == 2) begin
+                oled_data <= red;
+            end
+            if(f3 && f == 3) begin
+                oled_data <= red;
+            end
+            if(f4 && f == 4) begin
+                oled_data <= red;
+            end
+            if(f5 && f == 5) begin
+                oled_data <= red;
+            end
         end
     end  
 endmodule
