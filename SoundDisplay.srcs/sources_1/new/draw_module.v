@@ -42,6 +42,7 @@ module draw_module(
     input reversed,
     input lock,
     input [2:0] sequence,
+    input [1:0] waveformmode,
     input swcursor,
     input swstart,
     input swreset,
@@ -2711,26 +2712,97 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
         //FOR WAVEFORM
         else if (selected == 1) begin
             for (i = 1; i < 96; i = i + 1) begin
-                if (y == 32) begin
+                if (waveformmode == 0) begin
+                    if (y == 32) begin
                     oled_data <= white;
+                    end
+                    if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= green;
+                    end
+                    if (y < 25 && y >= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= orange;
+                    end
+                    if (y < 18 && y >= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= red;
+                    end
+                    if (y > 32 && y <= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= green;
+                    end
+                    if (y > 39 && y <= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= orange;
+                    end
+                    if (y > 46 && y <= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= red;
+                    end
                 end
-                if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
-                    oled_data <= green;
+                else if (waveformmode == 1) begin
+                    if (y == 32) begin
+                    oled_data <= white;
+                    end
+                    if (y < 32 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= green;
+                    end
+                    if (y < 25 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= orange;
+                    end
+                    if (y < 18 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= red;
+                    end
+                    if (y > 32 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= green;
+                    end
+                    if (y > 39 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6])&& x == i) begin
+                        oled_data <= orange;
+                    end
+                    if (y > 46 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= red;
+                    end
                 end
-                if (y < 25 && y >= waveform[(i*6) +: 6] && x == i) begin
-                    oled_data <= orange;
+                else if (waveformmode == 2) begin
+                    if (y == 32) begin
+                    oled_data <= white;
+                    end
+                    if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y < 25 && y >= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y < 18 && y >= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y > 32 && y <= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y > 39 && y <= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y > 46 && y <= waveform[(i*6) +: 6] && x == i) begin
+                        oled_data <= white;
+                    end
                 end
-                if (y < 18 && y >= waveform[(i*6) +: 6] && x == i) begin
-                    oled_data <= red;
-                end
-                if (y > 32 && y <= waveform[(i*6) +: 6] && x == i) begin
-                    oled_data <= lightgreen;
-                end
-                if (y > 39 && y <= waveform[(i*6) +: 6] && x == i) begin
-                    oled_data <= orange;
-                end
-                if (y > 46 && y <= waveform[(i*6) +: 6] && x == i) begin
-                    oled_data <= red;
+                else if (waveformmode == 3) begin
+                    if (y == 32) begin
+                    oled_data <= white;
+                    end
+                    if (y < 32 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y < 25 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y < 18 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y > 32 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y > 39 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6])&& x == i) begin
+                        oled_data <= white;
+                    end
+                    if (y > 46 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6]) && x == i) begin
+                        oled_data <= white;
+                    end
                 end
             end
         end
