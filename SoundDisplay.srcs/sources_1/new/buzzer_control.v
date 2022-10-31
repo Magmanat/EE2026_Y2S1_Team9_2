@@ -4,6 +4,7 @@ module buzzer_control(
     input metronome,
     input startsw, //addition sw13
     input btnD,btnC,btnL,btnR,btnU,repeated_btnL,repeated_btnR,
+    input [2:0] volume0_5,
     output reg [1:0] met_y = 0,
     output reg [7:0] BPM = 60,
     output reg [3:0] BeatsPerMeasure = 4,
@@ -57,7 +58,8 @@ end
 
 
 always @ (posedge CLK) begin
-    buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR || !metronome;
+    buttonpressed <= btnD || btnC || btnL || btnR || btnU|| repeated_btnL || repeated_btnR || !metronome || highvolume;
+    highvolume = volume0_5 == 5;
     BPM <= BPM7seg;
     if (playhighnote > 0) begin
             buzzerswitch <= highnote;
@@ -79,13 +81,12 @@ clock_divider lowHZ(CLK, 32'd4000, clkLOWhz);
 
 wire [31:0] buzztime = 30000;
 reg firstbeat = 1;
+reg highvolume = 0;
 
 //tapping clock
 reg [31:0] tapcounter = 0;
-wire clk10000hz;
-clock_divider tenthousandhz(CLK, 32'd10000, clk10000hz);
-always @ (posedge clk10000hz) begin
-    tapcounter <= (tapcounter >= 20000) ? 0 : tapcounter + 1; //20000 counts of 10000hz is 2s approx 30 bpm
+always @ (posedge clk1Mhz) begin
+    tapcounter <= tapcounter + 1;
 end
 
 always @ (posedge clk1Mhz) begin
@@ -173,12 +174,13 @@ assign start = startsw;
 reg [7:0] BPM7seg = 60;
 reg [31:0] firsttap;
 reg [31:0] secondtap;
-reg [31:0] differ;
+reg [31:0] differ = 60;
 reg [31:0] differ1;
 reg [31:0] differ2;
 reg [31:0] differ3;
 reg [31:0] differ4;
 reg [31:0] differavg;
+reg [2:0] numtoaverage = 0;
 always @ (posedge buttonpressed) begin
         if (metronome) begin
             if (btnD) begin
@@ -196,20 +198,32 @@ always @ (posedge buttonpressed) begin
                 end
             end
             if(met_y == 1) begin
-                if(btnC) begin
-                    firsttap <= secondtap;
-                    secondtap <= tapcounter;
-                    if(secondtap > firsttap) begin
-                        differ <= (60 * 10000) / (secondtap - firsttap);
-                    end
-                    else if(secondtap <= firsttap) begin     
-                        differ <= (60 * 10000 / ((20000 - firsttap) + secondtap));                
+                if(btnC || highvolume) begin
+                    if (tapcounter - secondtap >= 2000000) begin
+                        firsttap <= secondtap;
+                        secondtap <= tapcounter;
+                        numtoaverage <= 0;
+                    end else begin
+                        firsttap <= secondtap;
+                        secondtap <= tapcounter;
+                        differ = (60 * 1000000) / (secondtap - firsttap);
+                        numtoaverage <= numtoaverage == 4 ? 4 : numtoaverage + 1;
                     end
                     differ4 <= differ3;
                     differ3 <= differ2;
                     differ2 <= differ1;
                     differ1 <= differ;
-                    differavg <= (differ1 + differ2 + differ3 + differ4) / 4;
+                    if (numtoaverage == 0) begin
+                        differavg = differ;
+                    end else if (numtoaverage == 1) begin
+                        differavg = (differ + differ1) / 2;
+                    end else if (numtoaverage == 2) begin
+                        differavg = (differ + differ1 + differ2) / 3;
+                    end else if (numtoaverage == 3) begin
+                        differavg = (differ + differ1 + differ2 + differ3) / 4;
+                    end else if (numtoaverage == 4) begin
+                        differavg = (differ + differ1 + differ2 + differ3 + differ4) / 5;
+                    end
                     BPM7seg <= (differavg < 30) ? 30 : ((differavg > 252) ? 252 : differavg);
                 end
             end
