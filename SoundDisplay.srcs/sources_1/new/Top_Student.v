@@ -79,9 +79,10 @@ module Top_Student (
     wire [1:0] cursor;
     wire [1:0] selected;
     wire [1:0] slide;
+    wire [1:0] theme;
     wire mainmenuon;
     assign mainmenuon = sw[2] && !sw[15] && !sw[14] && !lock;
-    main_menu mm(CLK, mainmenuon, sw[10], debounced_btnL, debounced_btnC, debounced_btnR, cursor, selected, slide);
+    main_menu mm(CLK, mainmenuon, sw[10], debounced_btnL, debounced_btnC, debounced_btnR, debounced_btnU, debounced_btnD, cursor, selected, slide, theme);
 //    assign led[13:12] = cursor;
 //    assign led[11:10] = selected;  
 
