@@ -52,6 +52,7 @@ module draw_module(
     input [3:0] d,
     input [3:0] e,
     input [3:0] f,
+    input [1:0] colortheme,
     output reg [15:0] oled_data
         );
         
@@ -63,7 +64,7 @@ module draw_module(
     
     //create colours
     wire [15:0] myTheme;
-    assign myTheme = colortheme == 0 ? white : (colortheme == 1 ? green : (colortheme == 2 ? purple : (colortheme == 3 ? blue)));
+    assign myTheme = colortheme == 0 ? white : (colortheme == 1 ? green : (colortheme == 2 ? purple : (colortheme == 3 ? blue : white)));
     wire [15:0] white = 16'b1111111111111111;
     wire [15:0] black = 16'd0;
     wire [15:0] red = 16'b1111100000000000;
