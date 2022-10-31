@@ -62,6 +62,8 @@ module draw_module(
     assign y = (pixel_index / 96); //from 0 to 63
     
     //create colours
+    wire [15:0] myTheme;
+    assign myTheme = colortheme == 0 ? white : (colortheme == 1 ? green : (colortheme == 2 ? purple : (colortheme == 3 ? blue)));
     wire [15:0] white = 16'b1111111111111111;
     wire [15:0] black = 16'd0;
     wire [15:0] red = 16'b1111100000000000;
@@ -1145,35 +1147,35 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
         if(lock == 1) begin
         case(sequence)
         3'd0: if(lock0) begin
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         3'd1: if(lock1) begin
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         3'd2: if(lock2) begin
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         3'd3: if(lock3) begin
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         3'd4: if(lock4) begin
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         3'd5: if(lock5) begin
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         3'd6: if(lock6) begin //reset
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         default: if(lock0) begin
-            oled_data <= white;
+            oled_data <= myTheme;
         end
         endcase
         end
         //For password reset
         else if(sw[2] && sw[10]) begin
             if(password) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             if (((x >= 11 && x <= 14) && (y >= 42 && y <= 45) && pwcursor == 4'd0) || 
                 ((x >= 28 && x <= 31) && (y >= 42 && y <= 45) && pwcursor == 4'd1) ||
@@ -1188,7 +1190,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             // draw lowest priority first
             if (previous_highest_note_index == 13) begin
                 if (C || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1196,7 +1198,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 14) begin
                 if (D || FLAT || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1204,7 +1206,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 15) begin
                 if (D || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1212,7 +1214,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 16) begin
                 if (E || FLAT || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1220,7 +1222,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 17) begin
                 if (E || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1228,7 +1230,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 18) begin
                 if (F || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1236,7 +1238,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 19) begin
                 if (F || SHARP || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1244,7 +1246,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 20) begin
                 if (G || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1252,7 +1254,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 21) begin
                 if (A || FLAT || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1260,7 +1262,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 22 || previous_highest_note_index == 23) begin
                 if (A || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1268,7 +1270,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 24) begin
                 if (B || FLAT || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1276,7 +1278,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 25) begin
                 if (B || two) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1284,7 +1286,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 26 || previous_highest_note_index == 27) begin
                 if (C || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1292,7 +1294,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 28) begin // maybe && 29
                 if (D || FLAT || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1310,7 +1312,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                     end
                 end
                 if (D || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune && previous_highest_note_index == 30) begin
                     oled_data <= green;
@@ -1318,7 +1320,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 32) begin
                 if (E || FLAT || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1331,7 +1333,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                     end
                 end
                 if (E || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune && previous_highest_note_index == 34) begin
                     oled_data <= green;
@@ -1349,7 +1351,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                     end
                 end
                 if (F || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune && previous_highest_note_index == 36) begin
                     oled_data <= green;
@@ -1357,7 +1359,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 38) begin
                 if (F || SHARP || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1375,7 +1377,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                     end
                 end
                 if (G || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune && previous_highest_note_index == 40) begin
                     oled_data <= green;
@@ -1383,7 +1385,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 42 || previous_highest_note_index == 43) begin
                 if (A || FLAT || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1401,7 +1403,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                     end
                 end
                 if (A || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune && previous_highest_note_index == 45) begin
                     oled_data <= green;
@@ -1414,7 +1416,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                     end
                 end
                 if (B || FLAT || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune && previous_highest_note_index == 48) begin
                     oled_data <= green;
@@ -1422,7 +1424,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 49) begin
                 if (B || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1430,7 +1432,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 50 || previous_highest_note_index == 51) begin
                 if (B || three) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1438,7 +1440,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 52) begin
                 if (C || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1446,7 +1448,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 53 || previous_highest_note_index == 54) begin
                 if (C || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1454,7 +1456,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 55) begin
                 if (C || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1462,7 +1464,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 56) begin
                 if (D || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1470,7 +1472,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 57) begin
                 if (D || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1478,7 +1480,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 58) begin
                 if (D || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1486,7 +1488,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 59) begin
                 if (D || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1494,7 +1496,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 60) begin
                 if (D || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1502,7 +1504,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 61 || previous_highest_note_index == 62) begin
                 if (D || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1510,7 +1512,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 63) begin
                 if (E || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1518,7 +1520,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 64) begin
                 if (E || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1526,7 +1528,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 65) begin
                 if (E || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1534,7 +1536,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 66) begin
                 if (E || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1542,7 +1544,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 67 || previous_highest_note_index == 68) begin
                 if (E || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1550,7 +1552,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 69) begin
                 if (E || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1558,7 +1560,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 70) begin
                 if (F || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1566,7 +1568,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 71 || previous_highest_note_index == 72) begin
                 if (F || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1574,7 +1576,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 73) begin
                 if (F || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1582,7 +1584,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 74) begin
                 if (F || SHARP|| four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1590,7 +1592,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 75 || previous_highest_note_index == 76) begin
                 if (F || SHARP || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1598,7 +1600,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 77) begin
                 if (F || SHARP|| four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1606,7 +1608,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 78 && previous_highest_note_index <= 79) begin
                 if (G || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1614,7 +1616,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 80) begin
                 if (G || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1622,7 +1624,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 81 && previous_highest_note_index <= 82) begin
                 if (G || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1630,7 +1632,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 83 && previous_highest_note_index <= 84) begin
                 if (A || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1638,7 +1640,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 85) begin
                 if (A || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1646,7 +1648,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 86 && previous_highest_note_index <= 87) begin
                 if (A || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1654,7 +1656,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 88 && previous_highest_note_index <= 89) begin
                 if (A || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1662,7 +1664,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 90) begin
                 if (A || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1670,7 +1672,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 91 && previous_highest_note_index <= 92) begin
                 if (A || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1678,7 +1680,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 93 && previous_highest_note_index <= 94) begin
                 if (B || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1686,7 +1688,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 95 || previous_highest_note_index == 96) begin
                 if (B || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1694,7 +1696,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 97 && previous_highest_note_index <= 98) begin
                 if (B || FLAT || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1702,7 +1704,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 99 && previous_highest_note_index <= 100) begin
                 if (B || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1710,7 +1712,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 101) begin
                 if (B || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1718,7 +1720,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 102 && previous_highest_note_index <= 104) begin
                 if (B || four) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1726,7 +1728,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 105 && previous_highest_note_index <= 106) begin
                 if (C || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1734,7 +1736,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 107) begin
                 if (C || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1742,7 +1744,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 108 && previous_highest_note_index <= 110) begin
                 if (C || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1750,7 +1752,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 111 && previous_highest_note_index <= 112) begin
                 if (D || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1758,7 +1760,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 113 || previous_highest_note_index == 114) begin
                 if (D || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1766,7 +1768,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 115 && previous_highest_note_index <= 117) begin
                 if (D || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1774,7 +1776,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 118 && previous_highest_note_index <= 119) begin
                 if (D || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1782,7 +1784,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 120) begin
                 if (D || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1790,7 +1792,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 121 && previous_highest_note_index <= 123) begin
                 if (D || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1798,7 +1800,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 124 && previous_highest_note_index <= 126) begin
                 if (E || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1806,7 +1808,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 127 || previous_highest_note_index == 128) begin
                 if (E || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1814,7 +1816,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 129 && previous_highest_note_index <= 131) begin
                 if (E || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1822,7 +1824,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 132 && previous_highest_note_index <= 134) begin
                 if (E || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1830,7 +1832,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 135) begin
                 if (E || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1838,7 +1840,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 136 && previous_highest_note_index <= 139) begin
                 if (E || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1846,7 +1848,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 140 && previous_highest_note_index <= 142) begin
                 if (F || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1854,7 +1856,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 143) begin
                 if (F || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1862,7 +1864,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 144 && previous_highest_note_index <= 147) begin
                 if (F || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1870,7 +1872,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 148 && previous_highest_note_index <= 150) begin
                 if (F || SHARP || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1878,7 +1880,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 151 || previous_highest_note_index == 152) begin
                 if (F || SHARP || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1886,7 +1888,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 153 && previous_highest_note_index <= 156) begin
                 if (F || SHARP || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1894,7 +1896,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 157 && previous_highest_note_index <= 159) begin
                 if (G || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1902,7 +1904,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 160 || previous_highest_note_index == 161) begin
                 if (G || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1910,7 +1912,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 162 && previous_highest_note_index <= 165) begin
                 if (G || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1918,7 +1920,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 166 && previous_highest_note_index <= 169) begin
                 if (A || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1926,7 +1928,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 170) begin
                 if (A || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1934,7 +1936,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 171 && previous_highest_note_index <= 175) begin
                 if (A || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1942,7 +1944,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 176 && previous_highest_note_index <= 179) begin
                 if (A || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1950,7 +1952,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 180) begin
                 if (A || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1958,7 +1960,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 181 && previous_highest_note_index <= 186) begin
                 if (A || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1966,7 +1968,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 187 && previous_highest_note_index <= 190) begin
                 if (B || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1974,7 +1976,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 191) begin
                 if (B || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -1982,7 +1984,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 192 && previous_highest_note_index <= 196) begin
                 if (B || FLAT || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -1990,7 +1992,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 197 && previous_highest_note_index <= 201) begin
                 if (B || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -1998,7 +2000,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 202) begin
                 if (B || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2006,7 +2008,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 203 && previous_highest_note_index <= 208) begin
                 if (B || five) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2014,7 +2016,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 209 && previous_highest_note_index <= 213) begin
                 if (C || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2022,7 +2024,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 214) begin
                 if (C || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2030,7 +2032,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 215 && previous_highest_note_index <= 221) begin
                 if (C || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2038,7 +2040,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 222 && previous_highest_note_index <= 226) begin
                 if (D || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2046,7 +2048,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 227) begin
                 if (D || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2054,7 +2056,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 228 && previous_highest_note_index <= 233) begin
                 if (D || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2062,7 +2064,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 234 && previous_highest_note_index <= 239) begin
                 if (D || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2070,7 +2072,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 240 || previous_highest_note_index == 241) begin
                 if (D || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2078,7 +2080,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 242 && previous_highest_note_index <= 248) begin
                 if (D || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2086,7 +2088,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 249 && previous_highest_note_index <= 254) begin
                 if (E || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2094,7 +2096,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 255) begin
                 if (E || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2102,7 +2104,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 256 && previous_highest_note_index <= 263) begin
                 if (E || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2110,7 +2112,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 264 && previous_highest_note_index <= 269) begin
                 if (E || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2118,7 +2120,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 270) begin
                 if (E || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2126,7 +2128,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 271 && previous_highest_note_index <= 278) begin
                 if (E || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2134,7 +2136,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 279 && previous_highest_note_index <= 285) begin
                 if (F || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2142,7 +2144,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 286) begin
                 if (F || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2150,7 +2152,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 287 && previous_highest_note_index <= 295) begin
                 if (F || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2158,7 +2160,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 296 && previous_highest_note_index <= 302) begin
                 if (F || SHARP || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2166,7 +2168,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 303) begin
                 if (F || SHARP || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2174,7 +2176,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 304 && previous_highest_note_index <= 312) begin
                 if (F || SHARP || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2182,7 +2184,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 313 && previous_highest_note_index <= 320) begin
                 if (G || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2190,7 +2192,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 321) begin
                 if (G || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2198,7 +2200,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 322 && previous_highest_note_index <= 330) begin
                 if (G || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2206,7 +2208,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 331 && previous_highest_note_index <= 339) begin
                 if (A || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2214,7 +2216,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 340) begin
                 if (A || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2222,7 +2224,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 341 && previous_highest_note_index <= 350) begin
                 if (A || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2230,7 +2232,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 351 && previous_highest_note_index <= 359) begin
                 if (A || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2238,7 +2240,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 360 || previous_highest_note_index == 361) begin
                 if (A || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2246,7 +2248,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 362 && previous_highest_note_index <= 371) begin
                 if (A || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2254,7 +2256,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 372 && previous_highest_note_index <= 381) begin
                 if (B || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2262,7 +2264,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 382) begin
                 if (B || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2270,7 +2272,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 383 && previous_highest_note_index <= 393) begin
                 if (B || FLAT || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2278,7 +2280,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 394 && previous_highest_note_index <= 403) begin
                 if (B || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2286,7 +2288,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 404 || previous_highest_note_index == 405) begin
                 if (B || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2294,7 +2296,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 406 && previous_highest_note_index <= 416) begin
                 if (B || six) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2302,7 +2304,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 417 && previous_highest_note_index <= 427) begin
                 if (C || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2310,7 +2312,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 428 || previous_highest_note_index == 429) begin
                 if (C || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2318,7 +2320,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 430 && previous_highest_note_index <= 442) begin
                 if (C || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2326,7 +2328,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 443 && previous_highest_note_index <= 453) begin
                 if (D || FLAT || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2334,7 +2336,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 454) begin
                 if (D || FLAT || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2342,7 +2344,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 455 && previous_highest_note_index <= 467) begin
                 if (D || FLAT || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2350,7 +2352,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 468 && previous_highest_note_index <= 480) begin
                 if (D || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2358,7 +2360,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 481) begin
                 if (D || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2366,7 +2368,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 482 && previous_highest_note_index <= 497) begin
                 if (D || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2374,7 +2376,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 498 && previous_highest_note_index <= 509) begin
                 if (E || FLAT || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (flat) begin
                     oled_data <= red;
@@ -2382,7 +2384,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index == 510) begin
                 if (E || FLAT || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (intune) begin
                     oled_data <= green;
@@ -2390,7 +2392,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             else if (previous_highest_note_index >= 511) begin
                 if (E || FLAT || seven) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
                 if (sharp) begin
                     oled_data <= red;
@@ -2406,122 +2408,122 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
         //FOR METRONOME
         else if (metronome) begin
             if (metronome_menu) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             if (metronome_7seg) begin
                 if (met_y == 0) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end
             if (metronome_tap) begin
                 if(met_y == 1) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end
             if (BeatsPerMeasure == 1 && BPB1) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 2 && BPB2) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 3 && BPB3) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 4 && BPB4) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 5 && BPB5) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 6 && BPB6) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 7 && BPB7) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 8 && BPB8) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (BeatsPerMeasure == 9 && BPB9) begin
                 if (met_y == 2) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end
             if (NoteType == 0 && crochet) begin
                 if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (NoteType == 1 && quaver) begin
                 if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (NoteType == 2 && triplet) begin
                 if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end else if (NoteType == 3 && semiquaver) begin
                 if (met_y == 3) begin
                     oled_data <= red;
                 end else begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                 end
             end
             if (((met_pos == 0 && !reversed) || (met_pos == 6 && reversed)) && hand0) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end else if (((met_pos == 1 && !reversed) || (met_pos == 5 && reversed)) && hand1) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end else if (((met_pos == 2 && !reversed) || (met_pos == 4 && reversed)) && hand2) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end else if (((met_pos == 3 && !reversed) || (met_pos == 3 && reversed)) && hand3) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end else if (((met_pos == 4 && !reversed) || (met_pos == 2 && reversed)) && hand4) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end else if (((met_pos == 5 && !reversed) || (met_pos == 1 && reversed)) && hand5) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end else if (((met_pos == 6 && !reversed) || (met_pos == 0 && reversed)) && hand6) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
         end 
 
         //FOR CONTROLLING MENU
         else if (sw[2]) begin
-            oled_data <= white;
+            oled_data <= myTheme;
             //menutemplate
             if(menutemplate) begin
                 oled_data <= black;
@@ -2714,7 +2716,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             for (i = 1; i < 96; i = i + 1) begin
                 if (waveformmode == 0) begin
                     if (y == 32) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                     end
                     if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
                         oled_data <= green;
@@ -2737,7 +2739,7 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                 end
                 else if (waveformmode == 1) begin
                     if (y == 32) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                     end
                     if (y < 32 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
                         oled_data <= green;
@@ -2760,48 +2762,48 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
                 end
                 else if (waveformmode == 2) begin
                     if (y == 32) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                     end
                     if (y < 32 && y >= waveform[(i*6) +: 6] && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y < 25 && y >= waveform[(i*6) +: 6] && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y < 18 && y >= waveform[(i*6) +: 6] && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y > 32 && y <= waveform[(i*6) +: 6] && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y > 39 && y <= waveform[(i*6) +: 6] && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y > 46 && y <= waveform[(i*6) +: 6] && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                 end
                 else if (waveformmode == 3) begin
                     if (y == 32) begin
-                    oled_data <= white;
+                    oled_data <= myTheme;
                     end
                     if (y < 32 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y < 25 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y < 18 && (y >= waveform[(i*6) +: 6] || y >= 63 - waveform[(i*6) +: 6]) && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y > 32 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6]) && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y > 39 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6])&& x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                     if (y > 46 && (y <= waveform[(i*6) +: 6] || y <= 63 - waveform[(i*6) +: 6]) && x == i) begin
-                        oled_data <= white;
+                        oled_data <= myTheme;
                     end
                 end
             end
@@ -2810,64 +2812,64 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
         //FOR SPECTROGRAM  
         else if (selected == 2) begin
             if (x >= 8 && x <= 10 && y >= spectrogram[0*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 12 && x <= 14 && y >= spectrogram[1*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 16 && x <= 18 && y >= spectrogram[2*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 20 && x <= 22 && y >= spectrogram[3*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 24 && x <= 26 && y >= spectrogram[4*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 28 && x <= 30 && y >= spectrogram[5*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 32 && x <= 34 && y >= spectrogram[6*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 36 && x <= 38 && y >= spectrogram[7*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 40 && x <= 42 && y >= spectrogram[8*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 44 && x <= 46 && y >= spectrogram[9*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 48 && x <= 50 && y >= spectrogram[10*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 52 && x <= 54 && y >= spectrogram[11*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 56 && x <= 58 && y >= spectrogram[12*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 60 && x <= 62 && y >= spectrogram[13*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 64 && x <= 66 && y >= spectrogram[14*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 68 && x <= 70 && y >= spectrogram[15*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 72 && x <= 74 && y >= spectrogram[16*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 76 && x <= 78 && y >= spectrogram[17*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 80 && x <= 82 && y >= spectrogram[18*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             else if (x >= 84 && x <= 86 && y >= spectrogram[19*6 +:6]) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
         end
         
@@ -2879,17 +2881,17 @@ assign BPB9 = (((y == 15) && ((x >= 58 && x < 60)))||
             end
             //reset
             if(reset /*&& swreset*/ && swcursor == 0) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             if(reset /*&& swreset*/ && swcursor == 1) begin
                 oled_data <= red;
             end
             //start and stop
             if(stop && swstart == 1 && swcursor == 1) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             if(start && swstart == 0 && swcursor == 1) begin
-                oled_data <= white;
+                oled_data <= myTheme;
             end
             if(stop && swstart == 1 && swcursor == 0) begin
                 oled_data <= red;
