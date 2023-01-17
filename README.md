@@ -14,3 +14,7 @@ brainstorming ideas yet to be done
 5. metronome with screen gui change bpm, time signature ✔️
 6. tuner add 7seg for flat/sharp? 
 7. record a sound and play back on the buzzer?
+
+
+
+Go to project report, to view what we have done and how to operate the device
